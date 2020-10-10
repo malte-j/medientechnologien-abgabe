@@ -37,14 +37,15 @@
 		th {
 			height: 50px;
 		}
-		
 	</style>
 </head>
 
 <body class="page">
+
 	<h2>Übung 1: Audio-Grundlagen: Abtastung,
 		Aliasing,
 		Quantisierung</h2>
+	<br>
 
 	<article>
 		<h3>Aufgabe 1b) Abtastfrequenzen</h3>
@@ -53,6 +54,7 @@
 			da die Aufnahme dabei noch komplett verständlich bleibt. Bei dem Musikstück ist dies nicht der Fall. Hier würden
 			bei einer Konvertierung zu 5 kHz die einzelnen Instrumente zum Teil verloren gehen. Die Aufnahme würde sich
 			“Dumpf” anhören und die Instrumente wären nicht mehr zu unterscheiden.</p>
+		<br>
 	</article>
 
 	<article>
@@ -113,10 +115,34 @@
 				<td>Die Anzahl der verwendeten Bytes pro Sample</td>
 			</tr>
 		</table>
-
+		<br>
 	</article>
 
-	<br>
+	<article>
+		<h3>1d) Bitrate berechnen</h3>
+
+		<p>Rechenbeispiel:</p>
+		<p>Bitrate = Kanäle x Samplerate x Auflösung
+			Eine WAV-Datei in CD-Qualität hat folgende Bitrate:</p>
+		<code>2 Kanäle x 16 Bit x 44,1 kHz = 1411,2 kBit/s</code>
+
+		<br>
+		<br>
+
+		<table>
+			<tr>
+				<th>Musik</th>
+				<td><code>= 2 Kanäle * 16 Bit * 44,1 kHz = 1411,2 kBit/s</code></td>
+			</tr>
+			<tr>
+				<th>Sprache</th>
+				<td><code>= 1 Kanal * 16 Bit * 8 kHz = 128 kBits/s</code></td>
+			</tr>
+		</table>
+
+		<br>
+		<br>
+	</article>
 
 	<article><img
 			src="https://i1.wp.com/www.kraftfuttermischwerk.de/blogg/wp-content/uploads2/2016/03/image-4.jpeg?w=639&ssl=1"
