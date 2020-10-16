@@ -27,12 +27,10 @@
 
 	<div class="main">
 
-		<h2>Übung 1: Audio-Grundlagen: Abtastung,
-			Aliasing,
-			Quantisierung</h2>
-		<br>
-
 		<!--Aufgabe 1-->
+
+		<h2>Übung 1, Aufgabe 1: Audiodateien erzeugen und einlesen</h2>
+		<br>
 
 		<article>
 			<h3>Aufgabe 1a) Audio-Files zuschneiden</h3>
@@ -149,10 +147,37 @@
 
 		<!--Aufgabe 2-->
 
-		<article>
-			<h3>Aufgabe 2a) wave_io modifiziere</h3>
+		<h2>Übung 1, Aufgabe 2: Aliasing</h2>
+		<br>
 
-			<p></p>
+		<article>
+			<h3>Aufgabe 2a) wave_io modifizieren</h3>
+
+			<p>Mit folgendem Code schreiben wir die WAV-Dateien in lesbare ASCII-Dateien:</p>
+
+			<img src="./pics/code1.png" alt="Code wave_io modifizieren">
+
+			<p>Als Code:</p>
+
+			<code style="white-space: pre;">
+			PrintWriter writer = new PrintWriter("ascii-samples.txt", "UTF-8");
+
+			System.out.println(readWavFile.sound.length);
+
+			// 2a Samples schreiben
+			for (int i = 0; i < samples; i++) { 
+				writer.println(readWavFile.sound[i]); 
+			} 
+				
+			writer.close();</code>
+
+			<p>Anschließend bestimmen wir aus den resultierenden Zahlenfolgen der Textdatei die Frequenz
+			der Sinus Schwingungen der beiden Audio Files:</p>
+
+			<h4>sinus_hi</h4>
+
+
+			<h4>sinus_lo</h4>
 
 			<br>
 			<br>
@@ -203,8 +228,10 @@
 			<br>
 		</article>
 
+		<!--Aufgabe 3-->
 
-
+		<h2>Übung 1, Aufgabe 3: Bitreduzierung</h2>
+		<br>
 
 	</div>
 </body>
