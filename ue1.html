@@ -161,17 +161,17 @@
 
 			<p>Als Code:</p>
 
-			<code style="white-space: pre;">
-			PrintWriter writer = new PrintWriter("ascii-samples.txt", "UTF-8");
+			<code style="white-space: pre; line-height: .8;">
+PrintWriter writer = new PrintWriter("ascii-samples.txt", "UTF-8");
 
-			System.out.println(readWavFile.sound.length);
+System.out.println(readWavFile.sound.length);
 
-			// 2a Samples schreiben
-			for (int i = 0; i < samples; i++) { 
-				writer.println(readWavFile.sound[i]); 
-			} 
-				
-			writer.close();</code>
+// 2a Samples schreiben
+for (int i = 0; i < samples; i++) { 
+	writer.println(readWavFile.sound[i]); 
+} 
+	
+writer.close();</code>
 
 			<p>Anschließend bestimmen wir aus den resultierenden Zahlenfolgen der Textdatei die Frequenz
 				der Sinus Schwingungen der beiden Audio Files:</p>
@@ -179,8 +179,29 @@
 			<h4>sinus_hi</h4>
 
 			<p>Grafik:</p>
-
+			<canvas id="myChart"></canvas>
 			<!--Für Malte: Hier Grafik-->
+			<script>
+				var ctx = document.getElementById('myChart').getContext('2d');
+				var chart = new Chart(ctx, {
+					// The type of chart we want to create
+					type: 'line',
+
+					// The data for our dataset
+					data: {
+						// labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+						datasets: [{
+							label: 'My First dataset',
+							// backgroundColor: 'rgb(255, 99, 132)',
+							borderColor: 'rgb(255, 99, 132)',
+							data: [0, 10, 5, 2, 20, 30, 45]
+						}]
+					},
+
+					// Configuration options go here
+					options: {}
+				});
+			</script>
 
 			<p>Rechnung:</p>
 
