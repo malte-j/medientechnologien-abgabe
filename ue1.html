@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="de">
 
 <head>
 	<title></title>
@@ -24,158 +25,163 @@
 
 <body class="page">
 
-	<h2>Übung 1: Audio-Grundlagen: Abtastung,
-		Aliasing,
-		Quantisierung</h2>
-	<br>
+	<div class="main">
 
-	<article>
-		<h3>Aufgabe 1a) Audio-Files zuschneiden</h3>
+		<h2>Übung 1: Audio-Grundlagen: Abtastung,
+			Aliasing,
+			Quantisierung</h2>
+		<br>
 
-		<p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
+		<article>
+			<h3>Aufgabe 1a) Audio-Files zuschneiden</h3>
+
+			<p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
+			<audio controls>
+				<source src="./audio/Musik_GroRieJa.wav" type="audio/wav">
+			</audio>
+			<p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
+			<audio controls>
+				<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
+			</audio>
+			<br>
+			<br>
+		</article>
+
+		<article>
+			<h3>Aufgabe 1b) Abtastfrequenzen</h3>
+
+			<p>Die Sprachaufnahmen kann mit einer viel niedrigeren Abtastfrequenz gespeichert werden,
+				da die Aufnahme dabei noch komplett verständlich bleibt. Bei dem Musikstück ist dies nicht der Fall.
+				Hier würden
+				bei einer Konvertierung zu 5 kHz die einzelnen Instrumente zum Teil verloren gehen. Die Aufnahme würde
+				sich
+				“Dumpf” anhören und die Instrumente wären nicht mehr zu unterscheiden.</p>
+			<br>
+		</article>
+
+		<article>
+			<h3>Aufgabe 1c) Headerangaben</h3>
+			<h4>Musik</h4>
+			<table>
+				<tr>
+					<th>Angaben</th>
+					<th>Erklärung</th>
+				</tr>
+				<tr>
+					<td>Channels: 2 </td>
+					<td>Die Musik wurde als Stereo Datei gespeichert, deswegen hat die Datei 2 Channel</td>
+				</tr>
+				<tr>
+					<td>Frames: 223333</td>
+					<td>Anzahl der Frames innerhalb der Datei liegt bei 223 333 Stück</td>
+				</tr>
+				<tr>
+					<td>Sample Rate: 44100</td>
+					<td>Bei dieser Datei liegt die Abtastrate bei 44kHz</td>
+				</tr>
+				<tr>
+					<td>Valid Bits: 16</td>
+					<td>Es gibt 16 gültige Bits</td>
+				</tr>
+				<tr>
+					<td>Bytes per sample: 2</td>
+					<td>Die Anzahl der verwendeten Bytes pro Sample</td>
+				</tr>
+			</table>
+
+			<h4>Sprache</h4>
+			<table>
+				<tr>
+					<th>Angaben</th>
+					<th>Erklärung</th>
+				</tr>
+				<tr>
+					<td>Channels: 1</td>
+					<td>Die Sprache wurde als Mono Datei gespeichert, deswegen hat sie nur 1 Channel</td>
+				</tr>
+				<tr>
+					<td>Frames: 40003</td>
+					<td>Anzahl der Frames innerhalb der Datei liegt bei 40 003 Stück</td>
+				</tr>
+				<tr>
+					<td>Sample Rate: 8000</td>
+					<td>Bei dieser Datei liegt die Abtastrate bei 8kHz</td>
+				</tr>
+				<tr>
+					<td>Valid Bits: 16</td>
+					<td>Es gibt 16 gültige Bits</td>
+				</tr>
+				<tr>
+					<td>Bytes per sample: 2</td>
+					<td>Die Anzahl der verwendeten Bytes pro Sample</td>
+				</tr>
+			</table>
+			<br>
+		</article>
+
+		<article>
+			<h3>1d) Bitrate berechnen</h3>
+
+			<p>Rechenbeispiel:</p>
+			<p>Bitrate = Kanäle x Samplerate x Auflösung
+				Eine WAV-Datei in CD-Qualität hat folgende Bitrate:</p>
+			<code>2 Kanäle x 16 Bit x 44,1 kHz = 1411,2 kBit/s</code>
+
+			<br>
+			<br>
+
+			<table>
+				<tr>
+					<th>Musik</th>
+					<td><code>= 2 Kanäle * 16 Bit * 44,1 kHz = 1411,2 kBit/s</code></td>
+				</tr>
+				<tr>
+					<th>Sprache</th>
+					<td><code>= 1 Kanal * 16 Bit * 8 kHz = 128 kBits/s</code></td>
+				</tr>
+			</table>
+
+			<br>
+			<br>
+		</article>
+
+		<article><img
+				src="https://i1.wp.com/www.kraftfuttermischwerk.de/blogg/wp-content/uploads2/2016/03/image-4.jpeg?w=639&ssl=1"
+				alt="Mozart"></article>
+
+		<br>
+		<p>Musikaufnahme</p>
 		<audio controls>
-			<source src="./audio/Musik_GroRieJa.wav" type="audio/wav">
-		</audio>
-		<p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
+			<source src="./audio/musik_mono.wav" type="audio/wav"></audio>
+		<p>Bescheibung</p>
+		<p>Loesung</p>
+
+		<br>
+		<h3>Aufgabe 1 - 1.2</h3>
+		<p>Loesung</p>
+
+		<br>
+		<h3>Aufgabe 2 - 2.1</h3>
+		<br>
+		<p>Rauschen</p>
 		<audio controls>
-			<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
-		</audio>
-		<br>
-		<br>
-	</article>
-
-	<article>
-		<h3>Aufgabe 1b) Abtastfrequenzen</h3>
-
-		<p>Die Sprachaufnahmen kann mit einer viel niedrigeren Abtastfrequenz gespeichert werden,
-			da die Aufnahme dabei noch komplett verständlich bleibt. Bei dem Musikstück ist dies nicht der Fall. Hier würden
-			bei einer Konvertierung zu 5 kHz die einzelnen Instrumente zum Teil verloren gehen. Die Aufnahme würde sich
-			“Dumpf” anhören und die Instrumente wären nicht mehr zu unterscheiden.</p>
-		<br>
-	</article>
-
-	<article>
-		<h3>Aufgabe 1c) Headerangaben</h3>
-		<h4>Musik</h4>
-		<table>
-			<tr>
-				<th>Angaben</th>
-				<th>Erklärung</th>
-			</tr>
-			<tr>
-				<td>Channels: 2 </td>
-				<td>Die Musik wurde als Stereo Datei gespeichert, deswegen hat die Datei 2 Channel</td>
-			</tr>
-			<tr>
-				<td>Frames: 223333</td>
-				<td>Anzahl der Frames innerhalb der Datei liegt bei 223 333 Stück</td>
-			</tr>
-			<tr>
-				<td>Sample Rate: 44100</td>
-				<td>Bei dieser Datei liegt die Abtastrate bei 44kHz</td>
-			</tr>
-			<tr>
-				<td>Valid Bits: 16</td>
-				<td>Es gibt 16 gültige Bits</td>
-			</tr>
-			<tr>
-				<td>Bytes per sample: 2</td>
-				<td>Die Anzahl der verwendeten Bytes pro Sample</td>
-			</tr>
-		</table>
-
-		<h4>Sprache</h4>
-		<table>
-			<tr>
-				<th>Angaben</th>
-				<th>Erklärung</th>
-			</tr>
-			<tr>
-				<td>Channels: 1</td>
-				<td>Die Sprache wurde als Mono Datei gespeichert, deswegen hat sie nur 1 Channel</td>
-			</tr>
-			<tr>
-				<td>Frames: 40003</td>
-				<td>Anzahl der Frames innerhalb der Datei liegt bei 40 003 Stück</td>
-			</tr>
-			<tr>
-				<td>Sample Rate: 8000</td>
-				<td>Bei dieser Datei liegt die Abtastrate bei 8kHz</td>
-			</tr>
-			<tr>
-				<td>Valid Bits: 16</td>
-				<td>Es gibt 16 gültige Bits</td>
-			</tr>
-			<tr>
-				<td>Bytes per sample: 2</td>
-				<td>Die Anzahl der verwendeten Bytes pro Sample</td>
-			</tr>
-		</table>
-		<br>
-	</article>
-
-	<article>
-		<h3>1d) Bitrate berechnen</h3>
-
-		<p>Rechenbeispiel:</p>
-		<p>Bitrate = Kanäle x Samplerate x Auflösung
-			Eine WAV-Datei in CD-Qualität hat folgende Bitrate:</p>
-		<code>2 Kanäle x 16 Bit x 44,1 kHz = 1411,2 kBit/s</code>
+			<source src="./audio/rauschen.wav" type="audio/wav"></audio>
+		<p>Bescheibung</p>
+		<p>Loesung</p>
 
 		<br>
-		<br>
-
-		<table>
-			<tr>
-				<th>Musik</th>
-				<td><code>= 2 Kanäle * 16 Bit * 44,1 kHz = 1411,2 kBit/s</code></td>
-			</tr>
-			<tr>
-				<th>Sprache</th>
-				<td><code>= 1 Kanal * 16 Bit * 8 kHz = 128 kBits/s</code></td>
-			</tr>
-		</table>
+		<h3>Aufgabe 2 - 2.2</h3>
+		<p>Loesung</p>
 
 		<br>
+		<h3>Aufgabe 2 - 2.3</h3>
+		<p>Loesung</p>
+
 		<br>
-	</article>
+		<h3>Aufgabe 3 - 3.1</h3>
+		<p>Loesung</p>
 
-	<article><img
-			src="https://i1.wp.com/www.kraftfuttermischwerk.de/blogg/wp-content/uploads2/2016/03/image-4.jpeg?w=639&ssl=1"
-			alt="Mozart"></article>
-
-	<br>
-	<p>Musikaufnahme</p>
-	<audio controls>
-		<source src="./audio/musik_mono.wav" type="audio/wav"></audio>
-	<p>Bescheibung</p>
-	<p>Loesung</p>
-
-	<br>
-	<h3>Aufgabe 1 - 1.2</h3>
-	<p>Loesung</p>
-
-	<br>
-	<h3>Aufgabe 2 - 2.1</h3>
-	<br>
-	<p>Rauschen</p>
-	<audio controls>
-		<source src="./audio/rauschen.wav" type="audio/wav"></audio>
-	<p>Bescheibung</p>
-	<p>Loesung</p>
-
-	<br>
-	<h3>Aufgabe 2 - 2.2</h3>
-	<p>Loesung</p>
-
-	<br>
-	<h3>Aufgabe 2 - 2.3</h3>
-	<p>Loesung</p>
-
-	<br>
-	<h3>Aufgabe 3 - 3.1</h3>
-	<p>Loesung</p>
-
+	</div>
 </body>
 
 </html>
