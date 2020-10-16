@@ -53,6 +53,13 @@ body {
   font-family: inherit;
 }
 
+#Navigation ul ul {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  font-size: small;
+  color: grey;
+}
+
 #Navigation li {
   margin-bottom: 1rem;
 }
