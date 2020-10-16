@@ -153,6 +153,21 @@
 			<h2>Übung 1, Aufgabe 2: Aliasing</h2>
 			<br>
 
+			<p>Wir haben für die 2. Aufgabe 2 WAV-Dateien bekommen mit denen wir im Folgenden arbeiten:</p>
+
+			<p>sine_hi02.wav</p>
+			<audio controls>
+				<source src="./audio/sine_hi02.wav" type="audio/wav">
+			</audio>
+
+			<p>sine_lo02.wav</p>
+			<audio controls>
+				<source src="./audio/sine_lo02.wav" type="audio/wav">
+			</audio>
+
+			<br>
+			<br>
+
 			<h3>Aufgabe 2a) wave_io modifizieren</h3>
 
 			<p>Mit folgendem Code schreiben wir die WAV-Dateien in lesbare ASCII-Dateien:</p>
@@ -249,7 +264,22 @@ writer.close();</code>
 		<article>
 			<h3>Aufgabe 2c) Abtasttheorem</h3>
 
-			<p>Man muss oft genug abtasten um keine essentiellen Daten zu verlieren.</p>
+			<p>Wenn analoge Audio Signale aufgenommen, gespeichert und verarbeitet werden arbeitet man mit einer
+				Abtastrate. Diese nimmt in bestimmten Abständen die Werte einer Frequenz auf. Bei dieser Abtastrate gibt
+				es allerdings ein paar Dinge, die man beachten muss um keine essentiellen Daten zu verlieren. Dazu im
+				Folgenden eine visualisierte Erklärung im Detail:</p>
+
+			<img src="./pics/sampling_small.png" alt="kleine Abtastrate">
+
+
+			<img src="./pics/sampling_large.png" alt="große Abtastrate">
+
+
+			<img src="./pics/aliasing1.png" alt="Audio rekostruieren">
+
+
+			<img src="./pics/aliasing2.png" alt="Erklärung Aliasing">
+
 
 			<img src="./pics/abtastung.png" alt="Unterschiedliche Abtastfrequenzen und ihre Auswirkungen.">
 
