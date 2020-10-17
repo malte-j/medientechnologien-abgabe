@@ -2,17 +2,13 @@
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('IBM Plex Sans'), local('IBMPlexSans'), url(/fonts/IBMPlexSans-Regular.ttf) format('woff2');
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: sans-serif;
   line-height: 150%;
 }
 
@@ -29,7 +25,8 @@ body {
 
 #Navigation {
   height: 100vh;
-  background-color: #dce4e7;
+  background-color: #F5F8FD;
+  border-right: 1px solid #E1E3EA;
   color: #353535;
   padding: 20px;
   grid-row: span 2;
@@ -39,7 +36,7 @@ body {
   justify-content: space-between;
 
   font-weight: bold;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 #IFrame2 {
@@ -56,8 +53,8 @@ body {
 #Navigation ul ul {
   margin-left: 2rem;
   margin-top: 1rem;
-  font-size: small;
-  color: grey;
+  font-size: 16px;
+  color: #3f4247;
 }
 
 #Navigation li {
@@ -71,6 +68,12 @@ body {
 
 #Navigation p {
   margin: 0;
+  font-size: 14px;
+}
+
+
+article {
+  margin: 5rem 0;
 }
 
 iframe {

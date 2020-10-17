@@ -34,10 +34,10 @@
 		<!--Aufgabe 1-->
 
 		<article id="a1">
-			<h2>Übung 1, Aufgabe 1: Audiodateien erzeugen und einlesen</h2>
+			<h2>Aufgabe 1: Audiodateien erzeugen und einlesen</h2>
 			<br>
 
-			<h3>Aufgabe 1a) Audio-Files zuschneiden</h3>
+			<h3>1a) Audio-Files zuschneiden</h3>
 
 			<p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
 			<audio controls>
@@ -52,7 +52,7 @@
 		</article>
 
 		<article>
-			<h3>Aufgabe 1b) Abtastfrequenzen</h3>
+			<h3>1b) Abtastfrequenzen</h3>
 
 			<p>Die Sprachaufnahmen kann mit einer viel niedrigeren Abtastfrequenz gespeichert werden,
 				da die Aufnahme dabei noch komplett verständlich bleibt. Bei dem Musikstück ist dies nicht der Fall.
@@ -64,7 +64,7 @@
 		</article>
 
 		<article>
-			<h3>Aufgabe 1c) Headerangaben</h3>
+			<h3>1c) Headerangaben</h3>
 			<h4>Musik</h4>
 			<table>
 				<tr>
@@ -152,7 +152,7 @@
 		<!--Aufgabe 2-->
 
 		<article id="a2">
-			<h2>Übung 1, Aufgabe 2: Aliasing</h2>
+			<h2>Aufgabe 2: Aliasing</h2>
 			<br>
 
 			<p>Wir haben für die 2. Aufgabe 2 WAV-Dateien bekommen mit denen wir im Folgenden arbeiten:</p>
@@ -170,14 +170,12 @@
 			<br>
 			<br>
 
-			<h3>Aufgabe 2a) wave_io modifizieren</h3>
+			<h3>2a) wave_io modifizieren</h3>
 
 			<p>Mit folgendem Code schreiben wir die WAV-Dateien in lesbare ASCII-Dateien:</p>
 
 			<pre><code class="language-java">
 				PrintWriter writer = new PrintWriter("ascii-samples.txt", "UTF-8");
-
-				System.out.println(readWavFile.sound.length);
 
 				// 2a Samples schreiben
 				for (int i = 0; i < samples; i++) { 
@@ -251,7 +249,7 @@
 		</article>
 
 		<article>
-			<h3>Aufgabe 2b) Schätzung mit Spektralanalyse-Tool GRAM prüfen</h3>
+			<h3>2b) Schätzung mit Spektralanalyse-Tool GRAM prüfen</h3>
 
 			<p></p>
 
@@ -260,7 +258,7 @@
 		</article>
 
 		<article>
-			<h3>Aufgabe 2c) Abtasttheorem</h3>
+			<h3>2c) Abtasttheorem</h3>
 
 			<p>Wenn analoge Audio Signale aufgenommen, gespeichert und verarbeitet werden arbeitet man mit einer
 				Abtastrate. Diese nimmt in bestimmten Abständen die Werte einer Frequenz auf. Bei dieser Abtastrate gibt
@@ -286,7 +284,7 @@
 		</article>
 
 		<article>
-			<h3>Aufgabe 2d) Vorbehandlung Audiosignal</h3>
+			<h3>2d) Vorbehandlung Audiosignal</h3>
 
 			<p></p>
 
@@ -295,7 +293,7 @@
 		</article>
 
 		<article>
-			<h3>Aufgabe 2e) Aliasing-Verzerrungen</h3>
+			<h3> 2e) Aliasing-Verzerrungen</h3>
 
 			<p></p>
 
@@ -304,7 +302,7 @@
 		</article>
 
 		<article>
-			<h3>Aufgabe 2f) Down-Sampling</h3>
+			<h3>Down-Sampling</h3>
 
 			<p></p>
 
