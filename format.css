@@ -105,3 +105,38 @@ img, table {
   display: inline;
   color: rgb(70, 87, 119);
 }
+
+.math {
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+.aside {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.aside > *{
+  flex: 1;
+}
+
+.aside .center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: .4rem;
+}

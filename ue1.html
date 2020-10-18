@@ -8,23 +8,6 @@
 	<!-- <link rel="stylesheet" href="Chart.min.css"> -->
 	<link rel="stylesheet" href="./prism/prism.css">
 	<script src="./charts/Chart.min.js"></script>
-
-	<style type="text/css">
-		table {
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		table,
-		th,
-		td {
-			border: 1px solid black;
-		}
-
-		th {
-			height: 50px;
-		}
-	</style>
 </head>
 
 <body class="page">
@@ -35,7 +18,7 @@
 
 		<article id="a1">
 			<h2>Aufgabe 1: Audiodateien erzeugen und einlesen</h2>
-			<br>
+
 
 			<h3><div class="list-indicator">1A</div> Audio-Files zuschneiden</h3>
 
@@ -52,8 +35,7 @@
 			<audio controls>
 				<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
 			</audio>
-			<br>
-			<br>
+
 		</article>
 
 		<article>
@@ -66,7 +48,7 @@
 				bei einer Konvertierung zu 5 kHz die einzelnen Instrumente zum Teil verloren gehen. Die Aufnahme würde
 				sich
 				“Dumpf” anhören und die Instrumente wären nicht mehr zu unterscheiden.</p>
-			<br>
+
 		</article>
 
 		<article>
@@ -127,7 +109,7 @@
 					<td>Die Anzahl der verwendeten Bytes pro Sample</td>
 				</tr>
 			</table>
-			<br>
+
 		</article>
 
 		<article>
@@ -140,30 +122,23 @@
 				Eine WAV-Datei in CD-Qualität hat folgende Bitrate:</p>
 			<code>2 Kanäle x 16 Bit x 44,1 kHz = 1411,2 kBit/s</code>
 
-			<br>
-			<br>
-
 			<table>
 				<tr>
 					<th>Musik</th>
-					<td><code>= 2 Kanäle * 16 Bit * 44,1 kHz = 1411,2 kBit/s</code></td>
+					<td><div class="math">= 2 Kanäle * 16 Bit * 44,1 kHz = 1411,2 kBit/s</div></td>
 				</tr>
 				<tr>
 					<th>Sprache</th>
-					<td><code>= 1 Kanal * 16 Bit * 8 kHz = 128 kBits/s</code></td>
+					<td><div class="math">= 1 Kanal * 16 Bit * 8 kHz = 128 kBits/s</div></td>
 				</tr>
 			</table>
-
-			<br>
-			<br>
 		</article>
 
 		<!--Aufgabe 2-->
 
 		<article id="a2">
 			<h2>Aufgabe 2: Aliasing</h2>
-			<br>
-
+			
 			<p>Wir haben für die 2. Aufgabe 2 WAV-Dateien bekommen mit denen wir im Folgenden arbeiten:</p>
 
 			<p>sine_hi02.wav</p>
@@ -176,13 +151,9 @@
 				<source src="./audio/sine_lo02.wav" type="audio/wav">
 			</audio>
 
-			<br>
-			<br>
-
 			<h3><div class="list-indicator">2A</div> wave_io modifizieren</h3>
 
-			<div class="task-description">Modifiziere wave_io dahingehend, dass die Samples in der WAV-Datei in eine (lesbare) ASCIIDatei geschrieben werden. Lies die von mir geschickten Sinusdateien (Sampling-Frequenz: 16 kHz)
-				ein und bestimme aus den resultierenden Zahlenfolgen in der ASCII-Datei die Frequenz der SinusSchwingungen. Begründe!</div>
+			<div class="task-description">Modifiziere wave_io dahingehend, dass die Samples in der WAV-Datei in eine (lesbare) ASCIIDatei geschrieben werden. Lies die von mir geschickten Sinusdateien (Sampling-Frequenz: 16 kHz) ein und bestimme aus den resultierenden Zahlenfolgen in der ASCII-Datei die Frequenz der Sinus Schwingungen. Begründe!</div>
 
 			<p>Mit folgendem Code schreiben wir die WAV-Dateien in lesbare ASCII-Dateien:</p>
 
@@ -196,12 +167,10 @@
 					
 				writer.close();</code>
 			</pre>
-			<p>Anschließend bestimmen wir aus den resultierenden Zahlenfolgen der Textdatei die Frequenz
-				der Sinus Schwingungen der beiden Audio Files:</p>
+			<p>Anschließend bestimmen wir aus den resultierenden Zahlenfolgen der Textdatei die Frequenz der Sinus Schwingungen der beiden Audio Files:</p>
 
 			<h4>sinus_hi</h4>
 
-			<p>Grafik:</p>
 			<canvas id="sine_hi02"></canvas>
 
 			<script>
@@ -225,12 +194,14 @@
 			</script>
 
 			<p>Rechnung:</p>
-
-
+			<p>16000 Samples pro Sekunde * Dauer bis gleicher Punkt erreicht, hier durch Ablesen ~3</p>
+			<div class="math">s := (1/16000)*3</div>
+			<div class="math">s  = 0,0001875s</div>
+			<p>Um in Herz umzurechnen:</p> 
+			<div class="math">h := 1/s</div>
+			<div class="math">h  = 5333,33Hz</div>
 
 			<h4>sinus_lo</h4>
-
-			<p>Grafik:</p>
 
 			<canvas id="sine_lo2"></canvas>
 			<!--Für Malte: Hier Grafik-->
@@ -255,22 +226,44 @@
 			</script>
 
 			<p>Rechnung:</p>
-
-			<br>
-			<br>
+			<p>16000 Samples pro Sekunde * Dauer bis gleicher Punkt erreicht, hier durch Ablesen ~6</p>
+			<div class="math">s := (1/16000)*6</div>
+			<div class="math">s  = 0,000375</div>
+			<p>Um in Herz umzurechnen:</p> 
+			<div class="math">h := 1/s</div>
+			<div class="math">h  = 2666,66Hz</div>
 		</article>
 
 		<article>
-			<h3>2b) Schätzung mit Spektralanalyse-Tool GRAM prüfen</h3>
+			<h3><div class="list-indicator">2B</div> Schätzung mit Spektralanalyse-Tool GRAM prüfen</h3>
 
-			<p></p>
+			<div class="task-description">Überprüfe deine Schätzung mit dem Spektralanalyse-Tool GRAM.</div>
 
-			<br>
-			<br>
+			<div class="aside">
+				<div>
+					<img src="./pics/sine_hi.png" alt="sine_hi GRAM">
+				</div>
+				<div class="center">
+					sine_hi02.wav besteht aus einem konstanten Sinuston mit 5,5kHz.
+				</div>
+			</div>
+
+			<div class="aside">
+				<div>
+					<img src="./pics/sine_lo.png" alt="sine_lo GRAM">
+				</div>
+				<div class="center">
+					sine_lo02.wav besteht aus einem konstanten Sinuston mit 2,5kHz.
+				</div>
+			</div>
 		</article>
 
 		<article>
-			<h3>2c) Abtasttheorem</h3>
+			<h3><div class="list-indicator">2C</div> Abtasttheorem</h3>
+
+			<div class="task-description">Bei der zeitlichen Diskretisierung eines Analogsignals muss das sogenannte Abtasttheorem
+				eingehalten werden. Wie lautet es und wie lässt sich der Grenzfall, für den es gerade noch gilt,
+				illustrieren? Erstelle hierzu eine Zeichnung und erläutere.</div>
 
 			<p>Wenn analoge Audio Signale aufgenommen, gespeichert und verarbeitet werden arbeitet man mit einer
 				Abtastrate. Diese nimmt in bestimmten Abständen die Werte einer Frequenz auf. Bei dieser Abtastrate gibt
@@ -290,52 +283,75 @@
 
 
 			<img src="./pics/abtastung.png" alt="Unterschiedliche Abtastfrequenzen und ihre Auswirkungen.">
-
-			<br>
-			<br>
 		</article>
 
 		<article>
-			<h3>2d) Vorbehandlung Audiosignal</h3>
-
-			<p></p>
-
-			<br>
-			<br>
+			<h3><div class="list-indicator">2D</div> Vorbehandlung Audiosignal</h3>
+			<div class="task-description">
+				Bei herkömmlichen Soundkarten tritt systembedingt kein Aliasing auf, weil das Audiosignal stets
+				geeignet vorbehandelt wird. Wie sieht diese Vorbehandlung aus?
+			</div>
+			<p>Soundkarten wenden auf eingehende Audiosignale einen low-pass filter an, der nur Frequenzen unter dem Aliasing-Grenzwert zulässt. Dadurch werden alle höheren Frequenzen, die ohne Vorbehandlung durch Aliasing verzerrt würden, herausgefiltert. </p>
 		</article>
 
 		<article>
-			<h3> 2e) Aliasing-Verzerrungen</h3>
+			<h3><div class="list-indicator">2E</div> Aliasing-Verzerrungen</h3>
+			<div class="task-description">
+				Modifiziere wave_io dahingehend, dass vom eingelesenen Audiosignal jeder zweite Abtastwert
+				verworfen wird und das resultierende Signal abgespeichert wird. Der Header muss natürlich
+				entsprechend verändert werden!
+			</div>
 
-			<p></p>
+			<p>Wir erzeugen ein neues Array, in das jeweils jeder zweite Wert der Originaldatei abgelegt wird, und schreiben dies in eine Datei.</p>
 
-			<br>
-			<br>
+			<pre><code class="language-java">
+				short[] downsampledAudio = new short[readWavFile.sound.length / 2 ];
+
+				for (int i = 0; i < samples; i+=2) {
+						downsampledAudio[i/2] = readWavFile.sound[i];
+				}
+
+				WavFile.write_wav(outFilename, numChannels, numFrames/2, validBits, sampleRate/2, downsampledAudio);
+			</code></pre>
+			<p>
+
+			</p>
 		</article>
 
 		<article>
-			<h3>Down-Sampling</h3>
+			<h3><div class="list-indicator">2F</div> Down-Sampling</h3>
 
-			<p></p>
+			<div class="task-description">
+				Wende das erstellte Programm auf die von mir geschickten Sinusdateien an (sine_hiXX.wav und
+				sine_loXX.wav) an. Welche Frequenzen erscheinen nach dem Down-Sampling? Was würde
+				passieren, wenn man geeignet bandbegrenzen würde?
+			</div>
+			
+			<div class="aside">
+				<div class="">
+					<img src="./pics/hi_downsampled.png" alt="the sinus_hi curve downsampled">
+				</div>
+				<div class="">
+					<h4>sine_hi</h4>
+					<p>Hier können wir sehen, dass aus den ursprünglichen 5,5kHz durch Aliasing 2,5kHz geworden ist.</p>
+				</div>
+			</div>
 
-			<h4>sinus_hi</h4>
-
-			<img src="./pics/hi_downsampled.png" alt="the sinus_hi curve downsampled">
-
-			<h4>sinus_lo</h4>
-
-			<img src="./pics/lo_downsampled.png" alt="the sinus_lo curve downsampled">
-
-			<br>
-			<br>
+			<div class="aside">
+				<div class="">
+					<img src="./pics/lo_downsampled.png" alt="the sinus_lo curve downsampled">
+				</div>
+				<div class="">
+					<h4>sine_lo</h4>
+					<p>Hier hat sich die Frequenz nicht verändert, da die Abtastrate noch hoch genug ist, um 2,5kHz ohne Aliasing aufzunehmen.</p>
+				</div>
+			</div>
 		</article>
 
 		<!--Aufgabe 3-->
 
 		<article id="a3">
 			<h2>Übung 1, Aufgabe 3: Bitreduzierung</h2>
-			<br>
-
 		</article>
 
 	</div>

@@ -1,4 +1,9 @@
-fs = require('fs')
+fs = require('fs');
+
+/**
+ * Converts a textfile with newline-seperated values into an array
+ */
+
 
 fs.readFile('data_lo.txt', 'utf8', function (err,data) {
   if (err) {
