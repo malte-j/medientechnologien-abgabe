@@ -37,7 +37,12 @@
 			<h2>Aufgabe 1: Audiodateien erzeugen und einlesen</h2>
 			<br>
 
-			<h3>1a) Audio-Files zuschneiden</h3>
+			<h3><div class="list-indicator">1A</div> Audio-Files zuschneiden</h3>
+
+			<div class="task-description">Schneide aus den dir zugeschickten Audio-Files ab dem Zeitpunkt jeweils ein Stück mit der Länge 5
+				Sekunden und speichere dieses als WAV-Datei ab. Parameter für Musik: fa=44,1 kHz, stereo, für
+				Sprache: fa=8 kHz mono, beide 16 bit Auflösung. Beim Schneiden achtest du darauf, dass der
+				Schnitt am Beginn einer musikalischen Figur bzw. eines Satzes liegt.</div>
 
 			<p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
 			<audio controls>
@@ -52,7 +57,8 @@
 		</article>
 
 		<article>
-			<h3>1b) Abtastfrequenzen</h3>
+			<h3><div class="list-indicator">1B</div> Abtastfrequenzen</h3>
+			<div class="task-description">Erkläre, warum die Audio-Files unterschiedliche Abtastfrequenzen haben.</div>
 
 			<p>Die Sprachaufnahmen kann mit einer viel niedrigeren Abtastfrequenz gespeichert werden,
 				da die Aufnahme dabei noch komplett verständlich bleibt. Bei dem Musikstück ist dies nicht der Fall.
@@ -64,7 +70,8 @@
 		</article>
 
 		<article>
-			<h3>1c) Headerangaben</h3>
+			<h3><div class="list-indicator">1C</div> Headerangaben</h3>
+			<div class="task-description">Lies die Musik- und die Sprachdatei mit wave_io ein und erkläre die Angaben im Header!</div>
 			<h4>Musik</h4>
 			<table>
 				<tr>
@@ -124,7 +131,9 @@
 		</article>
 
 		<article>
-			<h3>1d) Bitrate berechnen</h3>
+			<h3><div class="list-indicator">1D</div> Bitrate berechnen</h3>
+
+			<div class="task-description">Berechne die Bitrate für die beiden Dateien!</div>
 
 			<p>Rechenbeispiel:</p>
 			<p>Bitrate = Kanäle x Samplerate x Auflösung
@@ -170,7 +179,10 @@
 			<br>
 			<br>
 
-			<h3>2a) wave_io modifizieren</h3>
+			<h3><div class="list-indicator">2A</div> wave_io modifizieren</h3>
+
+			<div class="task-description">Modifiziere wave_io dahingehend, dass die Samples in der WAV-Datei in eine (lesbare) ASCIIDatei geschrieben werden. Lies die von mir geschickten Sinusdateien (Sampling-Frequenz: 16 kHz)
+				ein und bestimme aus den resultierenden Zahlenfolgen in der ASCII-Datei die Frequenz der SinusSchwingungen. Begründe!</div>
 
 			<p>Mit folgendem Code schreiben wir die WAV-Dateien in lesbare ASCII-Dateien:</p>
 

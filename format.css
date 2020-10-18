@@ -10,6 +10,7 @@ body {
   margin: 0;
   font-family: sans-serif;
   line-height: 150%;
+  color: #2b2b2b;
 }
 
 .page {
@@ -26,7 +27,8 @@ body {
 #Navigation {
   height: 100vh;
   background-color: #F5F8FD;
-  border-right: 1px solid #E1E3EA;
+  
+  box-shadow: 0 0 2px #cfd6d8;
   color: #353535;
   padding: 20px;
   grid-row: span 2;
@@ -36,7 +38,7 @@ body {
   justify-content: space-between;
 
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #IFrame2 {
@@ -53,7 +55,7 @@ body {
 #Navigation ul ul {
   margin-left: 2rem;
   margin-top: 1rem;
-  font-size: 16px;
+  font-size: 14px;
   color: #3f4247;
 }
 
@@ -73,9 +75,18 @@ body {
 
 
 article {
-  margin: 5rem 0;
+  margin-bottom: 4rem;
 }
 
+.task-description {
+  /* margin: 0 1rem; */
+  padding: 1rem;
+  padding-top: 1rem;
+  border-radius: 1rem;
+  background-color: #f8f9fa;
+  position: relative;
+  color: #2b2b2b;
+}
 iframe {
   width: 100%;
   height: 100%;
@@ -88,4 +99,9 @@ iframe {
 
 img, table {
   max-width: 100%;
+}
+
+.list-indicator {
+  display: inline;
+  color: rgb(70, 87, 119);
 }
