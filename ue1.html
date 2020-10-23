@@ -414,6 +414,7 @@
                 </div>
                 <div class="">
                     <h4>Musik Grenze der Qualität (um 8 Bit reduziert) mit leichtem Rauschen:</h4>
+                    <p>Ab einer Bitreduzierung von 8 Bit tritt eine hörbare Verschlechterung der Audioqualität des Musikstücks ein.</p>
                     <audio controls>
 						<source src="./audio/A1_musik_04_bitreduced_8bit.wav" type="audio/wav">
 					</audio>
@@ -425,7 +426,8 @@
                     <img src="./pics/A1_sprache_04_bitreduced_13.png" alt="Sprache Grenze der Qualität um 13 bit reduziert">
                 </div>
                 <div class="">
-                    <h4>Sprache Grenze der Qualität (13 bit reduziert), stark verzerrt:</h4>
+                    <h4>Sprache Grenze der Qualität (13 Bit reduziert), stark verzerrt:</h4>
+                    <p>Ab einer Bitreduzierung von 13 Bit merkt man merklich wie die Qualität der Sprachaufnahme stark abnimmt.</p>
                     <audio controls>
 						<source src="./audio/A1_sprache_04_bitreduced_13.wav" type="audio/wav">
 					</audio>
@@ -437,7 +439,8 @@
                     <img src="./pics/A1_sprache_04_bitreduced_14.png" alt="Sprache Grenze der Verständlichkeit um 14 bit reduziert">
                 </div>
                 <div class="">
-                    <h4>Sprache Grenze der Verständlichkeit (14 bit reduziert), nicht mehr wirklich nachvollziehbar was gesagt wird:</h4>
+                    <h4>Sprache Grenze der Verständlichkeit (14 Bit reduziert), nicht mehr wirklich nachvollziehbar was gesagt wird:</h4>
+                    <p>Ab einer Reduzierung der Audio Datei um 14 Bit wird es schwer den Sprecher zu verstehen und man kann nur noch in Grundzügen erahnen, was er sagt.</p>
                     <audio controls>
 						<source src="./audio/A1_sprache_04_bitreduced_14.wav" type="audio/wav">
 					</audio>
@@ -469,7 +472,7 @@
                 nur von -1 bis +1 verlaufen würde. Dieser Wertebereich wäre viel zu klein, als dass man das Rauschen beim Abspielen als 16bit-Wert noch hören könnte. Daher muss das Rauschen durch Multiplikation mit einer 2er Potenz verstärkt werden. In
                 anderen Worten: Hat man vorher durch 2^n geteilt, sollte man das Differenzsignal vor dem Abspeichern mit 2^(16-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird. </div>
 
-			<pre><code class="language-java">
+            <pre><code class="language-java">
 				// 3e Bitreduzierung Differenz
 	
 				short[] difference = new short[readWavFile.sound.length];
