@@ -2,162 +2,165 @@
 <html lang="de">
 
 <head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="format.css">
-	<link rel="shortcut icon" href="./favicon.ico" />
-	<!-- <link rel="stylesheet" href="Chart.min.css"> -->
-	<link rel="stylesheet" href="./prism/prism.css">
-	<script src="./charts/Chart.min.js"></script>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="format.css">
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <!-- <link rel="stylesheet" href="Chart.min.css"> -->
+    <link rel="stylesheet" href="./prism/prism.css">
+    <script src="./charts/Chart.min.js"></script>
 </head>
 
 <body class="page">
 
-	<div class="main">
+    <div class="main">
 
-		<!--Aufgabe 1-->
+        <!--Aufgabe 1-->
 
-		<article id="a1">
-			<h2>Aufgabe 1: Audiodateien erzeugen und einlesen</h2>
+        <article id="a1">
+            <h2>Aufgabe 1: Audiodateien erzeugen und einlesen</h2>
 
 
-			<h3><div class="list-indicator">1A</div> Audio-Files zuschneiden</h3>
+            <h3>
+                <div class="list-indicator">1A</div> Audio-Files zuschneiden</h3>
 
-			<div class="task-description">Schneide aus den dir zugeschickten Audio-Files ab dem Zeitpunkt jeweils ein Stück mit der Länge 5
-				Sekunden und speichere dieses als WAV-Datei ab. Parameter für Musik: fa=44,1 kHz, stereo, für
-				Sprache: fa=8 kHz mono, beide 16 bit Auflösung. Beim Schneiden achtest du darauf, dass der
-				Schnitt am Beginn einer musikalischen Figur bzw. eines Satzes liegt.</div>
+            <div class="task-description">Schneide aus den dir zugeschickten Audio-Files ab dem Zeitpunkt jeweils ein Stück mit der Länge 5 Sekunden und speichere dieses als WAV-Datei ab. Parameter für Musik: fa=44,1 kHz, stereo, für Sprache: fa=8 kHz mono, beide 16 bit Auflösung.
+                Beim Schneiden achtest du darauf, dass der Schnitt am Beginn einer musikalischen Figur bzw. eines Satzes liegt.</div>
 
-			<p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
-			<audio controls>
+            <p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
+            <audio controls>
 				<source src="./audio/Musik_GroRieJa.wav" type="audio/wav">
 			</audio>
-			<p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
-			<audio controls>
+            <p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
+            <audio controls>
 				<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
 			</audio>
 
-		</article>
+        </article>
 
-		<article>
-			<h3><div class="list-indicator">1B</div> Abtastfrequenzen</h3>
-			<div class="task-description">Erkläre, warum die Audio-Files unterschiedliche Abtastfrequenzen haben.</div>
+        <article>
+            <h3>
+                <div class="list-indicator">1B</div> Abtastfrequenzen</h3>
+            <div class="task-description">Erkläre, warum die Audio-Files unterschiedliche Abtastfrequenzen haben.</div>
 
-			<p>Die Sprachaufnahmen kann mit einer viel niedrigeren Abtastfrequenz gespeichert werden,
-				da die Aufnahme dabei noch komplett verständlich bleibt. Bei dem Musikstück ist dies nicht der Fall.
-				Hier würden
-				bei einer Konvertierung zu 5 kHz die einzelnen Instrumente zum Teil verloren gehen. Die Aufnahme würde
-				sich
-				“Dumpf” anhören und die Instrumente wären nicht mehr zu unterscheiden.</p>
+            <p>Die Sprachaufnahmen kann mit einer viel niedrigeren Abtastfrequenz gespeichert werden, da die Aufnahme dabei noch komplett verständlich bleibt. Bei dem Musikstück ist dies nicht der Fall. Hier würden bei einer Konvertierung zu 5 kHz die einzelnen
+                Instrumente zum Teil verloren gehen. Die Aufnahme würde sich “Dumpf” anhören und die Instrumente wären nicht mehr zu unterscheiden.</p>
 
-		</article>
+        </article>
 
-		<article>
-			<h3><div class="list-indicator">1C</div> Headerangaben</h3>
-			<div class="task-description">Lies die Musik- und die Sprachdatei mit wave_io ein und erkläre die Angaben im Header!</div>
-			<h4>Musik</h4>
-			<table>
-				<tr>
-					<th>Angaben</th>
-					<th>Erklärung</th>
-				</tr>
-				<tr>
-					<td>Channels: 2 </td>
-					<td>Die Musik wurde als Stereo Datei gespeichert, deswegen hat die Datei 2 Channel</td>
-				</tr>
-				<tr>
-					<td>Frames: 223333</td>
-					<td>Anzahl der Frames innerhalb der Datei liegt bei 223 333 Stück</td>
-				</tr>
-				<tr>
-					<td>Sample Rate: 44100</td>
-					<td>Bei dieser Datei liegt die Abtastrate bei 44kHz</td>
-				</tr>
-				<tr>
-					<td>Valid Bits: 16</td>
-					<td>Es gibt 16 gültige Bits</td>
-				</tr>
-				<tr>
-					<td>Bytes per sample: 2</td>
-					<td>Die Anzahl der verwendeten Bytes pro Sample</td>
-				</tr>
-			</table>
+        <article>
+            <h3>
+                <div class="list-indicator">1C</div> Headerangaben</h3>
+            <div class="task-description">Lies die Musik- und die Sprachdatei mit wave_io ein und erkläre die Angaben im Header!</div>
+            <h4>Musik</h4>
+            <table>
+                <tr>
+                    <th>Angaben</th>
+                    <th>Erklärung</th>
+                </tr>
+                <tr>
+                    <td>Channels: 2 </td>
+                    <td>Die Musik wurde als Stereo Datei gespeichert, deswegen hat die Datei 2 Channel</td>
+                </tr>
+                <tr>
+                    <td>Frames: 223333</td>
+                    <td>Anzahl der Frames innerhalb der Datei liegt bei 223 333 Stück</td>
+                </tr>
+                <tr>
+                    <td>Sample Rate: 44100</td>
+                    <td>Bei dieser Datei liegt die Abtastrate bei 44kHz</td>
+                </tr>
+                <tr>
+                    <td>Valid Bits: 16</td>
+                    <td>Es gibt 16 gültige Bits</td>
+                </tr>
+                <tr>
+                    <td>Bytes per sample: 2</td>
+                    <td>Die Anzahl der verwendeten Bytes pro Sample</td>
+                </tr>
+            </table>
 
-			<h4>Sprache</h4>
-			<table>
-				<tr>
-					<th>Angaben</th>
-					<th>Erklärung</th>
-				</tr>
-				<tr>
-					<td>Channels: 1</td>
-					<td>Die Sprache wurde als Mono Datei gespeichert, deswegen hat sie nur 1 Channel</td>
-				</tr>
-				<tr>
-					<td>Frames: 40003</td>
-					<td>Anzahl der Frames innerhalb der Datei liegt bei 40 003 Stück</td>
-				</tr>
-				<tr>
-					<td>Sample Rate: 8000</td>
-					<td>Bei dieser Datei liegt die Abtastrate bei 8kHz</td>
-				</tr>
-				<tr>
-					<td>Valid Bits: 16</td>
-					<td>Es gibt 16 gültige Bits</td>
-				</tr>
-				<tr>
-					<td>Bytes per sample: 2</td>
-					<td>Die Anzahl der verwendeten Bytes pro Sample</td>
-				</tr>
-			</table>
+            <h4>Sprache</h4>
+            <table>
+                <tr>
+                    <th>Angaben</th>
+                    <th>Erklärung</th>
+                </tr>
+                <tr>
+                    <td>Channels: 1</td>
+                    <td>Die Sprache wurde als Mono Datei gespeichert, deswegen hat sie nur 1 Channel</td>
+                </tr>
+                <tr>
+                    <td>Frames: 40003</td>
+                    <td>Anzahl der Frames innerhalb der Datei liegt bei 40 003 Stück</td>
+                </tr>
+                <tr>
+                    <td>Sample Rate: 8000</td>
+                    <td>Bei dieser Datei liegt die Abtastrate bei 8kHz</td>
+                </tr>
+                <tr>
+                    <td>Valid Bits: 16</td>
+                    <td>Es gibt 16 gültige Bits</td>
+                </tr>
+                <tr>
+                    <td>Bytes per sample: 2</td>
+                    <td>Die Anzahl der verwendeten Bytes pro Sample</td>
+                </tr>
+            </table>
 
-		</article>
+        </article>
 
-		<article>
-			<h3><div class="list-indicator">1D</div> Bitrate berechnen</h3>
+        <article>
+            <h3>
+                <div class="list-indicator">1D</div> Bitrate berechnen</h3>
 
-			<div class="task-description">Berechne die Bitrate für die beiden Dateien!</div>
+            <div class="task-description">Berechne die Bitrate für die beiden Dateien!</div>
 
-			<p>Rechenbeispiel:</p>
-			<p>Bitrate = Kanäle x Samplerate x Auflösung
-				Eine WAV-Datei in CD-Qualität hat folgende Bitrate:</p>
-			<code>2 Kanäle x 16 Bit x 44,1 kHz = 1411,2 kBit/s</code>
+            <p>Rechenbeispiel:</p>
+            <p>Bitrate = Kanäle x Samplerate x Auflösung Eine WAV-Datei in CD-Qualität hat folgende Bitrate:</p>
+            <code>2 Kanäle x 16 Bit x 44,1 kHz = 1411,2 kBit/s</code>
 
-			<table>
-				<tr>
-					<th>Musik</th>
-					<td><div class="math">= 2 Kanäle * 16 Bit * 44,1 kHz = 1411,2 kBit/s</div></td>
-				</tr>
-				<tr>
-					<th>Sprache</th>
-					<td><div class="math">= 1 Kanal * 16 Bit * 8 kHz = 128 kBits/s</div></td>
-				</tr>
-			</table>
-		</article>
+            <table>
+                <tr>
+                    <th>Musik</th>
+                    <td>
+                        <div class="math">= 2 Kanäle * 16 Bit * 44,1 kHz = 1411,2 kBit/s</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sprache</th>
+                    <td>
+                        <div class="math">= 1 Kanal * 16 Bit * 8 kHz = 128 kBits/s</div>
+                    </td>
+                </tr>
+            </table>
+        </article>
 
-		<!--Aufgabe 2-->
+        <!--Aufgabe 2-->
 
-		<article id="a2">
-			<h2>Aufgabe 2: Aliasing</h2>
-			
-			<p>Wir haben für die 2. Aufgabe 2 WAV-Dateien bekommen mit denen wir im Folgenden arbeiten:</p>
+        <article id="a2">
+            <h2>Aufgabe 2: Aliasing</h2>
 
-			<p>sine_hi02.wav</p>
-			<audio controls>
+            <p>Wir haben für die 2. Aufgabe 2 WAV-Dateien bekommen mit denen wir im Folgenden arbeiten:</p>
+
+            <p>sine_hi02.wav</p>
+            <audio controls>
 				<source src="./audio/sine_hi02.wav" type="audio/wav">
 			</audio>
 
-			<p>sine_lo02.wav</p>
-			<audio controls>
+            <p>sine_lo02.wav</p>
+            <audio controls>
 				<source src="./audio/sine_lo02.wav" type="audio/wav">
 			</audio>
 
-			<h3><div class="list-indicator">2A</div> wave_io modifizieren</h3>
+            <h3>
+                <div class="list-indicator">2A</div> wave_io modifizieren</h3>
 
-			<div class="task-description">Modifiziere wave_io dahingehend, dass die Samples in der WAV-Datei in eine (lesbare) ASCIIDatei geschrieben werden. Lies die von mir geschickten Sinusdateien (Sampling-Frequenz: 16 kHz) ein und bestimme aus den resultierenden Zahlenfolgen in der ASCII-Datei die Frequenz der Sinus Schwingungen. Begründe!</div>
+            <div class="task-description">Modifiziere wave_io dahingehend, dass die Samples in der WAV-Datei in eine (lesbare) ASCIIDatei geschrieben werden. Lies die von mir geschickten Sinusdateien (Sampling-Frequenz: 16 kHz) ein und bestimme aus den resultierenden Zahlenfolgen
+                in der ASCII-Datei die Frequenz der Sinus Schwingungen. Begründe!</div>
 
-			<p>Mit folgendem Code schreiben wir die WAV-Dateien in lesbare ASCII-Dateien:</p>
+            <p>Mit folgendem Code schreiben wir die WAV-Dateien in lesbare ASCII-Dateien:</p>
 
-			<pre><code class="language-java">
+            <pre><code class="language-java">
 				PrintWriter writer = new PrintWriter("ascii-samples.txt", "UTF-8");
 
 				// 2a Samples schreiben
@@ -167,144 +170,137 @@
 					
 				writer.close();</code>
 			</pre>
-			<p>Anschließend bestimmen wir aus den resultierenden Zahlenfolgen der Textdatei die Frequenz der Sinus Schwingungen der beiden Audio Files:</p>
+            <p>Anschließend bestimmen wir aus den resultierenden Zahlenfolgen der Textdatei die Frequenz der Sinus Schwingungen der beiden Audio Files:</p>
 
-			<h4>sinus_hi</h4>
+            <h4>sinus_hi</h4>
 
-			<canvas id="sine_hi02"></canvas>
+            <canvas id="sine_hi02"></canvas>
 
-			<script>
-				var ctx = document.getElementById('sine_hi02').getContext('2d');
-				var chart = new Chart(ctx, {
-					type: 'line',
+            <script>
+                var ctx = document.getElementById('sine_hi02').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'line',
 
-					// The data for our dataset
-					data: {
-						labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79],
-						datasets: [{
-							label: 'Samplingpunkte sine_hi02.wav',
-							backgroundColor: false,
-							fill: false,
-							borderColor: 'rgb(255, 99, 132)',
-							data: [14449, -1606, -12665, 15679, -4756, -10394, 16305, -7723, -7723, 16305, -10394, -4756, 15679, -12665, -1606, 14449, -14449, 1606, 12665, -15679, 4756, 10394, -16305, 7723, 7723, -16305, 10394, 4756, -15679, 12665, 1606, -14449, 14449, -1606, -12665, 15679, -4756, -10394, 16305, -7723, -7723, 16305, -10394, -4756, 15679, -12665, -1606, 14449, -14449, 1606, 12665, -15679, 4756, 10394, -16305, 7723, 7723, -16305, 10394, 4756, -15679, 12665, 1606, -14449, 14449, -1606, -12665, 15679, -4756, -10394, 16305, -7723, -7723, 16305, -10394, -4756, 15679, -12665, -1606, 14449]
-						}]
-					},
-					options: {}
-				});
-			</script>
+                    // The data for our dataset
+                    data: {
+                        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79],
+                        datasets: [{
+                            label: 'Samplingpunkte sine_hi02.wav',
+                            backgroundColor: false,
+                            fill: false,
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: [14449, -1606, -12665, 15679, -4756, -10394, 16305, -7723, -7723, 16305, -10394, -4756, 15679, -12665, -1606, 14449, -14449, 1606, 12665, -15679, 4756, 10394, -16305, 7723, 7723, -16305, 10394, 4756, -15679, 12665, 1606, -14449, 14449, -1606, -12665, 15679, -4756, -10394, 16305, -7723, -7723, 16305, -10394, -4756, 15679, -12665, -1606, 14449, -14449, 1606, 12665, -15679, 4756, 10394, -16305, 7723, 7723, -16305, 10394, 4756, -15679, 12665, 1606, -14449, 14449, -1606, -12665, 15679, -4756, -10394, 16305, -7723, -7723, 16305, -10394, -4756, 15679, -12665, -1606, 14449]
+                        }]
+                    },
+                    options: {}
+                });
+            </script>
 
-			<p>Rechnung:</p>
-			<p>16000 Samples pro Sekunde * Dauer bis gleicher Punkt erreicht, hier durch Ablesen ~3</p>
-			<div class="math">s := (1/16000)*3</div>
-			<div class="math">s  = 0,0001875s</div>
-			<p>Um in Herz umzurechnen:</p> 
-			<div class="math">h := 1/s</div>
-			<div class="math">h  = 5333,33Hz</div>
+            <p>Rechnung:</p>
+            <p>16000 Samples pro Sekunde * Dauer bis gleicher Punkt erreicht, hier durch Ablesen ~3</p>
+            <div class="math">s := (1/16000)*3</div>
+            <div class="math">s = 0,0001875s</div>
+            <p>Um in Herz umzurechnen:</p>
+            <div class="math">h := 1/s</div>
+            <div class="math">h = 5333,33Hz</div>
 
-			<h4>sinus_lo</h4>
+            <h4>sinus_lo</h4>
 
-			<canvas id="sine_lo2"></canvas>
-			<!--Für Malte: Hier Grafik-->
-			<script>
-				var ctx = document.getElementById('sine_lo2').getContext('2d');
-				var chart = new Chart(ctx, {
-					type: 'line',
+            <canvas id="sine_lo2"></canvas>
+            <!--Für Malte: Hier Grafik-->
+            <script>
+                var ctx = document.getElementById('sine_lo2').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'line',
 
-					// The data for our dataset
-					data: {
-						labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79],
-						datasets: [{
-							label: 'Samplingpunkte sine_lo2.wav',
-							backgroundColor: false,
-							fill: false,
-							borderColor: 'rgb(75, 208, 244)',
-							data: [7723, 16305, 10394, -4756, -15679, -12665, 1606, 14449, 14449, 1606, -12665, -15679, -4756, 10394, 16305, 7723, -7723, -16305, -10394, 4756, 15679, 12665, -1606, -14449, -14449, -1606, 12665, 15679, 4756, -10394, -16305, -7723, 7723, 16305, 10394, -4756, -15679, -12665, 1606, 14449, 14449, 1606, -12665, -15679, -4756, 10394, 16305, 7723, -7723, -16305, -10394, 4756, 15679, 12665, -1606, -14449, -14449, -1606, 12665, 15679, 4756, -10394, -16305, -7723, 7723, 16305, 10394, -4756, -15679, -12665, 1606, 14449, 14449, 1606, -12665, -15679, -4756, 10394, 16305, 7723]
-						}]
-					},
-					options: {}
-				});
-			</script>
+                    // The data for our dataset
+                    data: {
+                        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79],
+                        datasets: [{
+                            label: 'Samplingpunkte sine_lo2.wav',
+                            backgroundColor: false,
+                            fill: false,
+                            borderColor: 'rgb(75, 208, 244)',
+                            data: [7723, 16305, 10394, -4756, -15679, -12665, 1606, 14449, 14449, 1606, -12665, -15679, -4756, 10394, 16305, 7723, -7723, -16305, -10394, 4756, 15679, 12665, -1606, -14449, -14449, -1606, 12665, 15679, 4756, -10394, -16305, -7723, 7723, 16305, 10394, -4756, -15679, -12665, 1606, 14449, 14449, 1606, -12665, -15679, -4756, 10394, 16305, 7723, -7723, -16305, -10394, 4756, 15679, 12665, -1606, -14449, -14449, -1606, 12665, 15679, 4756, -10394, -16305, -7723, 7723, 16305, 10394, -4756, -15679, -12665, 1606, 14449, 14449, 1606, -12665, -15679, -4756, 10394, 16305, 7723]
+                        }]
+                    },
+                    options: {}
+                });
+            </script>
 
-			<p>Rechnung:</p>
-			<p>16000 Samples pro Sekunde * Dauer bis gleicher Punkt erreicht, hier durch Ablesen ~6</p>
-			<div class="math">s := (1/16000)*6</div>
-			<div class="math">s  = 0,000375</div>
-			<p>Um in Herz umzurechnen:</p> 
-			<div class="math">h := 1/s</div>
-			<div class="math">h  = 2666,66Hz</div>
-		</article>
+            <p>Rechnung:</p>
+            <p>16000 Samples pro Sekunde * Dauer bis gleicher Punkt erreicht, hier durch Ablesen ~6</p>
+            <div class="math">s := (1/16000)*6</div>
+            <div class="math">s = 0,000375</div>
+            <p>Um in Herz umzurechnen:</p>
+            <div class="math">h := 1/s</div>
+            <div class="math">h = 2666,66Hz</div>
+        </article>
 
-		<article>
-			<h3><div class="list-indicator">2B</div> Schätzung mit Spektralanalyse-Tool GRAM prüfen</h3>
+        <article>
+            <h3>
+                <div class="list-indicator">2B</div> Schätzung mit Spektralanalyse-Tool GRAM prüfen</h3>
 
-			<div class="task-description">Überprüfe deine Schätzung mit dem Spektralanalyse-Tool GRAM.</div>
+            <div class="task-description">Überprüfe deine Schätzung mit dem Spektralanalyse-Tool GRAM.</div>
 
-			<div class="aside">
-				<div>
-					<img src="./pics/sine_hi.png" alt="sine_hi GRAM">
-				</div>
-				<div class="center">
-					sine_hi02.wav besteht aus einem konstanten Sinuston mit 5,5kHz.
-				</div>
-			</div>
+            <div class="aside">
+                <div>
+                    <img src="./pics/sine_hi.png" alt="sine_hi GRAM">
+                </div>
+                <div class="center">
+                    sine_hi02.wav besteht aus einem konstanten Sinuston mit 5,5kHz.
+                </div>
+            </div>
 
-			<div class="aside">
-				<div>
-					<img src="./pics/sine_lo.png" alt="sine_lo GRAM">
-				</div>
-				<div class="center">
-					sine_lo02.wav besteht aus einem konstanten Sinuston mit 2,5kHz.
-				</div>
-			</div>
-		</article>
+            <div class="aside">
+                <div>
+                    <img src="./pics/sine_lo.png" alt="sine_lo GRAM">
+                </div>
+                <div class="center">
+                    sine_lo02.wav besteht aus einem konstanten Sinuston mit 2,5kHz.
+                </div>
+            </div>
+        </article>
 
-		<article>
-			<h3><div class="list-indicator">2C</div> Abtasttheorem</h3>
+        <article>
+            <h3>
+                <div class="list-indicator">2C</div> Abtasttheorem</h3>
 
-			<div class="task-description">Bei der zeitlichen Diskretisierung eines Analogsignals muss das sogenannte Abtasttheorem
-				eingehalten werden. Wie lautet es und wie lässt sich der Grenzfall, für den es gerade noch gilt,
-				illustrieren? Erstelle hierzu eine Zeichnung und erläutere.</div>
+            <div class="task-description">Bei der zeitlichen Diskretisierung eines Analogsignals muss das sogenannte Abtasttheorem eingehalten werden. Wie lautet es und wie lässt sich der Grenzfall, für den es gerade noch gilt, illustrieren? Erstelle hierzu eine Zeichnung und erläutere.</div>
 
-			<p>Wenn analoge Audio Signale aufgenommen, gespeichert und verarbeitet werden arbeitet man mit einer
-				Abtastrate. Diese nimmt in bestimmten Abständen die Werte einer Frequenz auf. Bei dieser Abtastrate gibt
-				es allerdings ein paar Dinge, die man beachten muss um keine essentiellen Daten zu verlieren. Dazu im
-				Folgenden eine visualisierte Erklärung im Detail:</p>
+            <p>Wenn analoge Audio Signale aufgenommen, gespeichert und verarbeitet werden arbeitet man mit einer Abtastrate. Diese nimmt in bestimmten Abständen die Werte einer Frequenz auf. Bei dieser Abtastrate gibt es allerdings ein paar Dinge, die man
+                beachten muss um keine essentiellen Daten zu verlieren. Dazu im Folgenden eine visualisierte Erklärung im Detail:</p>
 
-			<img src="./pics/sampling_small.png" alt="kleine Abtastrate">
+            <img src="./pics/sampling_small.png" alt="kleine Abtastrate">
 
 
-			<img src="./pics/sampling_large.png" alt="große Abtastrate">
+            <img src="./pics/sampling_large.png" alt="große Abtastrate">
 
 
-			<img src="./pics/aliasing1.png" alt="Audio rekostruieren">
+            <img src="./pics/aliasing1.png" alt="Audio rekostruieren">
 
+        </article>
 
-			<img src="./pics/aliasing2.png" alt="Erklärung Aliasing">
+        <article>
+            <h3>
+                <div class="list-indicator">2D</div> Vorbehandlung Audiosignal</h3>
+            <div class="task-description">
+                Bei herkömmlichen Soundkarten tritt systembedingt kein Aliasing auf, weil das Audiosignal stets geeignet vorbehandelt wird. Wie sieht diese Vorbehandlung aus?
+            </div>
+            <p>Soundkarten wenden auf eingehende Audiosignale einen low-pass filter an, der nur Frequenzen unter dem Aliasing-Grenzwert zulässt. Dadurch werden alle höheren Frequenzen, die ohne Vorbehandlung durch Aliasing verzerrt würden, herausgefiltert.
+            </p>
+        </article>
 
+        <article>
+            <h3>
+                <div class="list-indicator">2E</div> Aliasing-Verzerrungen</h3>
+            <div class="task-description">
+                Modifiziere wave_io dahingehend, dass vom eingelesenen Audiosignal jeder zweite Abtastwert verworfen wird und das resultierende Signal abgespeichert wird. Der Header muss natürlich entsprechend verändert werden!
+            </div>
 
-			<img src="./pics/abtastung.png" alt="Unterschiedliche Abtastfrequenzen und ihre Auswirkungen.">
-		</article>
+            <p>Wir erzeugen ein neues Array, in das jeweils jeder zweite Wert der Originaldatei abgelegt wird, und schreiben dies in eine Datei.</p>
 
-		<article>
-			<h3><div class="list-indicator">2D</div> Vorbehandlung Audiosignal</h3>
-			<div class="task-description">
-				Bei herkömmlichen Soundkarten tritt systembedingt kein Aliasing auf, weil das Audiosignal stets
-				geeignet vorbehandelt wird. Wie sieht diese Vorbehandlung aus?
-			</div>
-			<p>Soundkarten wenden auf eingehende Audiosignale einen low-pass filter an, der nur Frequenzen unter dem Aliasing-Grenzwert zulässt. Dadurch werden alle höheren Frequenzen, die ohne Vorbehandlung durch Aliasing verzerrt würden, herausgefiltert. </p>
-		</article>
-
-		<article>
-			<h3><div class="list-indicator">2E</div> Aliasing-Verzerrungen</h3>
-			<div class="task-description">
-				Modifiziere wave_io dahingehend, dass vom eingelesenen Audiosignal jeder zweite Abtastwert
-				verworfen wird und das resultierende Signal abgespeichert wird. Der Header muss natürlich
-				entsprechend verändert werden!
-			</div>
-
-			<p>Wir erzeugen ein neues Array, in das jeweils jeder zweite Wert der Originaldatei abgelegt wird, und schreiben dies in eine Datei.</p>
-
-			<pre><code class="language-java">
+            <pre><code class="language-java">
 				short[] downsampledAudio = new short[readWavFile.sound.length / 2 ];
 
 				for (int i = 0; i < samples; i+=2) {
@@ -313,49 +309,48 @@
 
 				WavFile.write_wav(outFilename, numChannels, numFrames/2, validBits, sampleRate/2, downsampledAudio);
 			</code></pre>
-			<p>
+            <p>
 
-			</p>
-		</article>
+            </p>
+        </article>
 
-		<article>
-			<h3><div class="list-indicator">2F</div> Down-Sampling</h3>
+        <article>
+            <h3>
+                <div class="list-indicator">2F</div> Down-Sampling</h3>
 
-			<div class="task-description">
-				Wende das erstellte Programm auf die von mir geschickten Sinusdateien an (sine_hiXX.wav und
-				sine_loXX.wav) an. Welche Frequenzen erscheinen nach dem Down-Sampling? Was würde
-				passieren, wenn man geeignet bandbegrenzen würde?
-			</div>
-			
-			<div class="aside">
-				<div class="">
-					<img src="./pics/hi_downsampled.png" alt="the sinus_hi curve downsampled">
-				</div>
-				<div class="">
-					<h4>sine_hi</h4>
-					<p>Hier können wir sehen, dass aus den ursprünglichen 5,5kHz durch Aliasing 2,5kHz geworden ist.</p>
-				</div>
-			</div>
+            <div class="task-description">
+                Wende das erstellte Programm auf die von mir geschickten Sinusdateien an (sine_hiXX.wav und sine_loXX.wav) an. Welche Frequenzen erscheinen nach dem Down-Sampling? Was würde passieren, wenn man geeignet bandbegrenzen würde?
+            </div>
 
-			<div class="aside">
-				<div class="">
-					<img src="./pics/lo_downsampled.png" alt="the sinus_lo curve downsampled">
-				</div>
-				<div class="">
-					<h4>sine_lo</h4>
-					<p>Hier hat sich die Frequenz nicht verändert, da die Abtastrate noch hoch genug ist, um 2,5kHz ohne Aliasing aufzunehmen.</p>
-				</div>
-			</div>
-		</article>
+            <div class="aside">
+                <div class="">
+                    <img src="./pics/hi_downsampled.png" alt="the sinus_hi curve downsampled">
+                </div>
+                <div class="">
+                    <h4>sine_hi</h4>
+                    <p>Hier können wir sehen, dass aus den ursprünglichen 5,5kHz durch Aliasing 2,5kHz geworden ist.</p>
+                </div>
+            </div>
 
-		<!--Aufgabe 3-->
+            <div class="aside">
+                <div class="">
+                    <img src="./pics/lo_downsampled.png" alt="the sinus_lo curve downsampled">
+                </div>
+                <div class="">
+                    <h4>sine_lo</h4>
+                    <p>Hier hat sich die Frequenz nicht verändert, da die Abtastrate noch hoch genug ist, um 2,5kHz ohne Aliasing aufzunehmen.</p>
+                </div>
+            </div>
+        </article>
 
-		<article id="a3">
-			<h2>Übung 1, Aufgabe 3: Bitreduzierung</h2>
-		</article>
+        <!--Aufgabe 3-->
 
-	</div>
-	<script src="./prism/prism.js"></script>
+        <article id="a3">
+            <h2>Übung 1, Aufgabe 3: Bitreduzierung</h2>
+        </article>
+
+    </div>
+    <script src="./prism/prism.js"></script>
 </body>
 
 </html>
