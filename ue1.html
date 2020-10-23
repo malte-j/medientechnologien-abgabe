@@ -373,24 +373,25 @@
 
         <article>
             <h3>
-                <div class="list-indicator">3B</div> Bitanzahl reduzieren
-            </h3>
+                <div class="list-indicator">3B</div> Bitanzahl reduzieren</h3>
             <div class="task-description">
                 Modifiziere wave_io dahingehend, dass die Bitanzahl reduziert wird. Dazu werden alle Samples durch eine Potenz von 2 geteilt (Integer-Division ohne Rest). Damit das resultierende Signal nicht leiser wird als das Original, wird die Operation durch Multiplikation
-                mit derselben 2er Potenz kompensiert. Zu beachten: Der Datentyp hat nach wie vor 16 bit! </div>
+                mit derselben 2er Potenz kompensiert. Zu beachten: Der Datentyp hat nach wie vor 16 bit!
+            </div>
 
-            <p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
-            <audio controls>
-				<source src="./audio/Musik_GroRieJa.wav" type="audio/wav">
-			</audio>
-            <p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
-            <audio controls>
-				<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
-			</audio>
-            <p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
-            <audio controls>
-				<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
-			</audio>
+            <pre><code class="language-java">
+				// 3b Bitreduzierung
+				short reduced_bits = 13;
+				int divideBy = (int) Math.pow(2, reduced_bits);
+				
+				for (int i = 0; i < samples; i++) {
+					readWavFile.sound[i] = (short) ((short) (readWavFile.sound[i] / divideBy) * divideBy);
+				}
+				WavFile.write_wav(outFilename, numChannels, numFrames, validBits, sampleRate, readWavFile.sound);
+	
+			</code></pre>
+
+
         </article>
 
         <article>
@@ -400,6 +401,19 @@
             <div class="task-description">
                 Mit dem entstandenen Programm sollen nun die in Aufgabe 1 erzeugten Wave-Dateien (Sprache und Musik) bitreduziert werden. Ab welcher Bitanzahl tritt eine hörbare, also deutliche Verschlechterung der Qualität ein? Bei wie viel Bit ist das Sprachsignal
                 noch verständlich? </div>
+
+            <p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
+            <audio controls>
+				<source src="./audio/Musik_GroRieJa.wav" type="audio/wav">
+			</audio>
+            <p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
+            <audio controls>
+				<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
+			</audio>
+            <p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
+            <audio controls>
+				<source src="./audio/Musik_GroRieJa.wav" type="audio/wav">
+			</audio>
         </article>
 
         <article>
