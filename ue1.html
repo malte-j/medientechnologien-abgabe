@@ -21,10 +21,12 @@
 
 
             <h3>
-                <div class="list-indicator">1A</div> Audio-Files zuschneiden</h3>
+                <div class="list-indicator">1A</div> Audio-Files zuschneiden
+            </h3>
 
             <div class="task-description">Schneide aus den dir zugeschickten Audio-Files ab dem Zeitpunkt jeweils ein Stück mit der Länge 5 Sekunden und speichere dieses als WAV-Datei ab. Parameter für Musik: fa=44,1 kHz, stereo, für Sprache: fa=8 kHz mono, beide 16 bit Auflösung.
-                Beim Schneiden achtest du darauf, dass der Schnitt am Beginn einer musikalischen Figur bzw. eines Satzes liegt.</div>
+                Beim Schneiden achtest du darauf, dass der Schnitt am Beginn einer musikalischen Figur bzw. eines Satzes liegt.
+            </div>
 
             <p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
             <audio controls>
@@ -39,7 +41,8 @@
 
         <article>
             <h3>
-                <div class="list-indicator">1B</div> Abtastfrequenzen</h3>
+                <div class="list-indicator">1B</div> Abtastfrequenzen
+            </h3>
             <div class="task-description">Erkläre, warum die Audio-Files unterschiedliche Abtastfrequenzen haben.</div>
 
             <p>Die Sprachaufnahmen kann mit einer viel niedrigeren Abtastfrequenz gespeichert werden, da die Aufnahme dabei noch komplett verständlich bleibt. Bei dem Musikstück ist dies nicht der Fall. Hier würden bei einer Konvertierung zu 5 kHz die einzelnen
@@ -49,8 +52,10 @@
 
         <article>
             <h3>
-                <div class="list-indicator">1C</div> Headerangaben</h3>
-            <div class="task-description">Lies die Musik- und die Sprachdatei mit wave_io ein und erkläre die Angaben im Header!</div>
+                <div class="list-indicator">1C</div> Headerangaben
+            </h3>
+            <div class="task-description">Lies die Musik- und die Sprachdatei mit wave_io ein und erkläre die Angaben im Header!
+            </div>
             <h4>Musik</h4>
             <table>
                 <tr>
@@ -111,7 +116,8 @@
 
         <article>
             <h3>
-                <div class="list-indicator">1D</div> Bitrate berechnen</h3>
+                <div class="list-indicator">1D</div> Bitrate berechnen
+            </h3>
 
             <div class="task-description">Berechne die Bitrate für die beiden Dateien!</div>
 
@@ -153,7 +159,8 @@
 			</audio>
 
             <h3>
-                <div class="list-indicator">2A</div> wave_io modifizieren</h3>
+                <div class="list-indicator">2A</div> wave_io modifizieren
+            </h3>
 
             <div class="task-description">Modifiziere wave_io dahingehend, dass die Samples in der WAV-Datei in eine (lesbare) ASCIIDatei geschrieben werden. Lies die von mir geschickten Sinusdateien (Sampling-Frequenz: 16 kHz) ein und bestimme aus den resultierenden Zahlenfolgen
                 in der ASCII-Datei die Frequenz der Sinus Schwingungen. Begründe!</div>
@@ -239,7 +246,8 @@
 
         <article>
             <h3>
-                <div class="list-indicator">2B</div> Schätzung mit Spektralanalyse-Tool GRAM prüfen</h3>
+                <div class="list-indicator">2B</div> Schätzung mit Spektralanalyse-Tool GRAM prüfen
+            </h3>
 
             <div class="task-description">Überprüfe deine Schätzung mit dem Spektralanalyse-Tool GRAM.</div>
 
@@ -264,7 +272,8 @@
 
         <article>
             <h3>
-                <div class="list-indicator">2C</div> Abtasttheorem</h3>
+                <div class="list-indicator">2C</div> Abtasttheorem
+            </h3>
 
             <div class="task-description">Bei der zeitlichen Diskretisierung eines Analogsignals muss das sogenannte Abtasttheorem eingehalten werden. Wie lautet es und wie lässt sich der Grenzfall, für den es gerade noch gilt, illustrieren? Erstelle hierzu eine Zeichnung und erläutere.</div>
 
@@ -283,7 +292,8 @@
 
         <article>
             <h3>
-                <div class="list-indicator">2D</div> Vorbehandlung Audiosignal</h3>
+                <div class="list-indicator">2D</div> Vorbehandlung Audiosignal
+            </h3>
             <div class="task-description">
                 Bei herkömmlichen Soundkarten tritt systembedingt kein Aliasing auf, weil das Audiosignal stets geeignet vorbehandelt wird. Wie sieht diese Vorbehandlung aus?
             </div>
@@ -293,7 +303,8 @@
 
         <article>
             <h3>
-                <div class="list-indicator">2E</div> Aliasing-Verzerrungen</h3>
+                <div class="list-indicator">2E</div> Aliasing-Verzerrungen
+            </h3>
             <div class="task-description">
                 Modifiziere wave_io dahingehend, dass vom eingelesenen Audiosignal jeder zweite Abtastwert verworfen wird und das resultierende Signal abgespeichert wird. Der Header muss natürlich entsprechend verändert werden!
             </div>
@@ -316,7 +327,8 @@
 
         <article>
             <h3>
-                <div class="list-indicator">2F</div> Down-Sampling</h3>
+                <div class="list-indicator">2F</div> Down-Sampling
+            </h3>
 
             <div class="task-description">
                 Wende das erstellte Programm auf die von mir geschickten Sinusdateien an (sine_hiXX.wav und sine_loXX.wav) an. Welche Frequenzen erscheinen nach dem Down-Sampling? Was würde passieren, wenn man geeignet bandbegrenzen würde?
@@ -349,41 +361,64 @@
             <h2>Übung 1, Aufgabe 3: Bitreduzierung</h2>
 
             <h3>
-                <div class="list-indicator">3A</div> PC-Soundkarten</h3>
+                <div class="list-indicator">3A</div> PC-Soundkarten
+            </h3>
             <div class="task-description">
                 Die herkömmlichen PC-Soundkarten arbeiten meist entweder mit 16 oder 8 bit-Auflösung. Wie groß ist die Anzahl bei diesen beiden Werten darstellbaren Amplitudenwerten? </div>
 
+        </article>
 
-
+        <article>
             <h3>
-                <div class="list-indicator">3B</div> Bitanzahl reduzieren</h3>
+                <div class="list-indicator">3B</div> Bitanzahl reduzieren
+            </h3>
             <div class="task-description">
                 Modifiziere wave_io dahingehend, dass die Bitanzahl reduziert wird. Dazu werden alle Samples durch eine Potenz von 2 geteilt (Integer-Division ohne Rest). Damit das resultierende Signal nicht leiser wird als das Original, wird die Operation durch Multiplikation
                 mit derselben 2er Potenz kompensiert. Zu beachten: Der Datentyp hat nach wie vor 16 bit! </div>
 
+            <p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
+            <audio controls>
+				<source src="./audio/Musik_GroRieJa.wav" type="audio/wav">
+			</audio>
+            <p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
+            <audio controls>
+				<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
+			</audio>
+        </article>
+
+        <article>
             <h3>
-                <div class="list-indicator">3C</div> Wave-Dateien Bitanzahl hörbare Grenze der Qualität</h3>
+                <div class="list-indicator">3C</div> Wave-Dateien Bitanzahl hörbare Grenze der Qualität
+            </h3>
             <div class="task-description">
                 Mit dem entstandenen Programm sollen nun die in Aufgabe 1 erzeugten Wave-Dateien (Sprache und Musik) bitreduziert werden. Ab welcher Bitanzahl tritt eine hörbare, also deutliche Verschlechterung der Qualität ein? Bei wie viel Bit ist das Sprachsignal
                 noch verständlich? </div>
+        </article>
 
+        <article>
             <h3>
-                <div class="list-indicator">3D</div> Charaktereigenschaften Quantisierungsgeräusche</h3>
+                <div class="list-indicator">3D</div> Charaktereigenschaften Quantisierungsgeräusche
+            </h3>
             <div class="task-description">
                 Was charakterisiert das entstehende Quantisierungsgeräusch bei der Bitreduzierung und macht es besonders störend? </div>
+        </article>
 
+        <article>
             <h3>
-                <div class="list-indicator">3E</div> Differenzsignal</h3>
+                <div class="list-indicator">3E</div> Differenzsignal
+            </h3>
             <div class="task-description">
                 Modifiziere dein Programm noch einmal so, dass auch das Differenzsignal zwischen Original und bitreduziertem Signal, d.h. der Quantisierungsfehler ausgegeben werden kann. Dabei musst du bedenken, dass z.B. bei der 1 Bit Reduzierung das Quantisierungsrauschen
                 nur von -1 bis +1 verlaufen würde. Dieser Wertebereich wäre viel zu klein, als dass man das Rauschen beim Abspielen als 16bit-Wert noch hören könnte. Daher muss das Rauschen durch Multiplikation mit einer 2er Potenz verstärkt werden. In
                 anderen Worten: Hat man vorher durch 2^n geteilt, sollte man das Differenzsignal vor dem Abspeichern mit 2^(16-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird. </div>
+        </article>
 
+        <article>
             <h3>
-                <div class="list-indicator">3F</div> Charakter des Rauschen</h3>
+                <div class="list-indicator">3F</div> Charakter des Rauschen
+            </h3>
             <div class="task-description">
                 Welchen Charakter hat das Rauschen bei einer Reduktion um 1bit und wie verändert es sich bei zunehmender Bit-Reduktion? </div>
-
         </article>
 
     </div>
