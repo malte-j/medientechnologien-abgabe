@@ -461,14 +461,14 @@
         <!--Aufgabe 3 E-->
 
         <article>
-            <h3>
-                <div class="list-indicator">3E</div> Differenzsignal
-            </h3>
+            <h3><div class="list-indicator">3E</div> Differenzsignal</h3>
             <div class="task-description">
                 Modifiziere dein Programm noch einmal so, dass auch das Differenzsignal zwischen Original und bitreduziertem Signal, d.h. der Quantisierungsfehler ausgegeben werden kann. Dabei musst du bedenken, dass z.B. bei der 1 Bit Reduzierung das Quantisierungsrauschen
                 nur von -1 bis +1 verlaufen würde. Dieser Wertebereich wäre viel zu klein, als dass man das Rauschen beim Abspielen als 16bit-Wert noch hören könnte. Daher muss das Rauschen durch Multiplikation mit einer 2er Potenz verstärkt werden. In
                 anderen Worten: Hat man vorher durch 2^n geteilt, sollte man das Differenzsignal vor dem Abspeichern mit 2^(16-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird. </div>
 
+            <h4>Der Code für die Aufgabe:</h4>
+            <p>Hier muss wiederholt in (short) gecastet werden, da Division und Multiplikation int-Werte zurückgeben</p>
 			<pre><code class="language-java">
 				// 3e Bitreduzierung Differenz
 	
@@ -482,12 +482,15 @@
 				WavFile.write_wav("modified-difference.wav", numChannels, numFrames, validBits, sampleRate, difference);	
 			</code></pre>
 
+            <h4>Die Differenz bei einer 1 bit-Reduzierung:</h4>
+
             <div class="aside">
                 <div class="">
                     <img src="./pics/A1_musik_04_bitreduced_1bit_difference.png" alt="Musik - 1 Bit Differenz">
                 </div>
                 <div class="">
                     <h4>Musik - 1 Bit Differenz:</h4>
+                    <p>Sehr starkes rauschen, das Grundsignal ist aber trotzdem hörbar.</p>
                     <audio controls>
 						<source src="./audio/A1_musik_04_bitreduced_1bit_difference.wav" type="audio/wav">
 					</audio>
@@ -505,6 +508,8 @@
 					</audio>
                 </div>
             </div>
+
+            <h4>Differenz bei den hörbaren Quantisierungsfehlern:</h4>
 
             <div class="aside">
                 <div class="">
