@@ -355,7 +355,7 @@
             </div>
         </article>
 
-        <!--Aufgabe 3-->
+        <!--Aufgabe 3 A-->
 
         <article id="a3">
             <h2>Übung 1, Aufgabe 3: Bitreduzierung</h2>
@@ -371,9 +371,12 @@
             </p>
         </article>
 
+        <!--Aufgabe 3 B-->
+
         <article>
             <h3>
-                <div class="list-indicator">3B</div> Bitanzahl reduzieren</h3>
+                <div class="list-indicator">3B</div> Bitanzahl reduzieren
+            </h3>
             <div class="task-description">
                 Modifiziere wave_io dahingehend, dass die Bitanzahl reduziert wird. Dazu werden alle Samples durch eine Potenz von 2 geteilt (Integer-Division ohne Rest). Damit das resultierende Signal nicht leiser wird als das Original, wird die Operation durch Multiplikation
                 mit derselben 2er Potenz kompensiert. Zu beachten: Der Datentyp hat nach wie vor 16 bit!
@@ -394,6 +397,8 @@
 
         </article>
 
+        <!--Aufgabe 3 C-->
+
         <article>
             <h3>
                 <div class="list-indicator">3C</div> Wave-Dateien Bitanzahl hörbare Grenze der Qualität
@@ -402,19 +407,46 @@
                 Mit dem entstandenen Programm sollen nun die in Aufgabe 1 erzeugten Wave-Dateien (Sprache und Musik) bitreduziert werden. Ab welcher Bitanzahl tritt eine hörbare, also deutliche Verschlechterung der Qualität ein? Bei wie viel Bit ist das Sprachsignal
                 noch verständlich? </div>
 
-            <p>Musik Grenze der Qualität (um 8 Bit reduziert) mit leichtem Rauschen:</p>
-            <audio controls>
-				<source src="./audio/A1_musik_04_bitreduced_8bit.wav" type="audio/wav">
-			</audio>
-            <p>Sprache Grenze der Qualität (13 bit reduziert), stark verzerrt:</p>
-            <audio controls>
-				<source src="./audio/A1_sprache_04_bitreduced_13.wav" type="audio/wav">
-			</audio>
-            <p>Sprache Grenze der Verständlichkeit (14 bit reduziert), nicht mehr wirklich nachvollziehbar was gesagt wird:</p>
-            <audio controls>
-				<source src="./audio/A1_sprache_04_bitreduced_14.wav" type="audio/wav">
-			</audio>
+
+            <div class="aside">
+                <div class="">
+                    <img src="./pics/A1_musik_04_bitreduced_8bit.png" alt="Musik Grenze der Qualität um 8 Bit reduziert">
+                </div>
+                <div class="">
+                    <h4>Musik Grenze der Qualität (um 8 Bit reduziert) mit leichtem Rauschen:</h4>
+                    <audio controls>
+						<source src="./audio/A1_musik_04_bitreduced_8bit.wav" type="audio/wav">
+					</audio>
+                </div>
+            </div>
+
+            <div class="aside">
+                <div class="">
+                    <img src="./pics/A1_sprache_04_bitreduced_13.png" alt="Sprache Grenze der Qualität um 13 bit reduziert">
+                </div>
+                <div class="">
+                    <h4>Sprache Grenze der Qualität (13 bit reduziert), stark verzerrt:</h4>
+                    <audio controls>
+						<source src="./audio/A1_sprache_04_bitreduced_13.wav" type="audio/wav">
+					</audio>
+                </div>
+            </div>
+
+            <div class="aside">
+                <div class="">
+                    <img src="./pics/A1_sprache_04_bitreduced_14.png" alt="Sprache Grenze der Verständlichkeit um 14 bit reduziert">
+                </div>
+                <div class="">
+                    <h4>Sprache Grenze der Verständlichkeit (14 bit reduziert), nicht mehr wirklich nachvollziehbar was gesagt wird:</h4>
+                    <audio controls>
+						<source src="./audio/A1_sprache_04_bitreduced_14.wav" type="audio/wav">
+					</audio>
+                </div>
+            </div>
+
         </article>
+
+        <!--Aufgabe 3 D-->
 
         <article>
             <h3>
@@ -422,7 +454,11 @@
             </h3>
             <div class="task-description">
                 Was charakterisiert das entstehende Quantisierungsgeräusch bei der Bitreduzierung und macht es besonders störend? </div>
+            <p>Durch das Quantisieren schleicht sich ein Rauschen in das Audiosignal ein, welches die Qualität der Aufnahme sehr stark stört.
+            </p>
         </article>
+
+        <!--Aufgabe 3 E-->
 
         <article>
             <h3>
@@ -432,7 +468,58 @@
                 Modifiziere dein Programm noch einmal so, dass auch das Differenzsignal zwischen Original und bitreduziertem Signal, d.h. der Quantisierungsfehler ausgegeben werden kann. Dabei musst du bedenken, dass z.B. bei der 1 Bit Reduzierung das Quantisierungsrauschen
                 nur von -1 bis +1 verlaufen würde. Dieser Wertebereich wäre viel zu klein, als dass man das Rauschen beim Abspielen als 16bit-Wert noch hören könnte. Daher muss das Rauschen durch Multiplikation mit einer 2er Potenz verstärkt werden. In
                 anderen Worten: Hat man vorher durch 2^n geteilt, sollte man das Differenzsignal vor dem Abspeichern mit 2^(16-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird. </div>
+
+            <div class="aside">
+                <div class="">
+                    <img src="./pics/A1_musik_04_bitreduced_1bit_difference.png" alt="Musik - 1 Bit Differenz">
+                </div>
+                <div class="">
+                    <h4>Musik - 1 Bit Differenz:</h4>
+                    <audio controls>
+						<source src="./audio/A1_musik_04_bitreduced_1bit_difference.wav" type="audio/wav">
+					</audio>
+                </div>
+            </div>
+
+            <div class="aside">
+                <div class="">
+                    <img src="./pics/A1_sprache_04_bitreduced_1_difference.png" alt="Sprache - 1 Bit Differenz">
+                </div>
+                <div class="">
+                    <h4>Sprache - 1 Bit Differenz:</h4>
+                    <audio controls>
+						<source src="./audio/A1_sprache_04_bitreduced_1_difference.wav" type="audio/wav">
+					</audio>
+                </div>
+            </div>
+
+            <div class="aside">
+                <div class="">
+                    <img src="./pics/A1_musik_04_bitreduced_8bit_difference.png" alt="Musik - 8 Bit Differenz">
+                </div>
+                <div class="">
+                    <h4>Musik - 8 Bit Differenz:</h4>
+                    <audio controls>
+						<source src="./audio/A1_musik_04_bitreduced_8bit_difference.wav" type="audio/wav">
+					</audio>
+                </div>
+            </div>
+
+            <div class="aside">
+                <div class="">
+                    <img src="./pics/A1_sprache_04_bitreduced_13_difference.png" alt="Sprache - 13 Bit Differenz">
+                </div>
+                <div class="">
+                    <h4>Sprache - 13 Bit Differenz:</h4>
+                    <audio controls>
+						<source src="./audio/A1_sprache_04_bitreduced_13_difference.wav" type="audio/wav">
+					</audio>
+                </div>
+            </div>
+
         </article>
+
+        <!--Aufgabe 3 F-->
 
         <article>
             <h3>
@@ -440,6 +527,8 @@
             </h3>
             <div class="task-description">
                 Welchen Charakter hat das Rauschen bei einer Reduktion um 1bit und wie verändert es sich bei zunehmender Bit-Reduktion? </div>
+            <p>Das Rauschen ist wird von sanft und unauffällig steigernd immer lauter und kratziger und nimmt mehr und mehr Elemente des Originaltons mit sich.
+            </p>
         </article>
 
     </div>
