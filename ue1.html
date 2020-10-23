@@ -5,7 +5,6 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="format.css">
     <link rel="shortcut icon" href="./favicon.ico" />
-    <!-- <link rel="stylesheet" href="Chart.min.css"> -->
     <link rel="stylesheet" href="./prism/prism.css">
     <script src="./charts/Chart.min.js"></script>
 </head>
@@ -438,8 +437,7 @@
                 </div>
                 <div class="">
                     <h4>Sprache Grenze der Qualität (13 Bit reduziert), stark verzerrt:</h4>
-                    <p>Ab einer Bitreduzierung von 13 Bit merkt man merklich wie die Qualität der Sprachaufnahme stark abnimmt.
-                    </p>
+                    <p>Ab einer Bitreduzierung von 13 Bit merkt man merklich wie die Qualität der Sprachaufnahme stark abnimmt.</p>
                     <audio controls>
 						<source src="./audio/A1_sprache_04_bitreduced_13.wav" type="audio/wav">
 					</audio>
@@ -476,9 +474,7 @@
         <!--Aufgabe 3 E-->
 
         <article>
-            <h3>
-                <div class="list-indicator">3E</div> Differenzsignal
-            </h3>
+            <h3><div class="list-indicator">3E</div> Differenzsignal</h3>
             <div class="task-description">
                 Modifiziere dein Programm noch einmal so, dass auch das Differenzsignal zwischen Original und bitreduziertem Signal, d.h. der Quantisierungsfehler ausgegeben werden kann. Dabei musst du bedenken, dass z.B. bei der 1 Bit Reduzierung das Quantisierungsrauschen
                 nur von -1 bis +1 verlaufen würde. Dieser Wertebereich wäre viel zu klein, als dass man das Rauschen beim Abspielen als 16bit-Wert noch hören könnte. Daher muss das Rauschen durch Multiplikation mit einer 2er Potenz verstärkt werden. In
@@ -486,7 +482,7 @@
 
             <h4>Der Code für die Aufgabe:</h4>
             <p>Hier muss wiederholt in (short) gecastet werden, da Division und Multiplikation int-Werte zurückgeben</p>
-            <pre><code class="language-java">
+			<pre><code class="language-java">
 				// 3e Bitreduzierung Differenz
 	
 				short[] difference = new short[readWavFile.sound.length];
@@ -520,6 +516,7 @@
                 </div>
                 <div class="">
                     <h4>Sprache - 1 Bit Differenz:</h4>
+                    <p>Das Ursprungssignal ist nicht zu verstehen.</p>
                     <audio controls>
 						<source src="./audio/A1_sprache_04_bitreduced_1_difference.wav" type="audio/wav">
 					</audio>
@@ -534,6 +531,7 @@
                 </div>
                 <div class="">
                     <h4>Musik - 8 Bit Differenz:</h4>
+                    <p>Das Ursprungssignal ist deutlich wahrnehmbar.</p>
                     <audio controls>
 						<source src="./audio/A1_musik_04_bitreduced_8bit_difference.wav" type="audio/wav">
 					</audio>
@@ -546,6 +544,7 @@
                 </div>
                 <div class="">
                     <h4>Sprache - 13 Bit Differenz:</h4>
+                    <p>Da so stark reduziert wurde, ist das Differenzsignal wieder hochauflösender als das reduzierte Signal. </p>
                     <audio controls>
 						<source src="./audio/A1_sprache_04_bitreduced_13_difference.wav" type="audio/wav">
 					</audio>
