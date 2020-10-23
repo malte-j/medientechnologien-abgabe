@@ -424,7 +424,21 @@
                 Modifiziere dein Programm noch einmal so, dass auch das Differenzsignal zwischen Original und bitreduziertem Signal, d.h. der Quantisierungsfehler ausgegeben werden kann. Dabei musst du bedenken, dass z.B. bei der 1 Bit Reduzierung das Quantisierungsrauschen
                 nur von -1 bis +1 verlaufen würde. Dieser Wertebereich wäre viel zu klein, als dass man das Rauschen beim Abspielen als 16bit-Wert noch hören könnte. Daher muss das Rauschen durch Multiplikation mit einer 2er Potenz verstärkt werden. In
                 anderen Worten: Hat man vorher durch 2^n geteilt, sollte man das Differenzsignal vor dem Abspeichern mit 2^(16-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird. </div>
-        </article>
+
+			<pre><code class="language-java">
+				// 3e Bitreduzierung Differenz
+	
+				short[] difference = new short[readWavFile.sound.length];
+	
+				for (int i = 0; i < samples; i++) {
+					difference[i] = (short) (readWavFile.sound[i] - reducedSamples[i]);
+					difference[i] = (short) (difference[i] * Math.pow(2, 16 - reduced_bits  -1));
+				}
+	
+				WavFile.write_wav("modified-difference.wav", numChannels, numFrames, validBits, sampleRate, difference);	
+			</code></pre>
+
+			</article>
 
         <article>
             <h3>
