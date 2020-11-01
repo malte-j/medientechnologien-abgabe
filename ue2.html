@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="format.css">
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./prism/prism.css">
+    <script src="./charts/Chart.min.js"></script>
+</head>
+
+<body class="page">
+
+    <div class="main">
+
+        <article id="a1">
+            <h2>Aufgabe 1: Bilder einlesen</h2>
+
+            <div class="task-description">Erzeuge aus den beiden JPG-Bildern, die dir geschickt wurden, Bitmap-Bilder (BMP) im Format 960x540 Pixel, 24Bit. Die Konvertierung kann z.B. in Paint erfolgen. Benenne die Dateien "Nature_NameArbeitsgruppe.bmp" und Manmade_NameArbeitsgruppe.bmp".
+                Schick mir die beiden BMP-Dateien unter Nennung deiner Arbeitsgruppe per Mail. In den folgenden Übungen wirst du diese Dateien oft als Ursprungsbilder verwenden. Sollten sie verloren gehen, kannst du sie notfalls wieder von mir erhalten.
+                Darauf werde ich dir zwei BMP-Dateien mit Testbildern zusenden, die du bei den folgenden Aufgabenpunkten benötigst, gratingHXX.bmp und gratingVXX.bmp. Nun lies die Bilder mit bmp_io ein und erkläre die Angaben im Header, die auf der Konsole
+                ausgegeben werden! Wie erklärt sich die Dateigröße für die beiden Dateien?</div>
+
+            <h4>Output der Konsole</h4>
+
+            <pre><code class="lang-markup">
+                Datei: grating_H11.bmp
+                Dateigröße 921654
+                Bits pro Pixel 24
+                Breite 640
+                Höhe 480
+            </code></pre>
+
+            <pre><code class="lang-markup">
+                Datei: grating_V11.bmp
+                Dateigröße 921654
+                Bits pro Pixel 24
+                Breite 640
+                Höhe 480
+            </code></pre>
+
+            <h4>Angaben im Header Erklärung:</h4>
+            <p>Die Bild Datei grating_H11.bmp ist 640 Pixel breit * Höhe * Bits pro Pixel + Headerinformationen) / 8
+                = Dateigröße in byte. Die Bild Datei grating_V11.bmp verhält sich identisch.</p>
+
+            <h4>Wie erklärt sich die Dateigröße für die beiden Dateien?</h4>
+            <p>Berechnung: (Breite * Höhe * Bits pro Pixel + Headerinformationen) / 8
+                = Dateigröße in byte</p>
+
+            <h4>Mit eingesetzten Werten also wie folgt:</h4>
+            <p>also jeweils</p>
+            <p>Berechnung: (640 * 480 * 24 Bits pro Pixel + Headerinformationen) / 8
+                    = 921654 byte</p>
+
+        </article>
+
+        <article id="a2">
+            <h2>Aufgabe 2: Aliasing</h2>
+
+            <h3>
+                <div class="list-indicator">2.1</div> bmp_io modifizieren
+            </h3>
+
+            <div class="task-description">Modifiziere bmp_io dahingehend, dass die RGB Werte der einzelnen Pixel in der BMP-Datei in eine (lesbare) ASCII-Datei geschrieben werden. Es reichen dabei jeweils eine Zeile und eine Spalte! Lies die von mir geschickten Testdateien ein und
+                schätze aus den resultierenden Zahlenfolgen die Periodendauer in Pixeln in horizontaler und vertikaler Richtung. (Jeweils eine Periode horizontal und eine vertikal für das Übungsprotokoll abspeichern).</div>
+
+                <h4>Code:</h4>
+            <pre><code class="language-java">
+                PrintWriter writer = new PrintWriter("ascii-V11.txt", "UTF-8");
+
+                for (int y = 0; y < bmp.image.getHeight(); y++) {
+                    PixelColor px = bmp.image.getRgbPixel(0, y);
+                    writer.println(px.r + " " + px.g + " " + px.b);
+                }
+
+                writer.close();
+            </code></pre>
+
+            <h4>RGB Werte der einzelnen Pixel in der BMP-Datei als Tabelle:</h4>
+            <table>
+                <tr>
+                    <th>Horizontal</th>
+                    <th>Vertikal</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="respecttheline">
+                            1 1 1
+                            22 22 22
+                            99 99 99
+                            190 190 190
+                            248 248 248
+                            241 241 241
+                            173 173 173
+                            81 81 81
+                            13 13 13
+                            6 6 6
+                            63 63 63
+                            155 155 155
+                            232 232 232
+                            253 253 253
+                            206 206 206
+                            118 118 118
+                            34 34 34
+                            0 0 0
+
+                            nach 9 Werten ist eine Periode erreicht
+                        </div>
+                    </td>
+                    <td>
+                        <div class="respecttheline">1 1 1
+                            28 28 28
+                            84 84 84
+                            153 153 153
+                            214 214 214
+                            249 249 249
+                            249 249 249
+                            214 214 214
+                            153 153 153
+                            84 84 84
+                            28 28 28
+                            1 1 1
+                            11 11 11
+                            54 54 54
+                            118 118 118
+                            185 185 185
+                            236 236 236
+                            254 254 254
+                            236 236 236
+                            185 185 185
+                            118 118 118
+                            54 54 54
+                            11 11 11
+                            1 1 1
+
+                            nach 11 Werten ist eine Periode erreicht
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <h3>
+                <div class="list-indicator">2.2</div> Abtasttheorem
+            </h3>
+
+                <div class="task-description">Auch bei der Bildabtastung muss das sogenannte Abtasttheorem eingehalten werden. Wie lautet es und wie läßt sich der Grenzfall, für den es gerade noch gilt, illustrieren (Zeichnung !)?</div>
+
+                <h4> Wie lautet das Abtasttheorem?</h4>
+                <p>Das Abtasttheorem besagt, dass ein auf <i>fmax</i> bandbegrenztes Signal aus einer Folge von äquidistanten Abtastwerten exakt rekonstruiert werden kann, wenn es mit einer Frequenz von größer als
+                <i>2 x fmax</i> abgetastet wurde.</p>
+                <p>Das Abtasttheorem gilt für Bilder genau wie für Audiodateien. Falls die Frequenz des Bildes sich öfter ändert, als abgetastet wird, entsteht eine falsche Aufnahme. Dies kann zum Beispiel bei einem weit entfernten Schachbrett auftreten, wo die Kacheln zu klein sind, um jeden einzelnen Pixel des Bildes mit einer anderen Kachel zu füllen.
+                </p>
+
+                <figure>
+                    <img src="./pics/a2/abtasttheorem.png" alt="Abtasttheorem Bild mit Moiré">
+                    <figcaption>Bild 1: Moiré Effekt / Aliasing-Verzerrungen</figcaption>
+                </figure>
+    
+                <figure>
+                    <img src="./pics/a2/theorem.png" alt="Abtasten von RGB-Werten">
+                    <figcaption>Bild 2: Abtastung und Rekonstruktion</figcaption>
+                </figure>
+
+            <h3>
+                <div class="list-indicator">2.3</div> Graustufen-Bilder
+            </h3>
+
+                <div class="task-description">Erzeuge aus deinen eigenen Farbbildern Graustufen-Bilder. Dazu muss der Helligkeitswert Y aus den RGB-Werten errechnet werden. Es gibt dafür verschiedene Ansätze. Nutze die Formel Y= 0,3 x R + 0,6 x G + 0,1 x B, die die Helligkeitsempfindlichkeit
+                des Auges annähert. Mit diesem Y-Wert wird dann die R, G und B-Information überschrieben. Speichere die Graustufenbilder ab.</div>
+
+                <h4>Code:</h4>
+                <pre><code class="language-java">
+                    // erzeuge graustufenbild
+
+                    for (int y = 0; y < bmp.image.getHeight(); y++) {
+                        for (int x = 0; x < bmp.image.getWidth(); x++) {
+                            PixelColor col = bmp.image.getRgbPixel(x,y);
+                            int y_val = (int) (col.r * 0.3 + col.g * 0.6 + col.b * 0.1);
+
+                            bmp.image.setRgbPixel(x,y, new PixelColor(y_val, y_val, y_val));
+                        }
+                    }
+                </code></pre>
+    
+                <h4>Graustufenbilder:</h4>
+                <figure>
+                    <img src="./pics/a2/modified_manmade_04.bmp" alt="Graue Steine">
+                    <figcaption>Bild 3: Graustufenbild modified_manmade_04.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/modified_nature_04.bmp" alt="Graue Blumen">
+                    <figcaption>Bild 4: Graustufenbild modified_nature_04.bmp</figcaption>
+                </figure>
+
+            <h3>
+                <div class="list-indicator">2.4</div> Erklärung Aliasing bei Bild- und Videoaufnahmen
+            </h3>
+
+                <div class="task-description">Erkläre, wie bei Bild- und Videoaufnahmen Aliasing entstehen kann. Ähnlich wie bei der 1. Übung am Audiosignal wollen wir auf das Bild ein Down-Sampling anwenden und sehen, wann dabei Aliasing auftritt. Beim Audiosignal haben wir jedes zweite
+                Sample verworfen und damit die Abtastfrequenz halbiert. Beim Bild verringern wir die räumliche Auflösung, indem wir die Zahl der Bildzeilen bzw. Bildspalten verringern. Dabei wollen wir das Bild allerdings nicht verkleinern - was normalerweise
+                die Folge wäre - sondern einfach die ungeradzahligen Spalten durch den Inhalt der geradzahligen Spalten ersetzen, d.h. Spalte 1 wird durch Spalte 0 ersetzt, Spalte 3 durch Spalte 2 etc. und analog für die Zeilen. Wenn das Ursprungsbild
+                nun sehr feine Strukturen aufweist, wie in machen Testdateien, können Aliasing-Verzerrungen sichtbar werden. Achte darauf, dass stets Rot, Grün und Blau getrennt manipuliert werden müssen.</div>
+
+                <h4>Wie bei Bild- und Videoaufnahmen Aliasing entstehen kann:</h4>
+                <p>Aliasing kann durch eine Verletzung des Abtasttheorems entstehen. Dies kann z.B. auftreten, wenn ein Muster sich öfter verändert, als abgetastet wird, und dadurch Werte im Originalbild nicht in die digitale Kopie übernommen werden. Dieser Effekt wird im Bild 1 deutlich.</p>
+
+                <h4>Down-Sampling mit halbierter Abtastfrequenz</h4>
+                <pre><code class="language-java">
+                    // downsampling
+                    for (int y = 0; y < bmp.image.getHeight(); y++) {
+                        for (int x = 0; x < bmp.image.getWidth(); x++) {
+                            if(y%2!=0) {
+                                bmp.image.setRgbPixel(x,y,bmp.image.getRgbPixel(x,y-1));
+                            }
+                            if(x%2!=0) {
+                                bmp.image.setRgbPixel(x,y,bmp.image.getRgbPixel(x-1,y));
+                            }
+                        }
+                    }
+                </code></pre>
+                <figure>
+                    <img src="./pics/a2/downsampled_H11.bmp" alt="Vereinfacht horizontal">
+                    <figcaption>Bild 5: Downsampled downsampled_H11.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled_V11.bmp" alt="Vereinfacht vertikal">
+                    <figcaption>Bild 6: Downsampled downsampled_V11.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled_manmade_04.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 7: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+
+            <h3>
+                <div class="list-indicator">2.5</div> Downsampling
+            </h3>
+
+                <div class="task-description">Modifiziere bmp_io dahingehend, dass zunächst in jeder Zeile des eingelesenen Bilds jedes ungeradzahlige Pixel durch das davor liegende geradzahlige Pixel ersetzt wird (horizontales Down-Sampling). Diese Veränderung hat natürlich nur bei einem
+                der beiden Testbilder Sinn (warum?). Speichere das resultierende Bild ab. Da sich die Bildgröße bei dieser Operation nicht ändert, muss der Bild-Header auch nicht verändert werden. Falls du im Ergebnis keine Veränderung sehen kannst, ersetze
+                mehr Spalten, also Spalte 1 und 2 durch Spalte 0, dann Spalte 1, 2 und 3 durch Spalte 0 usw. Wende diese Manipulation auf die Testbilder an, bis du eine Veränderung in Form eines Moiré-Musters siehst. Notiere, bei welcher Verringerung
+                du die Veränderungen beobachtest und beschreibe die Veränderungen! Erkläre das Ergebnis an Hand der von dir bestimmten Periodendauer in Pixeln. Nun wende die Zeilenverringerung vertikal an, d.h. ersetze die Pixel jeder ungeradzahligen
+                Zeile durch die der Zeile davor (vertikales Down-Sampling). Auch hier hat die Manipulation nur bei einer der Testdateien Sinn! Abschließend wendest du noch das horizontale Downsampling auf deine eigenen Bilder an, bis du eine sichtbare
+                Verschlechterung beobachtest. Notiere auch hier, wann dies bei deinen beiden Bildern der Fall ist.</div>
+
+                <h4>Warum hat die erste beschriebene Veränderung nur bei einem Testbild eine Berechtigung?:</h4>
+                <p>Das horizontale Down-Sampling macht nur bei den horizontalen Linien einen sichtbaren Unterschied. Bei den vertikalen Linien würde man die Reduzierung nicht sichtbar wahrnehmen da bei der Kopierung der Pixel in der x Richtung keine Änderungen ergeben würden.</p>
+
+                <h4>Horizontales Down-Sampling</h4>
+                <figure>
+                    <img src="./pics/a2/downsampled/horizontal_downsample_2.bmp" alt="Vereinfacht 2">
+                    <figcaption>Bild 8: horizontal_downsample_2.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled/horizontal_downsample_3.bmp" alt="Vereinfacht 3">
+                    <figcaption>Bild 9: horizontal_downsample_3.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled/horizontal_downsample_4.bmp" alt="Vereinfacht 4">
+                    <figcaption>Bild 10: horizontal_downsample_4.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled/horizontal_downsample_5.bmp" alt="Vereinfacht 5">
+                    <figcaption>Bild 11: horizontal_downsample_5.bmp</figcaption>
+                </figure>
+                <figure>
+
+                <h4>Fragen:</h4>
+                <p>Bei welcher Verringerung Veränderungen beobachtbar: Moiré Muster ab horizontal_downsample_4.bmp</p>
+                <p>Beschreibung Veränderungen: Wellenförmige Muster</p>
+                <p>Erklärung an Hand der bestimmten Periodendauer in Pixeln: Mit Bezug auf Aufgabe 2.1 - Die Frequenz der Abtastrate muss kleiner x sein ansonsten entstehen Moiré-Muster.</p>
+
+                <h4>Vertikales Down-Sampling</h4>
+                <figure>
+                    <img src="./pics/a2/downsampled/vertical_downsample_1.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 12: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled/vertical_downsample_2.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 13: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled/vertical_downsample_3.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 14: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+
+                <h4>Horizontale Downsampling auf deine eigenen Bilder: manmade</h4>
+                <figure>
+                    <img src="./pics/a2/downsampled/manmade_horizontal_downsample_1.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 15: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled/manmade_horizontal_downsample_2.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 16: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled/manmade_horizontal_downsample_3.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 17: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled/manmade_horizontal_downsample_4.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 18: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+
+                <h4>Horizontale Downsampling auf deine eigenen Bilder: nature</h4>
+                <figure>
+                    <img src="./pics/a2/downsampled/nature_horizontal_downsample_4.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 19: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+                <figure>
+                    <img src="./pics/a2/downsampled/nature_horizontal_downsample_9.bmp" alt="Vereinfacht Steine">
+                    <figcaption>Bild 20: Downsampled downsampled_manmade_04.bmp</figcaption>
+                </figure>
+
+                <h4>Ab wann wesentliche Verschlechterung?</h4>
+                <p>Text</p>
+
+        </article>
+
+        <article id="a3">
+            <h2>Aufgabe 3: Bitreduzierung</h2>
+
+            <h3>
+                <div class="list-indicator">3.1</div> RGB-Werte teilen und multiplizieren
+            </h3>
+
+            <div class="task-description">Wir wollen nun bmp_io so modifizieren, dass wir die Bitzahl reduzieren können. Dazu können wir z.B. alle RGB-Werte durch eine Potenz von 2 teilen (Integer-Division ohne Rest). Damit das resultierende Bild nicht dunkler wird als das Original,
+                kompensieren wir die Operation durch Multiplikation mit derselben Zweierpotenz. Zu beachten: Der Datentyp hat nach wie vor eine Bittiefe von 24Bit (8bit pro Farbe!) (Denselben Effekt erreicht man auch durch einfaches logisches 'Verunden'
+                mit einem entsprechenden HEX-Wert, indem man mit dem LSB beginnend Bits 'ausblendet'.)</div>
+
+            <p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
+            <audio controls>
+				<source src="./audio/Musik_GroRieJa.wav" type="audio/wav">
+			</audio>
+            <p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
+            <audio controls>
+				<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
+            </audio>
+
+            <h3>
+                <div class="list-indicator">3.2</div> BMP-Dateien aus Aufgabe 1 verändern
+            </h3>
+
+            <div class="task-description">Mit dem entstandenen Programm verändern wir die in Aufgabe 1 erzeugten BMP-Dateien. Ab welcher Bitzahl tritt beim Detail-Bild und beim Flächen-Bild eine sichtbare Verschlechterung der Qualität ein? Wie kann man diese Verschlechterung am besten
+                beschreiben? (Alle Ergebnisbilder ins Übungsprotokoll)</div>
+
+            <h4>Ergebnisbilder</h4>
+
+            <h4> Ab welcher Bitzahl tritt beim Detail-Bild und beim Flächen-Bild eine sichtbare Verschlechterung der Qualität ein?</h4>
+
+            <h4>Wie kann man diese Verschlechterung am besten beschreiben?</h4>
+
+            <h3>
+                <div class="list-indicator">3.3</div> Differenzbilder zwischen Original und bitreduziertem Bild
+            </h3>
+
+            <div class="task-description">Modifiziere dein Programm noch einmal so, dass auch das Differenzbild zwischen Original und bitreduziertem Bild, das heißt das Fehlerbild ausgegeben, werden kann. Beachte dabei, dass bei der Differenzbildung negative und positive Werte auftreten
+                können. Diese müssen wieder in den Wertebereich 0...255 transformiert werden, d.h. auf den Mittelwert 127 gebracht werden (wie?). Dabei musst du auch bedenken, dass z.B. bei 1 Bit Reduzierung der Fehler nur 0, 1 oder -1 wäre. Dieser Wertebereich
+                wäre viel zu klein, als dass man ihn in der 8bit-Grafik noch sehen könnte. Daher muss der Fehler durch Multiplikation mit einer 2er Potenz verstärkt werden. In anderen Worten: Hat man vorher durch 2^n geteilt, sollte man das Differenzsignal
+                vor dem Abspeichern mit 2^(8-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird (Bilder all dieser Fälle ins Übungsprotokoll)</div>
+
+        </article>
+
+    </div>
+    <script src="./prism/prism.js"></script>
+
+</body>
+
+</html>

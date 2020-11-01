@@ -111,6 +111,11 @@ img, table {
   white-space: pre-wrap;
 }
 
+.respecttheline {
+  white-space: pre-line;
+  font-family: monospace;
+}
+ 
 .aside {
   position: relative;
   display: flex;
@@ -140,3 +145,4 @@ table, th, td {
 th, td {
   padding: .4rem;
 }
+
