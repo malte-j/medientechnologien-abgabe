@@ -412,21 +412,17 @@
                 kompensieren wir die Operation durch Multiplikation mit derselben Zweierpotenz. Zu beachten: Der Datentyp hat nach wie vor eine Bittiefe von 24Bit (8bit pro Farbe!) (Denselben Effekt erreicht man auch durch einfaches logisches 'Verunden'
                 mit einem entsprechenden HEX-Wert, indem man mit dem LSB beginnend Bits 'ausblendet'.)</div>
 
-            <p>Um die Bitreduzierung zu erreichen verwenden wir hier Bitshifting. Dies ist hier wesentlich performanter als zu Teilen und dann zu Multiplizieren.</p>
+            <p>Um die Bitreduzierung zu erreichen verwenden wir hier Bitshifting. Dies ist hier wesentlich performanter als erst zu Teilen und dann zu Multiplizieren.</p>
 
             <pre><code class="language-java">
-                int reduced_bits = 4;
+                int reduced_bits = 6;
                 for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
-                    for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                    for (int x = 0; x < bmp.image.getWidth(); x++) {
                         PixelColor col = bmp.image.getRgbPixel(x,y);
                         int r = ((col.r>>reduced_bits)&lt;&lt;reduced_bits);
                         int g = ((col.g>>reduced_bits)&lt;&lt;reduced_bits);
                         int b = ((col.b>>reduced_bits)&lt;&lt;reduced_bits);
-
-                        r = (col.r - r)&lt;&lt;reduced_bits;
-                        g = (col.g - g)&lt;&lt;reduced_bits;
-                        b = (col.b - b)&lt;&lt;reduced_bits;
-
+        
                         bmp.image.setRgbPixel(x,y, new PixelColor(r,g,b));
                     }
                 }
@@ -452,8 +448,28 @@
             <div class="task-description">Modifiziere dein Programm noch einmal so, dass auch das Differenzbild zwischen Original und bitreduziertem Bild, das heißt das Fehlerbild ausgegeben, werden kann. Beachte dabei, dass bei der Differenzbildung negative und positive Werte auftreten
                 können. Diese müssen wieder in den Wertebereich 0...255 transformiert werden, d.h. auf den Mittelwert 127 gebracht werden (wie?). Dabei musst du auch bedenken, dass z.B. bei 1 Bit Reduzierung der Fehler nur 0, 1 oder -1 wäre. Dieser Wertebereich
                 wäre viel zu klein, als dass man ihn in der 8bit-Grafik noch sehen könnte. Daher muss der Fehler durch Multiplikation mit einer 2er Potenz verstärkt werden. In anderen Worten: Hat man vorher durch 2^n geteilt, sollte man das Differenzsignal
-                vor dem Abspeichern mit 2^(8-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird (Bilder all dieser Fälle ins Übungsprotokoll)</div>
+                vor dem Abspeichern mit 2^(8-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird (Bilder all dieser Fälle ins Übungsprotokoll)
+            </div>
 
+            <p>Wir sind uns nicht sicher wie hier negative Werte auftreten könnten, da die Bitreduzierte Zahl immer geringer sein wird, als die nicht-Bitreduzierte. Außerdem ist uns nicht klar, was es mit dem Transformieren in den Wertebereich auf sich hat, da es mit unserem Code genügt, den Wert um "reduced_bits" zu erhöhen, um das Differenzbild sichtbar zu machen.</p>
+
+            <pre><code class="language-java">
+                reduced_bits = 4;
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                    for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                        PixelColor col = bmp.image.getRgbPixel(x,y);
+                        int r = ((col.r>>reduced_bits)&lt;&lt;reduced_bits);
+                        int g = ((col.g>>reduced_bits)&lt;&lt;reduced_bits);
+                        int b = ((col.b>>reduced_bits)&lt;&lt;reduced_bits);
+
+                        r = (col.r - r)&lt;&lt;reduced_bits;
+                        g = (col.g - g)&lt;&lt;reduced_bits;
+                        b = (col.b - b)&lt;&lt;reduced_bits;
+
+                        bmp.image.setRgbPixel(x,y, new PixelColor(r,g,b));
+                    }
+                }
+            </code></pre>
         </article>
 
     </div>
