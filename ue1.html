@@ -170,7 +170,7 @@
 				PrintWriter writer = new PrintWriter("ascii-samples.txt", "UTF-8");
 
 				// 2a Samples schreiben
-				for (int i = 0; i < samples; i++) { 
+				for (int i = 0; i &lt; samples; i++) { 
 					writer.println(readWavFile.sound[i]); 
 				} 
 					
@@ -320,7 +320,7 @@
             <pre><code class="language-java">
 				short[] downsampledAudio = new short[readWavFile.sound.length / 2 ];
 
-				for (int i = 0; i < samples; i+=2) {
+				for (int i = 0; i &lt; samples; i+=2) {
 						downsampledAudio[i/2] = readWavFile.sound[i];
 				}
 
@@ -397,7 +397,7 @@
 				short reduced_bits = 13;
 				int divideBy = (int) Math.pow(2, reduced_bits);
 				
-				for (int i = 0; i < samples; i++) {
+				for (int i = 0; i &lt; samples; i++) {
 					readWavFile.sound[i] = (short) ((short) (readWavFile.sound[i] / divideBy) * divideBy);
 				}
 				WavFile.write_wav(outFilename, numChannels, numFrames, validBits, sampleRate, readWavFile.sound);
@@ -487,7 +487,7 @@
 	
 				short[] difference = new short[readWavFile.sound.length];
 	
-				for (int i = 0; i < samples; i++) {
+				for (int i = 0; i &lt; samples; i++) {
 					difference[i] = (short) (readWavFile.sound[i] - reducedSamples[i]);
 					difference[i] = (short) (difference[i] * Math.pow(2, 16 - reduced_bits  -1));
 				}
