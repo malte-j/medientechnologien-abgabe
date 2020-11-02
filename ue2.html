@@ -474,7 +474,14 @@
 
     </div>
     <script src="./prism/prism.js"></script>
-
+    <link rel="stylesheet" href="./lightbox/glightbox.min.css">
+    <script src="./lightbox/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({
+            selector: "img:not([src$='bmp'])",
+            preload: false
+        });
+    </script>
 </body>
 
 </html>
