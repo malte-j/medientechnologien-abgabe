@@ -39,18 +39,33 @@
                 Höhe 480
             </code></pre>
 
-            <h4>Angaben im Header Erklärung:</h4>
-            <p>Die Bild Datei grating_H11.bmp ist 640 Pixel breit * Höhe * Bits pro Pixel + Headerinformationen) / 8
-                = Dateigröße in byte. Die Bild Datei grating_V11.bmp verhält sich identisch.</p>
+            <h4>Was bedeuten die Angaben im Header?</h4>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Dateigröße</td>
+                        <td>Die größe der eingelesenen Datei in Byte.</td>
+                    </tr>
+                    <tr>
+                        <td>Bits pro Pixel</td>
+                        <td>Die Anzahl der Bits, die pro Pixel zur Speicherung der Daten benötigt wird. Bei RGB-Farben 8 Bit pro Farbe, also 3 * 8 Bit = 24 Bit.</td>
+                    </tr>
+                    <tr>
+                        <td>Breite</td>
+                        <td>Die Breite des Bildes in Pixel.</td>
+                    </tr>
+                    <tr>
+                        <td>Höhe</td>
+                        <td>Die Höhe des Bildes in Pixel.</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <h4>Wie erklärt sich die Dateigröße für die beiden Dateien?</h4>
-            <p>Berechnung: (Breite * Höhe * Bits pro Pixel + Headerinformationen) / 8
-                = Dateigröße in byte</p>
-
-            <h4>Mit eingesetzten Werten also wie folgt:</h4>
-            <p>also jeweils</p>
-            <p>Berechnung: (640 * 480 * 24 Bits pro Pixel + Headerinformationen) / 8
-                    = 921654 byte</p>
+            <p>Mit der folgenden Rechnung:</p>
+            <div class="math">(Breite * Höhe * Bits pro Pixel + Headerinformationen) / 8 = Dateigröße in Byte</div>
+            <p>So können wir für die beiden Bilder berechnen:</p>
+            <div class="math">(640 * 480 * 24 Bits pro Pixel + Headerinformationen) / 8 = 921654 Byte</div>
 
         </article>
 
@@ -64,17 +79,71 @@
             <div class="task-description">Modifiziere bmp_io dahingehend, dass die RGB Werte der einzelnen Pixel in der BMP-Datei in eine (lesbare) ASCII-Datei geschrieben werden. Es reichen dabei jeweils eine Zeile und eine Spalte! Lies die von mir geschickten Testdateien ein und
                 schätze aus den resultierenden Zahlenfolgen die Periodendauer in Pixeln in horizontaler und vertikaler Richtung. (Jeweils eine Periode horizontal und eine vertikal für das Übungsprotokoll abspeichern).</div>
 
-                <h4>Code:</h4>
+            <h4>Code:</h4>
+            Hier schreiben wir lediglich die RGB-Werte jedes Pixels für eine einzelne Spalte, bzw. Zeile newline-seperiert in eine Datei.
             <pre><code class="language-java">
                 PrintWriter writer = new PrintWriter("ascii-V11.txt", "UTF-8");
 
-                for (int y = 0; y < bmp.image.getHeight(); y++) {
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
                     PixelColor px = bmp.image.getRgbPixel(0, y);
                     writer.println(px.r + " " + px.g + " " + px.b);
                 }
 
                 writer.close();
             </code></pre>
+
+            <h4>Die ausgelesenen Werte als Graph</h4>
+            <p>Die x-Achse bezieht sich auf die Position des Pixels, die y-Achse sich auf die Helligkeit des jeweiligen Pixels. Die Farbe jedes Punktes spiegelt die Farbe des Pixels wieder.</p>
+            
+            <canvas id="stripe_vertical"></canvas>
+            <script>
+                var ctx = document.getElementById('stripe_vertical').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
+                        datasets: [
+                        {
+                            label: 'Werte der vertikalen Streifen ',
+                            backgroundColor: false,
+                            fill: false,
+                            borderColor: 'rgb(220,220,220)',
+                            pointRadius: 7,
+                            data: [236, 185, 118, 54, 11, 1, 28, 84, 153, 214, 249, 249, 214, 153, 84, 28, 1, 11, 54, 118, 185, 236, 254, 236, 185, 118, 54, 11, 1],
+                            pointBackgroundColor: ["rgb(236, 236, 236)", "rgb(185, 185, 185)", "rgb(118, 118, 118)", "rgb(54, 54, 54)", "rgb(11, 11, 11)", "rgb(1, 1, 1)", "rgb(28, 28, 28)", "rgb(84, 84, 84)", "rgb(153, 153, 153)", "rgb(214, 214, 214)", "rgb(249, 249, 249)", "rgb(249, 249, 249)", "rgb(214, 214, 214)", "rgb(153, 153, 153)", "rgb(84, 84, 84)", "rgb(28, 28, 28)", "rgb(1, 1, 1)", "rgb(11, 11, 11)", "rgb(54, 54, 54)", "rgb(118, 118, 118)", "rgb(185, 185, 185)", "rgb(236, 236, 236)", "rgb(254, 254, 254)", "rgb(236, 236, 236)", "rgb(185, 185, 185)", "rgb(118, 118, 118)", "rgb(54, 54, 54)", "rgb(11, 11, 11)", "rgb(1, 1, 1)"]
+                        }]
+                    },
+                    options: {}
+                });
+            </script>
+
+            <br>
+
+            <canvas id="stripe_horizontal"></canvas>
+
+            <script>
+                var ctx = document.getElementById('stripe_horizontal').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
+                        datasets: [{
+                            label: 'Werte der horizontalen Streifen ',
+                            backgroundColor: false,
+                            fill: false,
+                            borderColor: 'rgb(220,220,220)',
+                            pointRadius: 7,
+                            data: [220, 136, 48, 1, 22, 99, 190, 248, 241, 173, 81, 13, 6, 63, 155, 232, 253, 206, 118, 34, 0, 34, 118, 206, 253, 232, 155, 64, 6],
+                            pointBackgroundColor: ["rgb(220, 220, 220)", "rgb(136, 136, 136)", "rgb(48, 48, 48)", "rgb(1, 1, 1)", "rgb(22, 22, 22)", "rgb(99, 99, 99)", "rgb(190, 190, 190)", "rgb(248, 248, 248)", "rgb(241, 241, 241)", "rgb(173, 173, 173)", "rgb(81, 81, 81)", "rgb(13, 13, 13)", "rgb(6, 6, 6)", "rgb(63, 63, 63)", "rgb(155, 155, 155)", "rgb(232, 232, 232)", "rgb(253, 253, 253)", "rgb(206, 206, 206)", "rgb(118, 118, 118)", "rgb(34, 34, 34)", "rgb(0, 0, 0)", "rgb(34, 34, 34)", "rgb(118, 118, 118)", "rgb(206, 206, 206)", "rgb(253, 253, 253)", "rgb(232, 232, 232)", "rgb(155, 155, 155)", "rgb(64, 64, 64)", "rgb(6, 6, 6)"]
+                        }]
+                    },
+                    options: {}
+                });
+            </script>
 
             <h4>RGB Werte der einzelnen Pixel in der BMP-Datei als Tabelle:</h4>
             <table>
@@ -84,7 +153,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="respecttheline">
+                        <div class="rows">220 220 220
+                            136 136 136
+                            48 48 48
                             1 1 1
                             22 22 22
                             99 99 99
@@ -103,12 +174,23 @@
                             118 118 118
                             34 34 34
                             0 0 0
-
-                            nach 9 Werten ist eine Periode erreicht
+                            34 34 34
+                            118 118 118
+                            206 206 206
+                            253 253 253
+                            232 232 232
+                            155 155 155
+                            64 64 64
+                            6 6 6
                         </div>
                     </td>
                     <td>
-                        <div class="respecttheline">1 1 1
+                        <div class="rows">236 236 236
+                            185 185 185
+                            118 118 118
+                            54 54 54
+                            11 11 11
+                            1 1 1
                             28 28 28
                             84 84 84
                             153 153 153
@@ -132,12 +214,17 @@
                             54 54 54
                             11 11 11
                             1 1 1
-
-                            nach 11 Werten ist eine Periode erreicht
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td>Nach 9 Werten ist eine Periode erreicht</td>
+                    <td>Nach 11 Werten ist eine Periode erreicht</td>
+                </tr>
             </table>
+
+
+         
 
             <h3>
                 <div class="list-indicator">2.2</div> Abtasttheorem
@@ -171,9 +258,8 @@
                 <h4>Code:</h4>
                 <pre><code class="language-java">
                     // erzeuge graustufenbild
-
-                    for (int y = 0; y < bmp.image.getHeight(); y++) {
-                        for (int x = 0; x < bmp.image.getWidth(); x++) {
+                    for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                        for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
                             PixelColor col = bmp.image.getRgbPixel(x,y);
                             int y_val = (int) (col.r * 0.3 + col.g * 0.6 + col.b * 0.1);
 
@@ -202,13 +288,13 @@
                 nun sehr feine Strukturen aufweist, wie in machen Testdateien, können Aliasing-Verzerrungen sichtbar werden. Achte darauf, dass stets Rot, Grün und Blau getrennt manipuliert werden müssen.</div>
 
                 <h4>Wie bei Bild- und Videoaufnahmen Aliasing entstehen kann:</h4>
-                <p>Aliasing kann durch eine Verletzung des Abtasttheorems entstehen. Dies kann z.B. auftreten, wenn ein Muster sich öfter verändert, als abgetastet wird, und dadurch Werte im Originalbild nicht in die digitale Kopie übernommen werden. Dieser Effekt wird im Bild 1 deutlich.</p>
+                <p>Aliasing kann durch eine Verletzung des Abtasttheorems entstehen. Dies kann z.B. auftreten, wenn ein Muster sich öfter verändert, als abgetastet wird, und dadurch Werte im Originalbild nicht in die digitale Kopie übernommen werden. Dieser Effekt wird in Bild 1 deutlich.</p>
 
                 <h4>Down-Sampling mit halbierter Abtastfrequenz</h4>
                 <pre><code class="language-java">
                     // downsampling
-                    for (int y = 0; y < bmp.image.getHeight(); y++) {
-                        for (int x = 0; x < bmp.image.getWidth(); x++) {
+                    for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                        for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
                             if(y%2!=0) {
                                 bmp.image.setRgbPixel(x,y,bmp.image.getRgbPixel(x,y-1));
                             }
@@ -331,19 +417,25 @@
             <h3>
                 <div class="list-indicator">3.1</div> RGB-Werte teilen und multiplizieren
             </h3>
-
             <div class="task-description">Wir wollen nun bmp_io so modifizieren, dass wir die Bitzahl reduzieren können. Dazu können wir z.B. alle RGB-Werte durch eine Potenz von 2 teilen (Integer-Division ohne Rest). Damit das resultierende Bild nicht dunkler wird als das Original,
                 kompensieren wir die Operation durch Multiplikation mit derselben Zweierpotenz. Zu beachten: Der Datentyp hat nach wie vor eine Bittiefe von 24Bit (8bit pro Farbe!) (Denselben Effekt erreicht man auch durch einfaches logisches 'Verunden'
                 mit einem entsprechenden HEX-Wert, indem man mit dem LSB beginnend Bits 'ausblendet'.)</div>
 
-            <p>Parameter für Musik: fa=44,1 kHz, stereo, 16 Bit Auflösung:</p>
-            <audio controls>
-				<source src="./audio/Musik_GroRieJa.wav" type="audio/wav">
-			</audio>
-            <p>Parameter für Sprache: fa=8 kHz (entsprechend stumpfer), mono, 16 Bit Auflösung:</p>
-            <audio controls>
-				<source src="./audio/Sprache_GroRieJa.wav" type="audio/wav">
-            </audio>
+            <p>Um die Bitreduzierung zu erreichen verwenden wir hier Bitshifting. Dies ist hier wesentlich performanter als erst zu Teilen und dann zu Multiplizieren.</p>
+
+            <pre><code class="language-java">
+                int reduced_bits = 6;
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                    for (int x = 0; x < bmp.image.getWidth(); x++) {
+                        PixelColor col = bmp.image.getRgbPixel(x,y);
+                        int r = ((col.r>>reduced_bits)&lt;&lt;reduced_bits);
+                        int g = ((col.g>>reduced_bits)&lt;&lt;reduced_bits);
+                        int b = ((col.b>>reduced_bits)&lt;&lt;reduced_bits);
+        
+                        bmp.image.setRgbPixel(x,y, new PixelColor(r,g,b));
+                    }
+                }
+            </code></pre>
 
             <h3>
                 <div class="list-indicator">3.2</div> BMP-Dateien aus Aufgabe 1 verändern
@@ -365,13 +457,40 @@
             <div class="task-description">Modifiziere dein Programm noch einmal so, dass auch das Differenzbild zwischen Original und bitreduziertem Bild, das heißt das Fehlerbild ausgegeben, werden kann. Beachte dabei, dass bei der Differenzbildung negative und positive Werte auftreten
                 können. Diese müssen wieder in den Wertebereich 0...255 transformiert werden, d.h. auf den Mittelwert 127 gebracht werden (wie?). Dabei musst du auch bedenken, dass z.B. bei 1 Bit Reduzierung der Fehler nur 0, 1 oder -1 wäre. Dieser Wertebereich
                 wäre viel zu klein, als dass man ihn in der 8bit-Grafik noch sehen könnte. Daher muss der Fehler durch Multiplikation mit einer 2er Potenz verstärkt werden. In anderen Worten: Hat man vorher durch 2^n geteilt, sollte man das Differenzsignal
-                vor dem Abspeichern mit 2^(8-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird (Bilder all dieser Fälle ins Übungsprotokoll)</div>
+                vor dem Abspeichern mit 2^(8-n-1) multiplizieren. So ist sichergestellt, dass der Verstärkungsfaktor mit der Anzahl der gelöschten Bits kleiner wird (Bilder all dieser Fälle ins Übungsprotokoll)
+            </div>
 
+            <p>Wir sind uns nicht sicher wie hier negative Werte auftreten könnten, da die Bitreduzierte Zahl immer geringer sein wird, als die nicht-Bitreduzierte. Außerdem ist uns nicht klar, was es mit dem Transformieren in den Wertebereich auf sich hat, da es mit unserem Code genügt, den Wert um "reduced_bits" zu erhöhen, um das Differenzbild sichtbar zu machen.</p>
+
+            <pre><code class="language-java">
+                reduced_bits = 4;
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                    for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                        PixelColor col = bmp.image.getRgbPixel(x,y);
+                        int r = ((col.r>>reduced_bits)&lt;&lt;reduced_bits);
+                        int g = ((col.g>>reduced_bits)&lt;&lt;reduced_bits);
+                        int b = ((col.b>>reduced_bits)&lt;&lt;reduced_bits);
+
+                        r = (col.r - r)&lt;&lt;reduced_bits;
+                        g = (col.g - g)&lt;&lt;reduced_bits;
+                        b = (col.b - b)&lt;&lt;reduced_bits;
+
+                        bmp.image.setRgbPixel(x,y, new PixelColor(r,g,b));
+                    }
+                }
+            </code></pre>
         </article>
 
     </div>
     <script src="./prism/prism.js"></script>
-
+    <link rel="stylesheet" href="./lightbox/glightbox.min.css">
+    <script src="./lightbox/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox({
+            selector: "img:not([src$='bmp'])",
+            preload: false
+        });
+    </script>
 </body>
 
 </html>
