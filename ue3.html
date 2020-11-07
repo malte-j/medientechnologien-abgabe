@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="format.css">
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./prism/prism.css">
+    <script src="./charts/Chart.min.js"></script>
+</head>
+
+<body class="page">
+
+    <div class="main">
+
+        <article id="a1">
+            <h2>Aufgabe 1: Einfache Schwingungsformen</h2>
+
+            <div class="task-description">Zunächst brauchen wir nur die oben beschriebenen
+                Module. Wir schauen uns die Wellenformen der Grundklänge des Oszillators an
+                (Sägezahn, Rechteck, etc.). Wir können nun Beispiele der einzelnen Klänge durch
+                Drücken einer Taste spielen und mit dem Recorder aufzeichnen. Wie man das RecorderPlugin aktiviert, zeige ich im Übungstermin! Man benötigt dafür einen (kostenfreien)
+                VCVRack-Account.</div>
+
+            <h3>Wellenformen der Grundklänge</h3>
+
+            <p>sinus:</p>
+            <audio controls>
+				<source src="./audio/a3/sinus.wav" type="audio/wav">
+            </audio>
+            
+            <p>dreieck:</p>
+            <audio controls>
+				<source src="./audio/a3/dreieck.wav" type="audio/wav">
+            </audio>
+            
+            <p>sägezahn:</p>
+            <audio controls>
+				<source src="./audio/a3/sagezahn.wav" type="audio/wav">
+            </audio>
+            
+            <p>rechteck:</p>
+            <audio controls>
+				<source src="./audio/a3/rechteck.wav" type="audio/wav">
+			</audio>
+
+        </article>
+
+        <article id="a2">
+            <h2>Aufgabe 2: Spektrum anzeigen</h2>
+
+            <div class="task-description">Außerdem lässt sich in GRAM oder Praat das Spektrum anzeigen. In GRAM wählen
+                wird den Display-Type "Line". Es erscheint eine Liniendarstellung des
+                Amplitudenspektrums mit dB-Angaben (Toggle Grid). Aus diesen können wir dann lineare
+                Prozentwerte mit Bezug auf die Grundschwingung berechnen. Wir setzen dazu die
+                Amplitude der Grundschwingung mit 0 dB entsprechend 100 % an. Bei der Square-Welle
+                variieren wir die Pulsweite, d.h. das zeitliche Verhältnis zwischen positivem und
+                negativem Schwingungsteil, mit dem Regler P-WIDTH am Oszillator) und beobachten, wie
+                sich das Verhältnis der Obertöne verändert. Dazu betrachten wir drei Fälle: 50/50, 30/70
+                und 10/90 zwischen positivem und negativem Teil, ablesbar am Oszilloskop.
+                (Ins Ergebnisprotokoll: Bilder der Spektren für drei markante P-Width-Einstellungen beim
+                Rechteck, ein Sägezahn, ein Dreieck, Ausschnitte aus den wavs, Angaben der
+                Frequenzen und Amplituden in dB und Prozentwerten für die Grundschwingung und die
+                ersten drei Obertöne, bei denen die Amplitude größer 0 ist).</div>
+                <br>
+
+            <h3>Video Regler P-WIDTH am Oszillator</h3>
+            <p>Zur Veranschaulichung der Aufgabe:</p>
+
+            <video width="1280" height="720" controls>
+                <source src="./video/2_pwidth.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+
+            <h3>saw</h3>
+            <audio controls>
+                <source src="./audio/a3/2_saw.wav" type="audio/wav">
+            </audio>      
+            <img src="./pics/a3/a3_2/2_saw.png" alt="saw Datei">   
+            <div class="aside">
+                <div>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Hz</th>
+                            <th>db</th>
+                            <th>An - A1</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>7800</td>
+                            <td>-19</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>16400</td>
+                            <td>-26</td>
+                            <td>-7</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>25000</td>
+                            <td>-30</td>
+                            <td>-11</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>33000</td>
+                            <td>-34</td>
+                            <td>-15</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>		
+                        <tr>
+                            <th>1. Oberton</th>
+                            <td>44,67%</td>
+                        </tr>
+                        <tr>
+                            <th>2. Oberton</th>
+                            <td>28,18%</td>
+                        </tr>
+                        <tr>
+                            <th>3. Oberton</th>
+                            <td>17,78%</td>
+                        </tr>
+                    </table>                 
+                </div>
+            </div>
+            <br>
+
+            <h3>tri</h3>
+            <audio controls>
+                <source src="./audio/a3/2_tri.wav" type="audio/wav">
+            </audio>      
+            <img src="./pics/a3/a3_2/2_tri.png" alt="tri Datei">   
+            <div class="aside">
+                <div>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Hz</th>
+                            <th>db</th>
+                            <th>An - A1</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>8300</td>
+                            <td>-14</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>24500</td>
+                            <td>-36</td>
+                            <td>-22</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>40400</td>
+                            <td>-44</td>
+                            <td>-30</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>57300</td>
+                            <td>-50</td>
+                            <td>-36</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>		
+                        <tr>
+                            <th>1. Oberton</th>
+                            <td>7,94%</td>
+                        </tr>
+                        <tr>
+                            <th>2. Oberton</th>
+                            <td>3,16%</td>
+                        </tr>
+                        <tr>
+                            <th>3. Oberton</th>
+                            <td>1,58%</td>
+                        </tr>
+                    </table>                 
+                </div>
+            </div>
+            <br>
+
+            <h3>sqr_5050</h3>
+            <audio controls>
+                <source src="./audio/a3/2_sqr_50_50.wav" type="audio/wav">
+            </audio>      
+            <img src="./pics/a3/a3_2/2_sqr_50_50.png" alt="sqr5050 Datei">   
+            <div class="aside">
+                <div>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Hz</th>
+                            <th>db</th>
+                            <th>An - A1</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>3500</td>
+                            <td>-11</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>10000</td>
+                            <td>-22</td>
+                            <td>-11</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>16500</td>
+                            <td>-27</td>
+                            <td>-16</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>22300</td>
+                            <td>-31</td>
+                            <td>-20</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>		
+                        <tr>
+                            <th>1. Oberton</th>
+                            <td>28,18%</td>
+                        </tr>
+                        <tr>
+                            <th>2. Oberton</th>
+                            <td>15,85%</td>
+                        </tr>
+                        <tr>
+                            <th>3. Oberton</th>
+                            <td>10,00%</td>
+                        </tr>
+                    </table>                 
+                </div>
+            </div>
+            <br>
+
+            <h3>sqr_3070</h3>
+            <audio controls>
+                <source src="./audio/a3/2_sqr_30_70.wav" type="audio/wav">
+            </audio>      
+            <img src="./pics/a3/a3_2/2_sqr_30_70.png" alt="sqr3070 Datei">   
+            <div class="aside">
+                <div>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Hz</th>
+                            <th>db</th>
+                            <th>An - A1</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>3500</td>
+                            <td>-13</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>6500</td>
+                            <td>-19</td>
+                            <td>-6</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>10000</td>
+                            <td>-32</td>
+                            <td>-19</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>13000</td>
+                            <td>-30</td>
+                            <td>-17</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>		
+                        <tr>
+                            <th>1. Oberton</th>
+                            <td>50,12%</td>
+                        </tr>
+                        <tr>
+                            <th>2. Oberton</th>
+                            <td>11,22%</td>
+                        </tr>
+                        <tr>
+                            <th>3. Oberton</th>
+                            <td>14,13%</td>
+                        </tr>
+                    </table>                 
+                </div>
+            </div>
+            <br>
+
+            <h3>sqr_1090</h3>
+            <audio controls>
+                <source src="./audio/a3/2_sqr_10_90.wav" type="audio/wav">
+            </audio>      
+            <img src="./pics/a3/a3_2/2_sqr_10_90.png" alt="sqr1090 Datei">   
+            <div class="aside">
+                <div>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Hz</th>
+                            <th>db</th>
+                            <th>An - A1</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>3500</td>
+                            <td>-21</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>6700</td>
+                            <td>-24</td>
+                            <td>-3</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>10000</td>
+                            <td>-25</td>
+                            <td>-4</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>13000</td>
+                            <td>-26</td>
+                            <td>-5</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>		
+                        <tr>
+                            <th>1. Oberton</th>
+                            <td>70,79%</td>
+                        </tr>
+                        <tr>
+                            <th>2. Oberton</th>
+                            <td>63,10%</td>
+                        </tr>
+                        <tr>
+                            <th>3. Oberton</th>
+                            <td>56,23%</td>
+                        </tr>
+                    </table>                 
+                </div>
+            </div>
+            <br>
+
+            <p>Berechungen der Werte über Google Tabelle:</p>
+            <p><a href="https://docs.google.com/spreadsheets/d/18kHaKiIHlrtz73CqcR_cDBT2Iws1YlqpiKS__fKWMiQ/edit?usp=sharing">Link zur Tabelle</a></p>
+
+
+        </article>
+
+        <article id="a3">
+            <h2>Aufgabe 3: Schwebung</h2>
+
+            <div class="task-description">Nun bringen wir einen zweiten Oszillator zum Einsatz. Um die Ausgänge der
+                beiden Oszillatoren anschließen und in der Lautstärke regeln zu können, benötigen wir ein
+                MIXER-Modul, das wir zwischen die beiden VCAs und AUDIO schalten.
+                Zunächst stellen wir beide Oszillatoren auf exakt dieselbe Frequenz und
+                Dreiecksschwingung. Dann verstimmen wir den zweiten gegen den ersten und zeichnen
+                den Klang auf, wenn wir gerade eine Amplitudenmodulation feststellen (Fall A), d.h. einen
+                in der Lautstärke schwankenden Ton. Wir verstimmen die Oszillatoren weiter
+                gegeneinander, bis wir den Eindruck einer Dissonanz haben (Fall B), d.h. es entsteht ein
+                rauer, unangenehmer Klang.
+                Beachte, dass der Regler 'FREQ' den betreffenden Oszillator in etwa um Halbtöne
+                verstimmt, während 'FINE' dies um Bruchteile von Halbtöne tut. Am besten experimentiert
+                man zunächst mit dem 'FINE'-Regler und erst, wenn z.B. bei Fall B sich der gewünschte
+                Effekt nicht einstellt, mit dem 'FREQ'-Regler.
+                Nun stellen wir mit GRAM für die beiden Fälle die Mittel- und Differenzfrequenzen der
+                Schwingungen fest. Es kann sein, dass die Genauigkeit von GRAM beim Fall A zur
+                Bestimmung der Differenzfrequenz nicht ausreicht. Man kann die Differenzfrequenz aber
+                auch aus dem Oszillogramm der amplitudenmodulierten Schwingung berechnen (z.B. in
+                Samplitude anschauen). Die Periodendauer der Differenzfrequenz entspricht nämlich exakt
+                dem Abstand zwischen zwei Punkten maximaler (oder minimaler) Amplitude. Ins
+                Ergebnisprotokoll für beide Fälle: Mittenfrequenz und Differenzfrequenz, Spektrogramm
+                und wav.</div>
+
+            <h3>Video Frequenzmodulation</h3>
+            <p>Zur Veranschaulichung der Aufgabe:</p>
+
+            <video width="1280" height="720" controls>
+                <source src="./video/3_frequenzmodulation.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+              </video>
+
+            <h3>Fall A</h3>
+            <audio controls>
+                <source src="./audio/a3/3_fall_a.wav" type="audio/wav">
+            </audio>      
+            <img src="./pics/a3/a3_3/3_fall_a.png" alt="Fall A Datei"> 
+            <table>
+                <tr>
+                    <th></th>
+                    <td>regulär</td>
+                    <td>modifiziert</td>
+                    <td>Mittelfrequenz</td>
+                    <td>Differenzfrequenz</td>
+                </tr>
+                <tr>
+                    <th>Oszillatoren mit derselben Frequenz</th>
+                    <td>261,63</td>
+                    <td>261,81</td>
+                    <td>261,72</td>
+                    <td>0,18</td>
+                </tr>
+            </table>
+
+            <h3>Fall B</h3>
+            <audio controls>
+                <source src="./audio/a3/3_fall_b.wav" type="audio/wav">
+            </audio>      
+            <img src="./pics/a3/a3_3/3_fall_b.png" alt="sqr1090 Datei"> 
+            <table>
+                <tr>
+                    <th></th>
+                    <td>regulär</td>
+                    <td>modifiziert</td>
+                    <td>Mittelfrequenz</td>
+                    <td>Differenzfrequenz</td>
+                </tr>
+                <tr>
+                    <th>Dissonanz</th>
+                    <td>260</td>
+                    <td>290</td>
+                    <td>275</td>
+                    <td>30</td>
+                </tr>
+            </table>
+
+        </article>
+
+        <article id="a4">
+            <h2>Aufgabe 4: Klangnachbildung</h2>
+
+            <div class="task-description">Wir wollen nun versuchen, selber einen interessanten Klang zu
+                kreieren. Die einzigen Anforderungen sind, dass wir dazu die Taste Y drücken, und dass
+                es ein monophoner Klang ist, d.h. dass nur eine Taste gedrückt wird und eine Note
+                erklingt. Zunächst wählen wir die Grundwellenform (Rechteck, Sägezahn, etc.), die
+                klanglich am besten zu unserem Instrument passt. Um die Hüllkurve entsprechend
+                manipulieren zu können, brauchen wir ein ADSR-Modul („Envelope“), das wir zwischen
+                dem Ausgang GATE des MIDI-Moduls und EXP Eingängen der VCAs einbauen.
+                Damit versuchen wir zunächst den zeitlichen Verlauf einzustellen.</div>
+
+            <p>folgt...</p>
+        </article>
+
+
+</html>
