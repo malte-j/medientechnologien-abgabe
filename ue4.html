@@ -116,8 +116,20 @@
             <p>
                 Die mittlere Helligkeit haben wir in Excel berechnet. Hier die Formel dafür:
                 <div class="math">
-                    86.19
+                    Summe aller Helligkeitswerte: 44683777
+                    geteilt durch Anzahl Bildpunkte: 518400
+                    = 86.19
                 </div>
+            </p>
+
+            <p>
+                Den Kontrast des Bildes haben wir ebenfalls in Excel berechnet mit der Formel:
+                <div class="math">
+                    =STABW(B2:B257)
+                    ergbibt Standardabweichung Helligkeit = 1759,48301
+                </div>
+                Auch hier nochmal zum Nachvollziehen unseren Tabelle: <a href="https://docs.google.com/spreadsheets/d/1pGSrrEc2yAAvmv_PRmD9fYremb0DpXwSyAQCYOYD9gQ/edit?usp=sharing">Link zur Tabelle mit der Berechnung</a>
+
             </p>
 
             <h3><div class="list-indicator">1B</div> Helligkeit verändern</h3>
@@ -126,6 +138,23 @@
                 bzw. Addieren der Werte h=(20, 40, 60, 80). Beachte dabei, dass ihr beim Ergebnis der Pixelwertberechnung im 8-Bit-Bereich bleibt. Berechne die Histogramme des hellsten und dunkelsten Bildes.
                 </div>
 
+            <p>Subtrahieren der Werte:</p>
+            <img src="./pics/a4/A4_3/nature_04_min_20.bmp" alt="minus 20">
+            <img src="./pics/a4/A4_3/nature_04_min_40.bmp" alt="minus 40">
+            <img src="./pics/a4/A4_3/nature_04_min_60.bmp" alt="minus 60">
+            <img src="./pics/a4/A4_3/nature_04_min_80.bmp" alt="minus 80">
+
+            <p>Addieren der Werte:</p>
+            <img src="./pics/a4/A4_3/nature_04_plus_20.bmp" alt="plus 20">
+            <img src="./pics/a4/A4_3/nature_04_plus_40.bmp" alt="plus 40">
+            <img src="./pics/a4/A4_3/nature_04_plus_60.bmp" alt="plus 60">
+            <img src="./pics/a4/A4_3/nature_04_plus_80.bmp" alt="plus 80">
+
+            <p>Histogramm des kontrastärmsten Bildes:</p>
+            <img src="./pics/a4/Screenshot 2020-11-21 at 17.45.54.png" alt="">
+
+            <p>Histogramm des kontrastreichsten Bildes:</p>
+            <img src="./pics/a4/Screenshot 2020-11-21 at 17.46.04.png" alt="">
             <h3>
                 <div class="list-indicator">1C</div> Kontraständerung
             </h3>
