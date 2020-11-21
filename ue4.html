@@ -50,6 +50,17 @@
                 (Hinweis: Dazu müssen einfach die jeweils anderen Farbwerte auf null gesetzt werden).
                 </div>
 
+            <p>Um die verschiedenen Bilder zu generieren, ändern wir jeweils <code>PixelColor(0,0,col.b)</code> zu <code>PixelColor(0,col.g,0)</code>, usw.</p>
+
+            <pre><code class="lang-java">
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                    for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                        PixelColor col = bmp.image.getRgbPixel(x,y);
+                        bmp.image.setRgbPixel(x,y, new PixelColor(0, 0, col.b));
+                    }
+                }
+            </code></pre>
+
             <img src="./pics/a4/A1/nature_04_red.bmp" alt="red">
 
             <img src="./pics/a4/A1/nature_04_green.bmp" alt="green">
@@ -62,12 +73,37 @@
     
             <div class="task-description">c. Nun erzeuge jeweils ein Bild für Y, Cb und Cr. Lese dafür jedes Pixel ein und berechne die Helligkeit Y
                 (Luminanzformel!) sowie die Chrominanzen Cb und Cr (Chrominanzformeln!) aus den RGB Werten.</div>
+            <p>
+                Hier wird, um die Bilder für y, cb und cr zu erzeugen, in der letzte Zeile für die Bilder jeweils <code>yy</code>, <code>cb</code> oder <code>cr</code> im <code>new PixelColor(...)</code> eingesetzt.
+            </p>
+            <pre><code class="lang-java">
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                    for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                        PixelColor col = bmp.image.getRgbPixel(x,y);
+                        double yy = (0.299 * col.r) + (0.587 * col.g) + (0.114 * col.b);
+                        double cb = ((-0.169 * col.r) + (-0.331 * col.g) + (0.5 * col.b)) + 128;
+                        double cr = ((0.5 * col.r) + (-0.419 * col.g) + (-0.081 * col.b)) + 128;
+         
+                        bmp.image.setRgbPixel(x,y, new PixelColor((int) cb, (int) cb, (int) cb));
+                    }
+                }
+         
+            </code></pre>
 
-            <img src="./pics/a4/A1/nature_04_y.bmp" alt="y">
+            <figure>
+                <img src="./pics/a4/A1/nature_04_y.bmp" alt="y">
+                <figcaption>Bild Y-Kanal</figcaption>
+            </figure>
 
-            <img src="./pics/a4/A1/nature_04_cb.bmp" alt="cb">
+            <figure>
+                <img src="./pics/a4/A1/nature_04_cb.bmp" alt="cb">
+                <figcaption>Bild Cb-Kanal</figcaption>
+            </figure>
 
-            <img src="./pics/a4/A1/nature_04_cr.bmp" alt="cr">
+            <figure>
+                <img src="./pics/a4/A1/nature_04_cr.bmp" alt="cr">
+                <figcaption>Bild Cr-Kanal</figcaption>
+            </figure>
 
             <h3>
                 <div class="list-indicator">1D</div> Rekonstruktion
@@ -75,7 +111,32 @@
 
             <div class="task-description">d. Wandle zur Rekonstruktion deines Bildes die YCbCr Werte zurück in RGB</div>
 
-            <img src="./pics/a4/A1/nature_04_recalculated.bmp" alt="">
+            <p>Dieses Bild ist tatsächlich nicht einfach nur das Ursprungsbild, sondern ein neues Bild mit den zurückberechneten RGB-Werten.</p>
+
+            <pre><code class="lang-java">
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                    for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                        PixelColor col = bmp.image.getRgbPixel(x,y);
+                       
+                        // calculate y cb cr from rgb of image
+                        double yy = (0.299 * col.r) + (0.587 * col.g) + (0.114 * col.b);
+                        double cb = ((-0.169 * col.r) + (-0.331 * col.g) + (0.5 * col.b)) + 128;
+                        double cr = ((0.5 * col.r) + (-0.419 * col.g) + (-0.081 * col.b)) + 128;
+                 
+                        // calculate values from calculated y cb cr
+                        double rr = (yy) + (1.403 * (cr - 128));
+                        double gg = yy + (-0.344 * (cb - 128)) + (-0.714 * (cr - 128));
+                        double bb = yy + (1.773 * (cb - 128));
+                 
+                        bmp.image.setRgbPixel(x,y, new PixelColor((int) rr, (int) gg, (int) bb));
+                    }
+                 }
+                 
+            </code></pre>
+            <figure>
+                <img src="./pics/a4/A1/nature_04_recalculated.bmp" alt="">
+                <figcaption>Aus Y, Cb und Cr berechnetes Bild</figcaption>
+            </figure>
 
         </article>
 
