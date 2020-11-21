@@ -295,20 +295,61 @@
                 denen der Helligkeitsänderung. Was haben Helligkeits- und Kontraständerung für eine Auswirkung auf das
                 Histogramm (Vergleiche auch mit dem Histogramm aus Aufgabe 2)?</div>
 
-            <p>Multiplikation mit den Faktoren k=(0.2, 0.4, 0.8, 1.0):</p>
-            <img src="./pics/a4/A4_3_mal/nature_04_mal_0_2.bmp" alt="0.2">
-            <img src="./pics/a4/A4_3_mal/nature_04_mal_0_4.bmp" alt="0.4">
-            <img src="./pics/a4/A4_3_mal/nature_04_mal_0_8.bmp" alt="0.8">
-            <p>Kommentar: 1.0 erzeugt keine sichtbare Veränderung.</p>
+            <h4>Multiplikation mit den Faktoren k=(0.2, 0.4, 0.8, 1.0):</h4>
+            <figure>
+                <img src="./pics/a4/A4_3_mal/nature_04_mal_0_2.bmp" alt="0.2">
+                <figcaption>Helligkeit * 0,2</figcaption>
+            </figure>
+            <figure>
+                <img src="./pics/a4/A4_3_mal/nature_04_mal_0_4.bmp" alt="0.4">
+                <figcaption>Helligkeit * 0,4</figcaption>
+            </figure>
+            <figure>
+                <img src="./pics/a4/A4_3_mal/nature_04_mal_0_8.bmp" alt="0.8">
+                <figcaption>Helligkeit * 0,8</figcaption>
+            </figure>
+            
+            <p>Ein Bild mit den Werten * 1 würde sich nicht verändern, deshalb haben wir hier das Bild weggelassen.</p>
 
-            <p>Multiplikation mit den Faktoren k=(1.5, 2.5, 5.0, 10.0):</p>
-            <img src="./pics/a4/A4_3_mal/nature_04_mal_1_5.bmp" alt="1.5">
-            <img src="./pics/a4/A4_3_mal/nature_04_mal_2_5.bmp" alt="2.5">
-            <img src="./pics/a4/A4_3_mal/nature_04_mal_5_0.bmp" alt="5.0">
-            <img src="./pics/a4/A4_3_mal/nature_04_mal_10_0.bmp" alt="10.0">
+            <h4>Multiplikation mit den Faktoren k=(1.5, 2.5, 5.0, 10.0):</h4>
 
-            <p>Was passiert bei Kontraständerung mit k &lt; 0 ?</p>
+            <figure>
+                <img src="./pics/a4/A4_3_mal/nature_04_mal_1_5.bmp" alt="1.5">
+                <figcaption>Helligkeit * 1,5</figcaption>
+            </figure>
+
+            <figure>
+                <img src="./pics/a4/A4_3_mal/nature_04_mal_2_5.bmp" alt="2.5">
+                <figcaption>Helligkeit * 3,5</figcaption>
+            </figure>
+            <figure>
+                <img src="./pics/a4/A4_3_mal/nature_04_mal_5_0.bmp" alt="5.0">
+                <figcaption>Helligkeit * 5</figcaption>
+            </figure>
+            <figure>
+                <img src="./pics/a4/A4_3_mal/nature_04_mal_10_0.bmp" alt="10.0">
+                <figcaption>Helligkeit * 10, das kontrastreichste Bild</figcaption>
+            </figure>
+
+            <h4>Was passiert bei Kontraständerung mit k &lt; 0 ?</h4>
+            <p>Da bei einer Multiplikation mit einer negativen Zahl die Werte nicht mehr im positiven 8-Bit Raum liegen, würde das ganze Bild schwarz werden, da aller Werte &lt;0 auf 0 gesetzt werden. Wir nehemen aber an, dass Sie ein invertiertes Bild erwarten, also haben wir unseren Code entsprechend angepasst, um ein invertiertes Bild erzeugen zu können:</p>
+            
+            <pre><code class="lang-java">
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                    for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                        PixelColor col = bmp.image.getRgbPixel(x,y);
+                        int val = (int)(col.r * -1)+255;
+                        int valClamped = Math.max(0, Math.min(255, val));
+         
+                        bmp.image.setRgbPixel(x,y, new PixelColor(valClamped, valClamped, valClamped));
+                        pixelColors[valClamped]++;
+                    }
+                }
+         
+            </code></pre>
+
             <img src="./pics/a4/A4_3/nature_04_inverted.bmp" alt="inverted">
+
 
             <p>Histogramm des kontrastärmsten Bildes:</p>
             <img src="./pics/a4/Screenshot 2020-11-21 at 17.45.54.png" alt="">
