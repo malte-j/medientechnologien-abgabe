@@ -147,7 +147,7 @@
 
 
             <h3>
-                <div class="list-indicator">1A</div> Verteilung der Helligkeiten
+                <div class="list-indicator">2A</div> Verteilung der Helligkeiten
             </h3>
 
             <div class="task-description">Mithilfe eines Histogramms kann die Verteilung (Häufigkeit) der Helligkeiten eines Bildes dargestellt
@@ -155,6 +155,28 @@
                 Helligkeitswert der Pixel ein und bestimme die Helligkeitshäufigkeiten (Anzahl gleicher Helligkeiten). Diese
                 sollen in eine Textdatei geschrieben und als Histogramm dargestellt werden (z.B. in Excel, Java).</div>
 
+            <p>Wir schreiben die Anzahl der jeweiligen Helligkeiten in eine Datei, wobei die Zeile den Helligkeitswert und die Zahl in der Zeile die Anzahl der Pixel mit diesem Helligkeitswert angibt.</p>
+
+            <pre><code class="lang-java">
+                // store pixel frequency in array, index = color, value = frequency
+                int[] pixelColors = new int[256];
+
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                    PixelColor col = bmp.image.getRgbPixel(x,y);
+                    pixelColors[col.r]++;
+                }
+                }
+
+                // write to file, newline separated, color value = row number
+                PrintWriter writer = new PrintWriter("brightnessValueFrequency.txt", "UTF-8");
+                for(int i : pixelColors) {
+                writer.println(i);
+                }
+                writer.close();
+            </code></pre>
+
+            <p>Die Auswertung haben wir in Google Sheets umgesetzt:</p>
             <img src="./pics/a4/Screenshot 2020-11-21 at 14.29.08.png" alt="verteilung y">
             <a href="https://docs.google.com/spreadsheets/d/1pGSrrEc2yAAvmv_PRmD9fYremb0DpXwSyAQCYOYD9gQ/edit?usp=sharing">Link zur Tabelle mit den einzelnen Werten</a>
 
@@ -199,17 +221,63 @@
                 bzw. Addieren der Werte h=(20, 40, 60, 80). Beachte dabei, dass ihr beim Ergebnis der Pixelwertberechnung im 8-Bit-Bereich bleibt. Berechne die Histogramme des hellsten und dunkelsten Bildes.
                 </div>
 
+            <p>Hier wird bei <code>col.r - 20</code> jeweils der zu subtrahierende oder addierende Wert eingefügt.</p>
+            <pre><code class="lang-java">
+                for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                    for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                        PixelColor col = bmp.image.getRgbPixel(x,y);
+                        int val = (int)(col.r -20);
+                        int valClamped = Math.max(0, Math.min(255, val));
+         
+                        bmp.image.setRgbPixel(x,y, new PixelColor(valClamped, valClamped, valClamped));
+                        pixelColors[valClamped]++;
+                    }
+                }
+         
+            </code></pre>
+
             <p>Subtrahieren der Werte:</p>
-            <img src="./pics/a4/A4_3/nature_04_min_20.bmp" alt="minus 20">
-            <img src="./pics/a4/A4_3/nature_04_min_40.bmp" alt="minus 40">
-            <img src="./pics/a4/A4_3/nature_04_min_60.bmp" alt="minus 60">
-            <img src="./pics/a4/A4_3/nature_04_min_80.bmp" alt="minus 80">
+
+            <figure>
+                <img src="./pics/a4/A4_3/nature_04_min_20.bmp" alt="minus 20">
+                <figcaption>Helligkeit - 20</figcaption>
+            </figure>
+
+
+            <figure>
+                <img src="./pics/a4/A4_3/nature_04_min_40.bmp" alt="minus 40">
+                <figcaption>Helligkeit - 40</figcaption>
+            </figure>
+            
+            <figure>
+                <img src="./pics/a4/A4_3/nature_04_min_60.bmp" alt="minus 60">
+                <figcaption>Helligkeit - 60</figcaption>
+            </figure>
+
+            <figure>
+                <img src="./pics/a4/A4_3/nature_04_min_80.bmp" alt="minus 80">
+                <figcaption>Helligkeit - 80, das dunkelste Bild</figcaption>
+            </figure>
+            
 
             <p>Addieren der Werte:</p>
-            <img src="./pics/a4/A4_3/nature_04_plus_20.bmp" alt="plus 20">
-            <img src="./pics/a4/A4_3/nature_04_plus_40.bmp" alt="plus 40">
-            <img src="./pics/a4/A4_3/nature_04_plus_60.bmp" alt="plus 60">
-            <img src="./pics/a4/A4_3/nature_04_plus_80.bmp" alt="plus 80">
+
+            <figure>
+                <img src="./pics/a4/A4_3/nature_04_plus_20.bmp" alt="plus 20">
+                <figcaption>Helligkeit + 20</figcaption>
+            </figure>
+            <figure>
+                <img src="./pics/a4/A4_3/nature_04_plus_40.bmp" alt="plus 40">
+                <figcaption>Helligkeit + 40</figcaption>
+            </figure>
+            <figure>
+                <img src="./pics/a4/A4_3/nature_04_plus_60.bmp" alt="plus 60">
+                <figcaption>Helligkeit + 60</figcaption>
+            </figure>
+            <figure>
+                <img src="./pics/a4/A4_3/nature_04_plus_80.bmp" alt="plus 80">
+                <figcaption>Helligkeit + 80, das hellste Bild</figcaption>
+            </figure>
 
             <p>Histogramm des hellsten Bildes:</p>
             <img src="./pics/a4/Screenshot 2020-11-21 at 17.45.54.png" alt="">
