@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="format.css">
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./prism/prism.css">
+    <script src="./charts/Chart.min.js"></script>
+</head>
+
+<body class="page">
+
+    <div class="main">
+
+        <!--Aufgabe 1-->
+
+        <article id="a1">
+            <h2>Aufgabe 1: RGB und YCbCr</h2>
+
+            <h3>
+                <div class="list-indicator">1A</div> Warum wird Helligkeits- und Farbinformation getrennt verarbeitet?
+            </h3>
+
+            <div class="task-description">a. RGB ist der gebräuchlichste Farbraum bei der Aufzeichnung und Darstellung von Bildern. Hier wird das
+                Lichtspektrum in seine Rot-, Grün- und Blauanteile aufgespalten. Der YCbCr Farbraum hingegen besteht aus
+                der Luminanz Y (Helligkeit) und den Farbanteilen (Chrominanz) Cb und Cr. Die RGB Farben eines Bildes
+                lassen sich also in den YCbCr Farbraum transformieren. Für viele Anwendungen, z.B. die Bildkompression,
+                ist es günstig, Helligkeits- und Farbinformation getrennt zu verarbeiten. Nenne den physiologischen Grund
+                dafür!</div>
+            
+            <p>Der Vorteil dieses Bildraums ist die Anlehnung an dem natürlichen Verhalten des Auges. Wie man auf folgendem Bild sieht haben wir sowohl hell-dunkel empfindliche Stäbchen, als auch RGB empfindliche Zäpfchen im Auge verbaut:
+            </p>
+
+            <img src="./pics/a4/farbensehen142__v-img__16__9__l_-1dc0e8f74459dd04c91a0d45af4972b9069f1135.jpg" alt="auge">
+
+            <p>Die unterschiedliche Wahrnehmung von Y gegenüber den Cb- und Cr-Kanälen entspricht also der Entwicklung der Farb- und Helligkeitsverteilung in der Natur. Viele Informationen sind nur oder überwiegend in der Helligkeit gespeichert, die Farbe variiert kaum. So haben wir zum Beispiel bei einem Gebirgszug in grau mit weißem Schnee bedeckt fast keine Farbzüge und die relevanteste Information ist die Helligkeit, also das Y.</p>
+
+            <p>Im Laufe der Evolution hat sich unser menschliche Sehsinn an diese Gegebenheiten angepasst. Das Auge kann geringe Helligkeitsunterschiede besser erkennen als kleine Farbtonunterschiede, und diese besser als kleine Farbsättigungsunterschiede.</p>
+                
+            <p>Als Beispiel: so ist ein Text grau auf schwarz geschrieben gut zu lesen, blau auf rot geschrieben bei gleicher Grundhelligkeit jedoch nur sehr schlecht:</p>
+                
+            <img src="./pics/a4/A1/Screenshot 2020-11-21 at 17.17.39.png" alt="Text Farbe Vergleich">
+
+            <h3>
+                <div class="list-indicator">1B</div> Bild Versionen aus RGB
+            </h3>
+
+            <div class="task-description">b. Erstelle aus deinem eigenen Bild Versionen, die nur jeweils den Rot-, Grün- und Blauanteil zeigen.
+                (Hinweis: Dazu müssen einfach die jeweils anderen Farbwerte auf null gesetzt werden).
+                </div>
+
+            <h3>
+                <div class="list-indicator">1C</div> Helligkeit Y und die Chrominanzen Cb und Cr 
+            </h3>
+    
+            <div class="task-description">c. Nun erzeuge jeweils ein Bild für Y, Cb und Cr. Lese dafür jedes Pixel ein und berechne die Helligkeit Y
+                (Luminanzformel!) sowie die Chrominanzen Cb und Cr (Chrominanzformeln!) aus den RGB Werten.</div>
+
+            <h3>
+                <div class="list-indicator">1D</div> Rekonstruktion
+            </h3>
+
+            <div class="task-description">d. Wandle zur Rekonstruktion deines Bildes die YCbCr Werte zurück in RGB</div>
+
+        </article>
+
+        <!--Aufgabe 2-->
+
+        <article id="a2">
+            <h2>Aufgabe 2: Histogramm</h2>
+
+
+            <h3>
+                <div class="list-indicator">1A</div> Verteilung der Helligkeiten
+            </h3>
+
+            <div class="task-description">Mithilfe eines Histogramms kann die Verteilung (Häufigkeit) der Helligkeiten eines Bildes dargestellt
+                werden. Erstelle ein Histogramm für das monochrome Detailbild aus Aufgabe 1 (Y - Bild). Lese dafür den
+                Helligkeitswert der Pixel ein und bestimme die Helligkeitshäufigkeiten (Anzahl gleicher Helligkeiten). Diese
+                sollen in eine Textdatei geschrieben und als Histogramm dargestellt werden (z.B. in Excel, Java).</div>
+
+            <img src="./pics/a4/Screenshot 2020-11-21 at 14.29.08.png" alt="verteilung y">
+            <a href="https://docs.google.com/spreadsheets/d/1pGSrrEc2yAAvmv_PRmD9fYremb0DpXwSyAQCYOYD9gQ/edit?usp=sharing">Link zur Tabelle mit den einzelnen Werten</a>
+
+        </article>
+
+        <!--Aufgabe 3-->
+
+        <article id="a3">
+            <h2>Aufgabe 3: Helligkeit und Kontrast</h2>
+
+
+            <h3>
+                <div class="list-indicator">1A</div> Mittlere Helligkeit
+            </h3>
+
+            <div class="task-description">a. Berechne die mittlere Helligkeit des monochromen Detailbildes aus Aufgabe 1 (Y - Bild). Lese dafür den
+                Helligkeitswert der Pixel ein. Die mittlere Helligkeit ist die Summe aller Helligkeitswerte geteilt durch die
+                Anzahl der Bildpunkte. Berechne auch den Kontrast des Bildes, d.h. die Standardabweichung der Helligkeit.
+                </div>
+
+            <h3>
+                <div class="list-indicator">1B</div> Helligkeit verändern
+            </h3>
+
+            <div class="task-description">b. Verändere das monochrome Bild in der Helligkeit durch Subtrahieren der Werte h=(-20, -40, -60, -80)
+                bzw. Addieren der Werte h=(20, 40, 60, 80). Beachte dabei, dass ihr beim Ergebnis der Pixelwertberechnung im 8-Bit-Bereich bleibt. Berechne die Histogramme des hellsten und dunkelsten Bildes.
+                </div>
+
+            <h3>
+                <div class="list-indicator">1C</div> Kontraständerung
+            </h3>
+
+            <div class="task-description">c. Erhöhe bzw. verringere den Kontrast durch Multiplikation mit den Faktoren k=(0.2, 0.4, 0.8, 1.0) sowie
+                k=(1.5, 2.5, 5.0, 10.0). Was würde bei einer Kontraständerung mit k < 0 passieren (Einfach ausprobieren
+                und Bild speichern!)?
+                Berechne auch hier das Histogramm des kontrastärmsten und kontrastreichsten Bildes und vergleiche mit
+                denen der Helligkeitsänderung. Was haben Helligkeits- und Kontraständerung für eine Auswirkung auf das
+                Histogramm (Vergleiche auch mit dem Histogramm aus Aufgabe 2)?</div>
+
+            <p>richtig</p>
+        </article>
+
+</div>
+<script src="./prism/prism.js"></script>
+<link rel="stylesheet" href="./lightbox/glightbox.min.css">
+<script src="./lightbox/glightbox.min.js"></script>
+<script>
+    const lightbox = GLightbox({
+        selector: "img:not([src$='bmp'])",
+        preload: false
+    });
+</script>
+</body>
+
+</html>
