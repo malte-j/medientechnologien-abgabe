@@ -162,16 +162,16 @@
                 int[] pixelColors = new int[256];
 
                 for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
-                for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
-                    PixelColor col = bmp.image.getRgbPixel(x,y);
-                    pixelColors[col.r]++;
-                }
+                    for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                        PixelColor col = bmp.image.getRgbPixel(x,y);
+                        pixelColors[col.r]++;
+                    }
                 }
 
                 // write to file, newline separated, color value = row number
                 PrintWriter writer = new PrintWriter("brightnessValueFrequency.txt", "UTF-8");
                 for(int i : pixelColors) {
-                writer.println(i);
+                    writer.println(i);
                 }
                 writer.close();
             </code></pre>
@@ -199,17 +199,17 @@
             <p>
                 Die mittlere Helligkeit haben wir in Excel berechnet. Hier die Formel dafür:
                 <div class="math">
-                    Summe aller Helligkeitswerte: 44683777
-                    geteilt durch Anzahl Bildpunkte: 518400
-                    = 86.19
+Summe aller Helligkeitswerte: 44683777
+geteilt durch Anzahl Bildpunkte: 518400
+= 86.19
                 </div>
             </p>
 
             <p>
                 Den Kontrast des Bildes haben wir ebenfalls in Excel berechnet mit der Formel:
                 <div class="math">
-                    =STABW(B2:B257)
-                    ergbibt Standardabweichung Helligkeit = 1759,48301
+=STABW(B2:B257)
+ergbibt Standardabweichung Helligkeit = 1759,48301
                 </div>
                 Auch hier nochmal zum Nachvollziehen unseren Tabelle: <a href="https://docs.google.com/spreadsheets/d/1pGSrrEc2yAAvmv_PRmD9fYremb0DpXwSyAQCYOYD9gQ/edit?usp=sharing">Link zur Tabelle mit der Berechnung</a>
 
