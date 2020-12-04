@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="format.css">
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./prism/prism.css">
+    <script src="./charts/Chart.min.js"></script>
+</head>
+
+<body class="page">
+
+    <div class="main">
+
+        <!--Aufgabe 1-->
+
+        <article id="a1">
+            <h2>Aufgabe 1: Klirrfaktor</h2>
+
+          <h3>
+                <div class="list-indicator">1A</div> Clipping
+            </h3>
+
+            <div class="task-description">Zunächst sollt ihr eure Musikdatei um die Verstärkung 3, 6 und 9dB verstärken. Dies
+                realisiert ihr durch Multiplikation der Abtastwerte mit dem linearen Verstärkungsfaktor F, den
+                ihr zunächst aus der Verstärkung in dB berechnen müsst.
+                Dabei wird es bei hoher Verstärkung zwangsläufig zu einem sogenannten Clipping kommen, d.h.
+                das Produkt aus der Originalamplitude und dem Verstärkungsfaktor ist betragsmäßig größer als
+                der maximal darstellbare Amplitudenwert (bei 16 bit < -32768 bzw. > 32767). In diesem Fall
+                muss dafür gesorgt werden, dass der resultierende Wert auf genau -32768, bzw. 32767 gesetzt
+                wird. Clipping ist akustisch als immer stärker werdende Verzerrung des Musiksignals
+                wahrnehmbar.
+            </div>
+            
+            
+            <h3>
+                <div class="list-indicator">1B</div> Bild Versionen aus RGB
+            </h3>
+
+            <div class="task-description">Bei welcher Verstärkung wird eine Verzerrung wahrnehmbar?</div>
+
+
+            <h3>
+                <div class="list-indicator">1C</div> Klirrfaktor k
+            </h3>
+    
+            <div class="task-description">Ihr sollt nun die 1kHz-Sinusschwingung um 6, 9 und 12 dB verstärken und den
+                resultierenden Klirrfaktor k berechnen. Der Klirrfaktor lässt sich aus dem Frequenzspektrum
+                berechnen (GRAM: FFT Size 512, Praat: Analyse Spectrum …, alle sichtbaren Obertöne für die
+                Berechnungberücksichtigen!).
+            </div>
+
+        </article>
+
+        <!--Aufgabe 2-->
+
+        <article id="a2">
+            <h2>Aufgabe 2: Echo</h2>
+
+
+            <h3>
+                <div class="list-indicator">2A</div> Echo mit einer Verzögerung von 10, 100 und 200ms
+            </h3>
+
+            <div class="task-description">Implementiert ein Echo mit einer Verzögerung von 10, 100 und 200ms und dem
+                Verstärkungsfaktor a = 0.6. Um wie viele Abtastwerte N müssen wir verzögern, wenn wir mit
+                einer Abtastrate von 44.1 kHz arbeiten?</div>
+
+            <h3>
+                <div class="list-indicator">2B</div> Echo auf eure Sprach- und Musiksignal anwenden
+            </h3>
+
+            <div class="task-description">Wendet das Echo auf eure Sprach- und Musiksignal an. Es kann sein, dass die 10ms nur bei
+                einem recht trockenen Soundfile wie der Sprachaufnahme hörbar werden.
+                Hinweis: Bei Stereodateien muss berücksichtigt werden, dass linker und rechter Kanal getrennt
+                verzögert werden müssen. Die Samples für links und rechts liegen im Samplearray jeweils
+                hintereinander.
+            </div>
+
+        </article>
+
+        <!--Aufgabe 3-->
+
+        <article id="a3">
+            <h2>Aufgabe 3: Einfaches Filter</h2>
+
+            <h3>
+                <div class="list-indicator">3A</div> Musikdatei mit Filterung
+            </h3>
+
+            <div class="task-description">Ein sehr einfaches Filter kann man z.B. mit der Zuordnungsvorschrift
+                y(k) = 0.5 * x(k) + 0.45 * x(k-1)
+                realisieren. Programmiert das Filter und vergleicht die Musikdatei vor und nach der Filterung.
+                Tut dasselbe mit der Zuordnungsvorschrift
+                y(k) = 0.5 * x(k) - 0.45 * x(k-1)
+            </div>
+
+            <h3><div class="list-indicator">3B</div> Weißes Rauschen</h3>
+
+            <div class="task-description">Zum Testen der Filter verwendet Weißes Rauschen, das alle Frequenzen enthält. Wenn wir
+                nun den Frequenzverlauf des Originalaudios mit dem gefilterten vergleichen, muss sich ein
+                Verlauf wie in der unteren Darstellung ergeben. Um eine Glättung des Spektrums zu erzielen, bei
+                GRAM 'Spectrum Average' auf 100 setzen. Um was für eine Art Filter handelt es sich jeweils?
+            </div>
+
+        </article>
+
+</div>
+<script src="./prism/prism.js"></script>
+<link rel="stylesheet" href="./lightbox/glightbox.min.css">
+<script src="./lightbox/glightbox.min.js"></script>
+<script>
+    const lightbox = GLightbox({
+        selector: "img:not([src$='bmp'])",
+        preload: false
+    });
+</script>
+</body>
+
+</html>
