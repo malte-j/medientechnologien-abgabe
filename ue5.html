@@ -18,7 +18,7 @@
         <article id="a1">
             <h2>Aufgabe 1: Klirrfaktor</h2>
 
-          <h3>
+            <h3>
                 <div class="list-indicator">1A</div> Clipping
             </h3>
 
@@ -32,24 +32,70 @@
                 wird. Clipping ist akustisch als immer stärker werdende Verzerrung des Musiksignals
                 wahrnehmbar.
             </div>
+
+            <p>Musikdatei mit Verstärkung 3dB</p>
+
+            <audio controls>
+				<source src="./audio/a5/A1_musik_04_amp_3.wav" type="audio/wav">
+			</audio>
             
+            <p>Musikdatei mit Verstärkung 6dB</p>
+
+            <audio controls>
+				<source src="./audio/a5/A1_musik_04_amp_6.wav" type="audio/wav">
+			</audio>
+
+            <p>Musikdatei mit Verstärkung 9dB</p>
+
+            <audio controls>
+				<source src="./audio/a5/A1_musik_04_amp_9.wav" type="audio/wav">
+            </audio>
             
+            <p>Code:</p>
+
+            <pre><code class="lang-java">
+            // store pixel frequency in array, index = color, value = frequency
+            int[] pixelColors = new int[256];
+
+            for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                    PixelColor col = bmp.image.getRgbPixel(x,y);
+                    pixelColors[col.r]++;
+                }
+            }
+
+            // write to file, newline separated, color value = row number
+            PrintWriter writer = new PrintWriter("brightnessValueFrequency.txt", "UTF-8");
+            for(int i : pixelColors) {
+                writer.println(i);
+            }
+            writer.close();
+            </code></pre>
+
             <h3>
                 <div class="list-indicator">1B</div> Bild Versionen aus RGB
             </h3>
 
             <div class="task-description">Bei welcher Verstärkung wird eine Verzerrung wahrnehmbar?</div>
 
+            <p>Hörbarer Unterschied ab Verstärkung 20dB</p>
+
+            <audio controls>
+                <source src="./audio/a5/A1_musik_04_amp_20.wav" type="audio/wav">
+            </audio>
 
             <h3>
                 <div class="list-indicator">1C</div> Klirrfaktor k
             </h3>
-    
+
             <div class="task-description">Ihr sollt nun die 1kHz-Sinusschwingung um 6, 9 und 12 dB verstärken und den
                 resultierenden Klirrfaktor k berechnen. Der Klirrfaktor lässt sich aus dem Frequenzspektrum
                 berechnen (GRAM: FFT Size 512, Praat: Analyse Spectrum …, alle sichtbaren Obertöne für die
                 Berechnungberücksichtigen!).
             </div>
+
+            <!--TODO!!-->
+            <p>folgt sobald wir Audio Datei haben</p>
 
         </article>
 
@@ -58,7 +104,6 @@
         <article id="a2">
             <h2>Aufgabe 2: Echo</h2>
 
-
             <h3>
                 <div class="list-indicator">2A</div> Echo mit einer Verzögerung von 10, 100 und 200ms
             </h3>
@@ -66,6 +111,16 @@
             <div class="task-description">Implementiert ein Echo mit einer Verzögerung von 10, 100 und 200ms und dem
                 Verstärkungsfaktor a = 0.6. Um wie viele Abtastwerte N müssen wir verzögern, wenn wir mit
                 einer Abtastrate von 44.1 kHz arbeiten?</div>
+
+            <p>Um N = 44100 * s  Werte.</p>
+
+            <h3>Erstes Echo</h3>
+
+            <p>Echo mit einer Verzögerung von 10ms</p>
+
+            <p>Echo mit einer Verzögerung von 100ms</p>
+
+            <p>Echo mit einer Verzögerung von 200ms</p>
 
             <h3>
                 <div class="list-indicator">2B</div> Echo auf eure Sprach- und Musiksignal anwenden
@@ -77,6 +132,34 @@
                 verzögert werden müssen. Die Samples für links und rechts liegen im Samplearray jeweils
                 hintereinander.
             </div>
+
+            <h3>Sprachsignal</h3>
+
+            <p>Echo mit einer Verzögerung von 10ms</p>
+
+            <p>Echo mit einer Verzögerung von 100ms</p>
+
+            <p>Echo mit einer Verzögerung von 200ms</p>
+
+            <h3>Musiksignal</h3>
+
+            <p>Echo mit einer Verzögerung von 10ms</p>
+
+            <audio controls>
+                <source src="./audio/a5/A1_musik_04_echo_10.wav" type="audio/wav">
+            </audio>
+
+            <p>Echo mit einer Verzögerung von 100ms</p>
+
+            <audio controls>
+                <source src="./audio/a5/A1_musik_04_echo_100.wav" type="audio/wav">
+            </audio>
+
+            <p>Echo mit einer Verzögerung von 200ms</p>
+
+            <audio controls>
+                <source src="./audio/a5/A1_musik_04_echo_200.wav" type="audio/wav">
+            </audio>
 
         </article>
 
