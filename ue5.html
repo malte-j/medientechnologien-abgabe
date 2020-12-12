@@ -51,25 +51,32 @@
 				<source src="./audio/a5/A1_musik_04_amp_9.wav" type="audio/wav">
             </audio>
             
-            <p>Code:</p>
+            <p>Code main:</p>
 
             <pre><code class="lang-java">
-            // store pixel frequency in array, index = color, value = frequency
-            int[] pixelColors = new int[256];
-
-            for (int y = 0; y &lt; bmp.image.getHeight(); y++) {
-                for (int x = 0; x &lt; bmp.image.getWidth(); x++) {
-                    PixelColor col = bmp.image.getRgbPixel(x,y);
-                    pixelColors[col.r]++;
+            try {            
+                short[] downsampledAudio = new short[readWavFile.sound.length];
+                
+                int db = 20;
+                double a = Math.pow(10, db/20);
+                
+                for (int i = 0; i < samples; i++) {
+                    downsampledAudio[i] = clamp(a * readWavFile.sound[i]);
                 }
+                
+                WavFile.write_wav(outFilename, numChannels, numFrames, validBits, sampleRate, downsampledAudio);
+            } catch (Exception e) {
+                System.err.println(e);
+                e.printStackTrace();
             }
+            </code></pre>
 
-            // write to file, newline separated, color value = row number
-            PrintWriter writer = new PrintWriter("brightnessValueFrequency.txt", "UTF-8");
-            for(int i : pixelColors) {
-                writer.println(i);
+            <p>Code clamp:</p>
+
+            <pre><code class="lang-java">
+            static short clamp(double d) {
+                return (short) Math.min(Short.MAX_VALUE, Math.max(Short.MIN_VALUE, d));
             }
-            writer.close();
             </code></pre>
 
             <h3>
@@ -91,11 +98,26 @@
             <div class="task-description">Ihr sollt nun die 1kHz-Sinusschwingung um 6, 9 und 12 dB verstärken und den
                 resultierenden Klirrfaktor k berechnen. Der Klirrfaktor lässt sich aus dem Frequenzspektrum
                 berechnen (GRAM: FFT Size 512, Praat: Analyse Spectrum …, alle sichtbaren Obertöne für die
-                Berechnungberücksichtigen!).
+                Berechnung berücksichtigen!).
             </div>
 
-            <!--TODO!!-->
-            <p>folgt sobald wir Audio Datei haben</p>
+            <p>Klirrfaktor für 6dB</p>
+
+            <audio controls>
+                <source src="./audio/a5/sine_1k_6db.wav" type="audio/wav">
+            </audio>
+
+            <p>Klirrfaktor für 9dB</p>
+
+            <audio controls>
+                <source src="./audio/a5/sine_1k_9db.wav" type="audio/wav">
+            </audio>
+
+            <p>Klirrfaktor für 12dB</p>
+
+            <audio controls>
+                <source src="./audio/a5/sine_1k_12db.wav" type="audio/wav">
+            </audio>
 
         </article>
 
@@ -114,13 +136,21 @@
 
             <p>Um N = 44100 * s  Werte.</p>
 
-            <h3>Erstes Echo</h3>
+            <pre><code class="lang-java">
+            for (int i = 0; i < samples; i++) {
+                double ms = 200;
+                double s = ms / 1000;
+                int N = (int) (sampleRate * s * numChannels);
+                double a = 0.6;
+                int prevSample = i-N;
 
-            <p>Echo mit einer Verzögerung von 10ms</p>
+                if(prevSample > 0) {
+                    readWavFile.sound[i] = clamp(readWavFile.sound[i] + a * readWavFile.sound[prevSample]);
+                }
+            }
 
-            <p>Echo mit einer Verzögerung von 100ms</p>
-
-            <p>Echo mit einer Verzögerung von 200ms</p>
+            WavFile.write_wav(outFilename, numChannels, numFrames, validBits, sampleRate, readWavFile.sound);
+            </code></pre>
 
             <h3>
                 <div class="list-indicator">2B</div> Echo auf eure Sprach- und Musiksignal anwenden
@@ -137,9 +167,21 @@
 
             <p>Echo mit einer Verzögerung von 10ms</p>
 
+            <audio controls>
+                <source src="./audio/a5/A1_sprache_04_echo_10.wav" type="audio/wav">
+            </audio>
+
             <p>Echo mit einer Verzögerung von 100ms</p>
 
+            <audio controls>
+                <source src="./audio/a5/A1_sprache_04_echo_100.wav" type="audio/wav">
+            </audio>
+
             <p>Echo mit einer Verzögerung von 200ms</p>
+
+            <audio controls>
+                <source src="./audio/a5/A1_sprache_04_echo_200.wav" type="audio/wav">
+            </audio>
 
             <h3>Musiksignal</h3>
 
@@ -179,6 +221,45 @@
                 y(k) = 0.5 * x(k) - 0.45 * x(k-1)
             </div>
 
+            <p>Filter a:</p>
+
+            <pre><code class="lang-java">
+            // Filter a
+            for (int i = 0; i < samples; i++) {
+                int prevSample = i - 1 * numChannels;
+
+                if(prevSample > 0) {
+                    readWavFile.sound[i] = clamp(0.5 * readWavFile.sound[i] + 0.45 * readWavFile.sound[i - 1 * numChannels]);
+                }
+            }
+            </code></pre>
+
+            <p>Filter b:</p>
+
+            <pre><code class="lang-java">
+            // Filter b
+            for (int i = 0; i < samples; i++) {
+                int prevSample = i - 1 * numChannels;
+
+                if(prevSample > 0) {
+                    readWavFile.sound[i] = clamp(0.5 * readWavFile.sound[i] - 0.45 * readWavFile.sound[i - 1 * numChannels]);
+                }
+            }
+            </code></pre>
+
+            <p>Musik Filter a:</p>
+
+            <audio controls>
+                <source src="./audio/a5/A1_musik_04_filter_a.wav" type="audio/wav">
+            </audio>
+
+            <p>Musik Filter b:</p>
+
+            <audio controls>
+                <source src="./audio/a5/A1_musik_04_filter_b.wav" type="audio/wav">
+            </audio>
+
+
             <h3><div class="list-indicator">3B</div> Weißes Rauschen</h3>
 
             <div class="task-description">Zum Testen der Filter verwendet Weißes Rauschen, das alle Frequenzen enthält. Wenn wir
@@ -186,6 +267,25 @@
                 Verlauf wie in der unteren Darstellung ergeben. Um eine Glättung des Spektrums zu erzielen, bei
                 GRAM 'Spectrum Average' auf 100 setzen. Um was für eine Art Filter handelt es sich jeweils?
             </div>
+
+            <p>Rauschen Filter a:</p>
+
+            <audio controls>
+                <source src="./audio/a5/Noise_filter_a.wav" type="audio/wav">
+            </audio>
+
+            <p>Rauschen Filter b:</p>
+
+            <audio controls>
+                <source src="./audio/a5/Noise_filter_b.wav" type="audio/wav">
+            </audio>
+
+            <p>Frequenzverlauf des Originalaudios</p>
+            <img src="./pics/a5/Original.JPG" alt="Original">
+
+            <p>Gefilterter Frequenzverlauf</p>
+            <img src="./pics/a5/gefiltert1.JPG" alt="Filter">
+            <img src="./pics/a5/gefilter2.JPG" alt="Filter">
 
         </article>
 
