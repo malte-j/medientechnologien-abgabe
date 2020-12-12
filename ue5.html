@@ -51,16 +51,16 @@
 				<source src="./audio/a5/A1_musik_04_amp_9.wav" type="audio/wav">
             </audio>
             
-            <p>Code main:</p>
+            <p>Code für die Verstärkung:</p>
 
             <pre><code class="lang-java">
             try {            
                 short[] downsampledAudio = new short[readWavFile.sound.length];
                 
-                int db = 20;
+                double db = 20;
                 double a = Math.pow(10, db/20);
                 
-                for (int i = 0; i < samples; i++) {
+                for (int i = 0; i &lt samples; i++) {
                     downsampledAudio[i] = clamp(a * readWavFile.sound[i]);
                 }
                 
@@ -71,7 +71,7 @@
             }
             </code></pre>
 
-            <p>Code clamp:</p>
+            <p>Hilfsfunktion zum eingrenzen der Werte:</p>
 
             <pre><code class="lang-java">
             static short clamp(double d) {
