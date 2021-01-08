@@ -27,7 +27,7 @@
                 ihr zunächst aus der Verstärkung in dB berechnen müsst.
                 Dabei wird es bei hoher Verstärkung zwangsläufig zu einem sogenannten Clipping kommen, d.h.
                 das Produkt aus der Originalamplitude und dem Verstärkungsfaktor ist betragsmäßig größer als
-                der maximal darstellbare Amplitudenwert (bei 16 bit < -32768 bzw. > 32767). In diesem Fall
+                der maximal darstellbare Amplitudenwert (bei 16 bit &lt; -32768 bzw. > 32767). In diesem Fall
                 muss dafür gesorgt werden, dass der resultierende Wert auf genau -32768, bzw. 32767 gesetzt
                 wird. Clipping ist akustisch als immer stärker werdende Verzerrung des Musiksignals
                 wahrnehmbar.
@@ -153,7 +153,7 @@
             <p>Um N = 44100 * s  Werte.</p>
 
             <pre><code class="lang-java">
-            for (int i = 0; i < samples; i++) {
+            for (int i = 0; i &lt; samples; i++) {
                 double ms = 200;
                 double s = ms / 1000;
                 int N = (int) (sampleRate * s * numChannels);
@@ -241,7 +241,7 @@
 
             <pre><code class="lang-java">
             // Filter a
-            for (int i = 0; i < samples; i++) {
+            for (int i = 0; i &lt; samples; i++) {
                 int prevSample = i - 1 * numChannels;
 
                 if(prevSample > 0) {
@@ -254,7 +254,7 @@
 
             <pre><code class="lang-java">
             // Filter b
-            for (int i = 0; i < samples; i++) {
+            for (int i = 0; i &lt; samples; i++) {
                 int prevSample = i - 1 * numChannels;
 
                 if(prevSample > 0) {

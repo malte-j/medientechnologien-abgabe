@@ -27,6 +27,25 @@
                 berechnet. Beschreibe die Wirkung des Filters auf deine Bilder!
             </div>
 
+            <p>Code für den Mittelwertfilter:</p>
+
+            <pre><code class="lang-java">
+                // filter
+                for(int y = 1; y &lt; bmp.image.getHeight()-1; y++) {
+                    for(int x = 1;x &lt; bmp.image.getWidth()-1; x++) {
+                        // Mittelwertfilter
+                        int added = 0;
+                        for(int i = -1; i&lt;2; i++){
+                            for(int j = -1; j&lt;2; j++){
+                                added += bmp.image.getRgbPixel(x+ i, y+j).r;
+                            }
+                        }
+                        added &#47;= 9;
+                        bmp_f.image.setRgbPixel(x,y,new PixelColor(added, added, added));
+                    }
+                }
+            </code></pre>
+
             <p>Bild manmade mit Filter:</p>
 
             <img src="./pics/a6/manmade_04_mittel.bmp" alt="manmade mit filter">
@@ -35,11 +54,15 @@
 
             <img src="./pics/a6/nature_04_mittel.bmp" alt="nature mit filter">
 
+            <p>Änderungen sind vor allem in der Form sichtbar, dass die Bilder unschärfer werden.</p>
+
             <h3>
                 <div class="list-indicator">1B</div> Berechnung Filter mit Randpixeln
             </h3>
 
             <div class="task-description">Wie verfährt man bei der Berechnung des Filters mit den Randpixeln?</div>
+
+            <p>In der vorgegebenen bmp_io_ue6 wird in der for-Schleife der äußerste 1-Pixel-Rand ignoriert, indem bei 1 angefangen und bei z.B. width-1 aufgehört wird. Dadurch entstehen keine out ouf bounds Fehler, der äußerste Rand wird dadurch allerdings nicht gefiltert.</p>
 
             <h3>
                 <div class="list-indicator">1C</div> Differenzbild
@@ -50,6 +73,28 @@
                 Information zeigen, die das Filter entfernt hat. Beachte dabei, dass du das Differenzbild
                 möglicherweise im Kontrast verstärken musst (siehe Übung 4).
             </div>
+
+            <p>Code für das Differenzbild:</p>
+
+            <pre><code class="lang-java">
+                // differenzbild
+                for(int y = 0; y &lt; bmp.image.getHeight(); y++) {
+                    for(int x = 0; x &lt; bmp.image.getWidth(); x++) {
+                        int pixelDiff = (bmp.image.getRgbPixel(x,y).r - bmp_f.image.getRgbPixel(x,y).r) / 2 + 127;
+                        bmp_diff.image.setRgbPixel(x,y,new PixelColor(pixelDiff, pixelDiff, pixelDiff));
+                    }
+                }
+            </code></pre>
+
+            <p>In unserem Fall haben wir auf einen verstärkten Kontrast verzichtet, da die Differenzen klar aus unseren Bilder erkennbar ablesbar sind.</p>
+
+            <p>Bild manmade Differenz zu Orgiginalbild:</p>
+
+            <img src="./pics/a6/manmade_04_y_mittel_diff.bmp" alt="manmade differenz">
+
+            <p>Bild nature Differenzbild zu Originalbild:</p>
+
+            <img src="./pics/a6/nature_04_y_mittel_diff.bmp" alt="nature differenz">
 
         </article>
 
@@ -65,7 +110,31 @@
             <div class="task-description"> Wende nun den folgenden 3*3 Kernel auf deine Bilder an! Beachte dabei, dass bei der direkten
                 Anwendung der Vorschrift Werte > 255 entstehen können. Durch welchen Wert muss also die
                 Intensität des Zielpixels geteilt werden, damit man wieder in den erlaubten Bereich 0…255 kommt?
-                Beschreibe die Wirkung des Filters auf deine Bilder!</div>
+                Beschreibe die Wirkung des Filters auf deine Bilder!
+            </div>
+
+            <p>Code für den Gradientenfilter:</p>
+
+            <pre><code class="lang-java">
+                // Gradientenfilter
+                added += bmp.image.getRgbPixel(x, y-1).r * -2;
+                added += bmp.image.getRgbPixel(x+1, y).r + -2;
+                added += bmp.image.getRgbPixel(x-1, y).r * -2;
+                added += bmp.image.getRgbPixel(x, y+1).r * -2;
+                added += bmp.image.getRgbPixel(x, y).r * 12;
+
+                added &#47;= 20;
+                bmp_f.image.setRgbPixel(x, y, new PixelColor(added, added, added));
+            </code></pre>
+
+            <p>Bild manmade mit Gradientenfilter:</p>
+
+            <img src="./pics/a6/manmade_04_y_gradient.bmp" alt="manmade gradient">
+
+            <p>Bild nature mit Gradientenfilter:</p>
+
+            <img src="./pics/a6/nature_04_y_gradient.bmp" alt="nature gradient">
+
 
             <h3>
                 <div class="list-indicator">2B</div> Differenzbild zwischen dem gefilterten und dem Originalbild
