@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="format.css">
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./prism/prism.css">
+    <script src="./charts/Chart.min.js"></script>
+</head>
+
+<body class="page">
+
+    <div class="main">
+
+        <!--Aufgabe 1-->
+
+        <article id="a1">
+            <h2>Aufgabe 1: Mittelwertfilter (Tiefpass)</h2>
+
+            <h3>
+                <div class="list-indicator">1A</div> Mittelwertfilter und dessen Wirkung
+            </h3>
+
+            <div class="task-description">Erweitere bmp_io so, dass ein Filter mit einem Kernel von 3x3 Pixeln angewandt werden kann.
+                Beim Mittelwertfilter wird ein Zielpixel aus dem Mittelwert aller Pixel im Kernel im Originalbild
+                berechnet. Beschreibe die Wirkung des Filters auf deine Bilder!
+            </div>
+
+            <h3>
+                <div class="list-indicator">1B</div> Berechnung Filter mit Randpixeln
+            </h3>
+
+            <div class="task-description">Wie verfährt man bei der Berechnung des Filters mit den Randpixeln?</div>
+
+            <h3>
+                <div class="list-indicator">1C</div> Differenzbild
+            </h3>
+
+            <div class="task-description">Erweitere bmp_io so, dass das Differenzbild zwischen dem gefilterten und dem Originalbild
+                berechnet werden kann (analog zu Übung 2, Aufgabenpunkt 3.3)! Dieses muss offensichtlich die
+                Information zeigen, die das Filter entfernt hat. Beachte dabei, dass du das Differenzbild
+                möglicherweise im Kontrast verstärken musst (siehe Übung 4).
+            </div>
+
+        </article>
+
+        <!--Aufgabe 2-->
+
+        <article id="a2">
+            <h2>Aufgabe 2: Gradientenfilter </h2>
+
+            <h3>
+                <div class="list-indicator">2A</div> 3*3 Kernel auf Bilder anwenden
+            </h3>
+
+            <div class="task-description"> Wende nun den folgenden 3*3 Kernel auf deine Bilder an! Beachte dabei, dass bei der direkten
+                Anwendung der Vorschrift Werte > 255 entstehen können. Durch welchen Wert muss also die
+                Intensität des Zielpixels geteilt werden, damit man wieder in den erlaubten Bereich 0…255 kommt?
+                Beschreibe die Wirkung des Filters auf deine Bilder!</div>
+
+            <h3>
+                <div class="list-indicator">2B</div> Differenzbild zwischen dem gefilterten und dem Originalbild
+            </h3>
+
+            <div class="task-description">Berechne wiederum das Differenzbild zwischen dem gefilterten und dem Originalbild! Beachte
+                dabei ebenfalls, dass du das Differenzbild möglicherweise im Kontrast verstärken musst.
+            </div>
+
+        </article>
+
+        <!--Aufgabe 3-->
+
+        <article id="a3">
+            <h2>Aufgabe 3: Medianfilter</h2>
+
+            <h3>
+                <div class="list-indicator">3A</div> Medianfilter für 3x3-Pixelmatrix
+            </h3>
+
+            <div class="task-description">Das Medianfilter reiht alle Pixelintensitäten im Filterkernel der Größe nach auf und gibt den
+                Intensitätswert aus, der an der mittleren Position steht. Es wird oft zur Beseitigung von Kratzern oder
+                punktförmigen Bildfehlern verwendet. Füge zunächst mit Paint deinem Flächenbild zehn „Fehler“
+                hinzu, wie es in dem folgenden Beispiel zu sehen ist. Benutze dazu einen weißen Stift mit der
+                Strichstärke 2 Pixel. Programmiere das Medianfilter für deine 3x3-Pixelmatrix und berechne das
+                Ergebnisbild. 
+            </div>
+
+        </article>
+
+        <!--Aufgabe 4-->
+
+        <article id="a4">
+            <h2>Aufgabe 3: Sobel-Filter</h2>
+
+            <h3>
+                <div class="list-indicator"></div> Programmiere einen Sobel-Filter
+            </h3>
+
+            <div class="task-description">Das Sobel-Filter dient der Detektion von Kanten im Bild. Programmiere ein Sobel-Filter für die x- und
+                ein Sobel-Filter für die y-Richtung und wende sie auf deine Bilder an! Die Matrizen für das SobelFilter finden sich im pdf zur Bildfilterung.
+            </div>
+
+        </article>
+
+</div>
+<script src="./prism/prism.js"></script>
+<link rel="stylesheet" href="./lightbox/glightbox.min.css">
+<script src="./lightbox/glightbox.min.js"></script>
+<script>
+    const lightbox = GLightbox({
+        selector: "img:not([src$='bmp'])",
+        preload: false
+    });
+</script>
+</body>
+
+</html>
